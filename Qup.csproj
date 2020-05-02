@@ -128,6 +128,8 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\Carousal_2.jpg" />
     <Content Include="Images\Carousal_1.jpg" />
+    <Content Include="Login.aspx" />
+    <Content Include="PatronSignUp.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -181,6 +183,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PatronSignUp.aspx.cs">
+      <DependentUpon>PatronSignUp.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PatronSignUp.aspx.designer.cs">
+      <DependentUpon>PatronSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
