@@ -1,7 +1,12 @@
-﻿/* Move down content because we have a fixed navbar that is 50px tall */
+﻿html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100%;
 }
 
 /* Wrapping element */
@@ -29,3 +34,70 @@ textarea {
         padding: 0;
     }
 }
+
+.navbar .nav-link {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+}
+
+.navbar .nav-item.active {
+    border-left: #444 3px solid;
+}
+
+.carousel-item {
+    height: 450px;
+}
+
+.carousel-image-1 {
+    background: url(/Config/Images/CarousalImage1.png);
+    background-size: cover;
+}
+
+.carousel-image-2 {
+    background: url(/Config/Images/CarousalImage2.png);
+    background-size: cover;
+}
+
+.carousel-image-3 {
+    background: url(/Config/Images/CarousalImage3.png);
+    background-size: cover;
+}
+
+#home-heading {
+    position: relative;
+    min-height: 200px;
+    background: url('/Config/Images/Lights.jpg');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+    color: #fff;
+}
+
+.dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.formHeight {
+    min-height: 90vh;
+}
+
+.footer {
+    position: fixed !important;
+    bottom: 0;
+    width: 100%;
+}
+
+@media (min-width: 767px) {
+    .loginBorder {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem !important;
+    }
+}
+

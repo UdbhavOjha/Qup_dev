@@ -51,17 +51,12 @@ textarea {
 }
 
 .carousel-image-1 {
-    background: url(/Config/Images/CarousalImage1.png);
+    background: url(/Images/Carousal_1.jpg);
     background-size: cover;
 }
 
 .carousel-image-2 {
-    background: url(/Config/Images/CarousalImage2.png);
-    background-size: cover;
-}
-
-.carousel-image-3 {
-    background: url(/Config/Images/CarousalImage3.png);
+    background: url(/Images/Carousal_2.jpg);
     background-size: cover;
 }
 
