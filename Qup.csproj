@@ -106,6 +106,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="BusinessSignUp.aspx" />
+    <Content Include="Clients\BookingHistory.aspx" />
+    <Content Include="Clients\EditPatronProfile.aspx" />
+    <Content Include="Clients\PatronDashboard.aspx" />
+    <Content Include="Clients\ViewPatronProfile.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -123,6 +127,15 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\Bar101.jpeg" />
+    <Content Include="Images\Dr Rudi%27s.jpg" />
+    <Content Include="Images\FreemanGrey.jpg" />
+    <Content Include="Images\Headquarters.jpeg" />
+    <Content Include="Images\Revelry.jpg" />
+    <Content Include="Images\Sweat Shop Brew Kitchen.jpg" />
+    <Content Include="Images\The Fox.jpg" />
+    <Content Include="Images\The Roxy.jpg" />
+    <Content Include="Patrons.Master" />
     <None Include="Properties\PublishProfiles\Qup - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Qup20200502110147 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -179,6 +192,34 @@
     <Compile Include="BusinessSignUp.aspx.designer.cs">
       <DependentUpon>BusinessSignUp.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Clients\BookingHistory.aspx.cs">
+      <DependentUpon>BookingHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\BookingHistory.aspx.designer.cs">
+      <DependentUpon>BookingHistory.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\EditPatronProfile.aspx.cs">
+      <DependentUpon>EditPatronProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\EditPatronProfile.aspx.designer.cs">
+      <DependentUpon>EditPatronProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\PatronDashboard.aspx.cs">
+      <DependentUpon>PatronDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\PatronDashboard.aspx.designer.cs">
+      <DependentUpon>PatronDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Clients\ViewPatronProfile.aspx.cs">
+      <DependentUpon>ViewPatronProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Clients\ViewPatronProfile.aspx.designer.cs">
+      <DependentUpon>ViewPatronProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,6 +236,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Patrons.Master.cs">
+      <DependentUpon>Patrons.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Patrons.Master.designer.cs">
+      <DependentUpon>Patrons.Master</DependentUpon>
     </Compile>
     <Compile Include="PatronSignUp.aspx.cs">
       <DependentUpon>PatronSignUp.aspx</DependentUpon>
@@ -228,6 +276,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Patrons\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

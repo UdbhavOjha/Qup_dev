@@ -22,9 +22,124 @@
       </div>
   </section>
 
+    <!-- Sample Bar --> 
+    <section class="my-4 py-4 bg-light">
+        <div class="container">
+
+            <div class="row my-4 py-4">
+              <div class="col">
+                  <div class="container mt-3 py-4 text-black-50 text-center">
+                      <h1>Top 9 most popular Bars and Night Clubs</h1>
+                  </div>
+              </div>
+          </div>
+
+            <div class="card-columns my-3">
+              <div class="card">
+                  <img class="card-img-top" src="Images/Bar101.jpeg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Bar 101</h4>
+                    <p class="card-text">7 Sale Street</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                      <a href="#" class="btn btn-danger">Queue Full</a>
+                      <a href="#" class="btn btn-secondary">Map</a>
+                      <a href="#" class="btn btn-danger">Jump Q</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Dr Rudi's.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Dr Rudi's</h4>
+                    <p class="card-text">66-68 Tyler St, Britomart</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                      <a href="#" class="btn btn-danger">Queue Full</a>
+                      <a href="#" class="btn btn-secondary">Map</a>
+                      <a href="#" class="btn btn-danger">Jump Q</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/FreemanGrey.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Freeman & Grey</h4>
+                    <p class="card-text">85 Fort St, central city</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                      <a href="#" class="btn btn-danger">Queue Full</a>
+                      <a href="#" class="btn btn-secondary">Map</a>
+                      <a href="#" class="btn btn-danger">Jump Q</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Headquarters.jpeg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Headquarters</h4>
+                    <p class="card-text">91 Federal St, central city</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                      <a href="#" class="btn btn-danger">Queue Full</a>
+                      <a href="#" class="btn btn-secondary">Map</a>
+                      <a href="#" class="btn btn-danger">Jump Q</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Revelry.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Revelry</h4>
+                    <p class="card-text">Downstairs, 38 Roukai Lane, Britomart</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                      <a href="#" class="btn btn-danger">Queue Full</a>
+                      <a href="#" class="btn btn-secondary">Map</a>
+                      <a href="#" class="btn btn-danger">Jump Q</a>
+                  </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="Images/Sweat Shop Brew Kitchen.jpg" alt="Card image">
+                <div class="card-body">
+                <h4 class="card-title">Sweat Shop Brew Kitchen</h4>
+                <p class="card-text">Downstairs, 38 Roukai Lane, Britomart</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+                <a href="#" class="btn btn-danger">Queue Full</a>
+                <a href="#" class="btn btn-secondary">Map</a>
+                <a href="#" class="btn btn-danger">Jump Q</a>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="Images/The Fox.jpg" alt="Card image">
+                <div class="card-body">
+                <h4 class="card-title">The Fox</h4>
+                <p class="card-text">Downstairs, 38 Roukai Lane, Britomart</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+                <a href="#" class="btn btn-danger">Queue Full</a>
+                <a href="#" class="btn btn-secondary">Map</a>
+                <a href="#" class="btn btn-danger">Jump Q</a>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="Images/The Roxy.jpg" alt="Card image">
+                <div class="card-body">
+                <h4 class="card-title">The Roxy</h4>
+                <p class="card-text">Downstairs, 38 Roukai Lane, Britomart</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+                    <a href="#" class="btn btn-danger">Queue Full</a>
+                    <a href="#" class="btn btn-secondary">Map</a>
+                    <a href="#" class="btn btn-danger">Jump Q</a>
+                </div>
+            </div>
+            <div class="card">
+                <img class="card-img-top" src="Images/The Roxy.jpg" alt="Card image">
+                <div class="card-body">
+                <h4 class="card-title">The Roxy</h4>
+                <p class="card-text">Downstairs, 38 Roukai Lane, Britomart</p>
+                <a href="#" class="btn btn-primary">See Profile</a>
+                    <a href="#" class="btn btn-danger">Queue Full</a>
+                    <a href="#" class="btn btn-secondary">Map</a>
+                    <a href="#" class="btn btn-danger">Jump Q</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
 
     <!-- Sample Restaurants --> 
-    <section class="my-4 py-4 bg-light">
+    <section class="my-4 py-4">
         <div class="container">
 
             <div class="row my-4 py-4">
@@ -44,7 +159,7 @@
                     <a href="#" class="btn btn-primary">See Profile</a>
                       <a href="#" class="btn btn-danger">Queue Full</a>
                       <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
+                      <a href="#" class="btn btn-danger">Jump Q</a>
                   </div>
               </div>
               <div class="card">
@@ -99,89 +214,6 @@
             </div>
         </div>
         </div>
-    </section>
-
-    <!-- Sample Bar --> 
-    <section>
-        <div class="container">
-
-            <div class="row my-4 py-4">
-              <div class="col">
-                  <div class="container mt-3 py-4 text-black-50 text-center">
-                      <h1>Top 6 in demand Bars and Night Clubs</h1>
-                  </div>
-              </div>
-          </div>
-
-            <div class="card-columns my-3">
-              <div class="card">
-                  <img class="card-img-top" src="Images/Rest1.jpg" alt="Card image">
-                  <div class="card-body">
-                    <h4 class="card-title">Sweat Shop brew Kitchen</h4>
-                    <p class="card-text">7 Sale Street</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
-                  </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="Images/Rest1.jpg" alt="Card image">
-                  <div class="card-body">
-                    <h4 class="card-title">Amano</h4>
-                    <p class="card-text">66-68 Tyler St, Britomart</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
-                  </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="Images/Rest3.jpg" alt="Card image">
-                  <div class="card-body">
-                    <h4 class="card-title">Beirut</h4>
-                    <p class="card-text">85 Fort St, central city</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
-                  </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="Images/Rest5.jpg" alt="Card image">
-                  <div class="card-body">
-                    <h4 class="card-title">Bellota</h4>
-                    <p class="card-text">91 Federal St, central city</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
-                  </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="Images/Rest5.jpg" alt="Card image">
-                  <div class="card-body">
-                    <h4 class="card-title">Brothers Beer</h4>
-                    <p class="card-text">Shed 3D, City Works Depot</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
-                  </div>
-              </div>
-              <div class="card">
-                <img class="card-img-top" src="Images/Rest1.jpg" alt="Card image">
-                  <div class="card-body">
-                    <h4 class="card-title">Caretaker</h4>
-                    <p class="card-text">Downstairs, 38 Roukai Lane, Britomart</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump</a>
-                  </div>
-            </div>
-        </div>
-        </div>
-    </section>
+    </section>    
 </asp:Content>
 

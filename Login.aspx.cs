@@ -16,6 +16,13 @@ namespace Qup
 
         protected void login_Click(object sender, EventArgs e)
         {
+            var username = Request["username"];
+            if (username == "patron")
+            {
+                Response.Redirect("/Clients/PatronDashboard.aspx");
+            }
+
+
             //var userCredentials = new AuthenticateUserSession
             //{
             //    UserName = Request["username"],
