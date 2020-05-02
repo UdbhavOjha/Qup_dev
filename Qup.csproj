@@ -128,6 +128,11 @@
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Images\Carousal_2.jpg" />
     <Content Include="Images\Carousal_1.jpg" />
+    <Content Include="Images\Rest1.jpg" />
+    <Content Include="Images\Rest2.jpg" />
+    <Content Include="Images\Rest3.jpg" />
+    <Content Include="Images\Rest4.jpg" />
+    <Content Include="Images\Rest5.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="PatronSignUp.aspx" />
     <Content Include="Scripts\bootstrap.js" />

@@ -2,41 +2,93 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>Coming Soon</h1>
-        <%--<p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>--%>
-    </div>
+    <!-- HOME ICON SECTION  -->
+  <section id="home-icons" class="py-5">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-4 mb-4 text-center">
+                  <i class="fas fa-beer fa-5x"></i>
+                  <h3>23 Restaurants signed up.</h3>
+              </div>
+              <div class="col-md-4 mb-4 text-center">
+                  <i class="fas fa-users fa-5x"></i>
+                  <h3>150 Users queued in!</h3>
+              </div>
+              <div class="col-md-4 mb-4 text-center">
+                  <i class="fas fa-fast-forward fa-5x"></i>
+                  <h3>50+ fast tracked.</h3>
+              </div>
+          </div>
+      </div>
+  </section>
 
-    <%--<div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
+
+    <!-- Sample Restaurants --> 
+    <section>
+        <div class="container">
+
+            <div class="row my-4 py-4">
+              <div class="col">
+                  <div class="container mt-3 py-4 text-black-50 text-center">
+                      <h1>Top 6 in demand restaurants</h1>
+                  </div>
+              </div>
+          </div>
+
+
+            <div class="card-columns my-3">
+              <div class="card">
+                  <img class="card-img-top" src="Images/Rest1.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Cafe BBQ Duck</h4>
+                    <p class="card-text">42c High Street</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Rest1.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Ponsonby Central</h4>
+                    <p class="card-text">136-146 Ponsonby Road</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Rest3.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Prego Restaurant</h4>
+                    <p class="card-text">226 Ponsonby Road</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Rest5.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Sidart Restaurant </h4>
+                    <p class="card-text">283 Ponsonby Road</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Rest5.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">Mekong Baby</h4>
+                    <p class="card-text">226 Ponsonby Road</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+              </div>
+              <div class="card">
+                <img class="card-img-top" src="Images/Rest1.jpg" alt="Card image">
+                  <div class="card-body">
+                    <h4 class="card-title">The Blue Breeze inn</h4>
+                    <p class="card-text">146 Ponsonby Road</p>
+                    <a href="#" class="btn btn-primary">See Profile</a>
+                  </div>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
         </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>--%>
+    </section>
+
 
 </asp:Content>
+

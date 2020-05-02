@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
       crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
-    <link rel="stylesheet" href="/Config/Css/Zeroline.css" />
+    <link rel="stylesheet" href="/Config/Css/Site.css" />
     <title>Qup</title>
     
     <asp:PlaceHolder runat="server">
@@ -48,29 +48,29 @@
         <!-- START HERE -->  
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
             <div class="container">
-                <a href="/Home.aspx" class="navbar-brand">Qup</a>
+                <a href="/Default.aspx" class="navbar-brand">Qup</a>
                 <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a href="/Home.aspx" class="nav-link">Home</a>
+                            <a href="/Default.aspx" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item"> 
-                            <a href="#" class="nav-link">Sign Up</a>
+                            <a href="/PatronSignUp.aspx" class="nav-link">Sign Up</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Business</a>
+                            <a href="/BusinessSignUp.aspx" class="nav-link">Business</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Login</a>
+                            <a href="/Login.aspx" class="nav-link">Login</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="container body-content">
+        <div class="formHeight">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
         </div>
