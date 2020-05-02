@@ -140,7 +140,7 @@ C:\VisualStudioProjects\Qup\bin\Newtonsoft.Json.xml
 C:\VisualStudioProjects\Qup\bin\Antlr3.Runtime.pdb
 C:\VisualStudioProjects\Qup\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\VisualStudioProjects\Qup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\VisualStudioProjects\Qup\obj\Debug\Qup.csprojAssemblyReference.cache
 C:\VisualStudioProjects\Qup\obj\Debug\Qup.csproj.CopyComplete
 C:\VisualStudioProjects\Qup\obj\Debug\Qup.dll
 C:\VisualStudioProjects\Qup\obj\Debug\Qup.pdb
+C:\VisualStudioProjects\Qup\obj\Debug\Qup.csprojAssemblyReference.cache

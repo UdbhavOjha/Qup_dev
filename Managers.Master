@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Patrons.master.cs" Inherits="Qup.Patrons" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Managers.master.cs" Inherits="Qup.Managers" %>
 
 <!DOCTYPE html>
 
@@ -13,13 +13,7 @@
       crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css" />
     <link rel="stylesheet" href="/Content/Site.css" />
-    <title>Qup | Patron</title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
-    <%--<asp:PlaceHolder runat="server">
-        <%: Scripts.Render("~/bundles/modernizr") %>
-    </asp:PlaceHolder>--%>
-
+    <title>Qup | Admin</title>
     <webopt:bundlereference runat="server" path="~/Content/css" />
 </head>
 <body>

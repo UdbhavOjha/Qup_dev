@@ -135,7 +135,9 @@
     <Content Include="Images\Sweat Shop Brew Kitchen.jpg" />
     <Content Include="Images\The Fox.jpg" />
     <Content Include="Images\The Roxy.jpg" />
+    <Content Include="Manager\Dashboard.aspx" />
     <Content Include="Patrons.Master" />
+    <Content Include="Managers.Master" />
     <None Include="Properties\PublishProfiles\Qup - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Qup20200502110147 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -237,6 +239,20 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Managers.Master.cs">
+      <DependentUpon>Managers.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Managers.Master.designer.cs">
+      <DependentUpon>Managers.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Patrons.Master.cs">
       <DependentUpon>Patrons.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -276,7 +292,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Patrons\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

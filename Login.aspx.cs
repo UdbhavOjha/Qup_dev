@@ -21,7 +21,10 @@ namespace Qup
             {
                 Response.Redirect("/Clients/PatronDashboard.aspx");
             }
-
+            else if (username == "manager")
+            {
+                Response.Redirect("/Manager/Dashboard.aspx");
+            }
 
             //var userCredentials = new AuthenticateUserSession
             //{
