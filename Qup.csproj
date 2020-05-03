@@ -105,11 +105,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Bar101View.aspx" />
     <Content Include="BusinessSignUp.aspx" />
     <Content Include="Clients\BookingHistory.aspx" />
     <Content Include="Clients\EditPatronProfile.aspx" />
     <Content Include="Clients\PatronDashboard.aspx" />
     <Content Include="Clients\ViewPatronProfile.aspx" />
+    <Content Include="Images\clock_icon.svg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -127,6 +129,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Images\icons8-clock.svg" />
     <Content Include="Images\Bar101.jpeg" />
     <Content Include="Images\Dr Rudi%27s.jpg" />
     <Content Include="Images\FreemanGrey.jpg" />
@@ -150,6 +153,7 @@
     <Content Include="Images\Rest5.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="PatronSignUp.aspx" />
+    <Content Include="Images\qr-code.svg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -187,6 +191,13 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Bar101View.aspx.cs">
+      <DependentUpon>Bar101View.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Bar101View.aspx.designer.cs">
+      <DependentUpon>Bar101View.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BusinessSignUp.aspx.cs">
       <DependentUpon>BusinessSignUp.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

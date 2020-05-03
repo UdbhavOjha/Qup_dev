@@ -40,8 +40,8 @@
                   <div class="card-body">
                     <h4 class="card-title">Bar 101</h4>
                     <p class="card-text">7 Sale Street</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
+                    <a href="Bar101View.aspx" class="btn btn-primary">See Profile</a>
+                      <a href="#" class="btn btn-danger"><img src="Images/icons8-clock.svg" style="width:20px" /> 65 mins</a>
                       <a href="#" class="btn btn-secondary">Map</a>
                       <a href="#" class="btn btn-danger">Jump Q</a>
                   </div>
@@ -216,4 +216,3 @@
         </div>
     </section>    
 </asp:Content>
-
