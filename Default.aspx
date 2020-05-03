@@ -29,7 +29,7 @@
             <div class="row my-4 py-4">
               <div class="col">
                   <div class="container mt-3 py-4 text-black-50 text-center">
-                      <h1>Top 9 most popular Bars and Night Clubs</h1>
+                      <h1>Popular Bars and Night Clubs</h1>
                   </div>
               </div>
           </div>
@@ -145,7 +145,7 @@
             <div class="row my-4 py-4">
               <div class="col">
                   <div class="container mt-3 py-4 text-black-50 text-center">
-                      <h1>Top 6 in demand restaurants</h1>
+                      <h1>Popular restaurants</h1>
                   </div>
               </div>
           </div>
