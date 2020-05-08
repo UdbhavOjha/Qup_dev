@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="Qup.Login" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <section id="logon" class="h-100">
+    <section id="logon" class="h-100 mt-4 pt-4">
             <div class="container h-100">
                 <div class="row justify-content-center align-items-center h-100 px-2">
                     <div class="col-md-3"></div>
                     <div class="col-md-6 loginBorder" style="padding: 3% 5%;">
                         <div class="row">
                             <h4 class="text-muted lead">
-                                Admin Login
+                                Login
                             </h4>
                         </div>
                         <div class="row text-muted">

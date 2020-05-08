@@ -33,6 +33,8 @@ namespace Qup
             //    RecaptchaError = "Please tick the recaptcha checkbox.";
             //    return;
             //}
+
+            Response.Redirect("/Clients/PatronDashboard.aspx");
         }
     }
 }

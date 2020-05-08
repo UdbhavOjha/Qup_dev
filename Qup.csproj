@@ -134,6 +134,7 @@
     <Content Include="Images\Dr Rudi%27s.jpg" />
     <Content Include="Images\FreemanGrey.jpg" />
     <Content Include="Images\Headquarters.jpeg" />
+    <Content Include="Images\Kingslander.jpg" />
     <Content Include="Images\Revelry.jpg" />
     <Content Include="Images\Sweat Shop Brew Kitchen.jpg" />
     <Content Include="Images\The Fox.jpg" />
@@ -186,7 +187,6 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -308,6 +308,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+    <Content Include="Site.Mobile.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

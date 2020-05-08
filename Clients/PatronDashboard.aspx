@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <section id="home-icons" class="py-5">
+    <%--<section id="home-icons" class="py-5">
       <div class="container">
           <div class="row">
               <div class="col-md-4 my-4 py-4 text-center">
@@ -19,10 +19,10 @@
               </div>
           </div>
       </div>
-  </section>
+  </section>--%>
 
     <!-- Sample Bar -->
-    <section id="" class="py-5 bg-light">
+    <%--<section id="" class="py-5 bg-light">
       <div class="container">
           <div class="row">
               <div class="col mb-4 text-center">
@@ -41,23 +41,21 @@
               </div>
             </div>
       </div>
-    </section>
+    </section>--%>
     <section class="py-4 bg-light">
         <div class="container">     
           
             <div class="card-columns my-3">
               <div class="card">
-                  <img class="card-img-top" src="/Images/Bar101.jpeg" alt="Card image">
+                  <img class="card-img-top" src="/Images/Kingslander.jpg" alt="Card image">
                   <div class="card-body">
-                    <h4 class="card-title">Bar 101</h4>
-                    <p class="card-text">7 Sale Street</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
-                      <a href="#" class="btn btn-danger">Queue Full</a>
-                      <a href="#" class="btn btn-secondary">Map</a>
-                      <a href="#" class="btn btn-danger">Jump Q</a>
+                    <h4 class="card-title">The Kingslander</h4>
+                    <p class="card-text">470 New North Road, Kingsland, Auckland</p>
+                    <a href="#" class="btn btn-primary">Profile</a>
+                      <a href="#" class="btn btn-danger">Queue</a>
                   </div>
               </div>
-              <div class="card">
+              <%--<div class="card">
                 <img class="card-img-top" src="/Images/Dr Rudi's.jpg" alt="Card image">
                   <div class="card-body">
                     <h4 class="card-title">Dr Rudi's</h4>
@@ -205,7 +203,7 @@
                       <a href="#" class="btn btn-warning">Get in line Fast</a>
                       <a href="#" class="btn btn-secondary">Map</a>
                   </div>
-            </div>  
+            </div>  --%>
         </div>
         </div>
     </section>
