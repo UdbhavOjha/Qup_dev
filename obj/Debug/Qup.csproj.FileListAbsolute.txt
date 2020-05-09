@@ -144,3 +144,11 @@ C:\VisualStudioProjects\Qup\obj\Debug\Qup.csproj.CopyComplete
 C:\VisualStudioProjects\Qup\obj\Debug\Qup.dll
 C:\VisualStudioProjects\Qup\obj\Debug\Qup.pdb
 C:\VisualStudioProjects\Qup\obj\Debug\Qup.csprojAssemblyReference.cache
+C:\VisualStudioProjects\Qup\bin\Qup.Business.dll
+C:\VisualStudioProjects\Qup\bin\Qup.Business.pdb
+C:\VisualStudioProjects\Qup\bin\Qup.Database.dll
+C:\VisualStudioProjects\Qup\bin\EntityFramework.dll
+C:\VisualStudioProjects\Qup\bin\Qup.Business.dll.config
+C:\VisualStudioProjects\Qup\bin\Qup.Database.pdb
+C:\VisualStudioProjects\Qup\bin\Qup.Database.dll.config
+C:\VisualStudioProjects\Qup\bin\EntityFramework.xml

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="838631a8527847a5962349cc11d25570" Name="Diagram1">
+        <EntityTypeShape EntityType="QupModel.Business" Width="1.5" PointX="2.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.BusinessOperation" Width="1.5" PointX="5" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.UserGroup" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.User" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.UsersToUserGroup" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="QupModel.FK__BusinessO__Busin__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="QupModel.FK__UsersToUs__UserG__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="QupModel.FK__UsersToUs__UserI__4E88ABD4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

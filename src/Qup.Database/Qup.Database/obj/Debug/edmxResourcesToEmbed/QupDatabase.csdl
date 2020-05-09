@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Business">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="BusinessProfile" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="BusinessOperations" Relationship="Self.FK__BusinessO__Busin__5535A963" FromRole="Business" ToRole="BusinessOperations" />
+  </EntityType>
+  <EntityType Name="BusinessOperation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessId" Type="Int32" />
+    <Property Name="Day" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="OpenTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CloseTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Business" Relationship="Self.FK__BusinessO__Busin__5535A963" FromRole="BusinessOperations" ToRole="Business" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="UsersToUserGroups" Relationship="Self.FK__UsersToUs__UserG__4F7CD00D" FromRole="UserGroups" ToRole="UsersToUserGroups" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UserPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="UsersToUserGroups" Relationship="Self.FK__UsersToUs__UserI__4E88ABD4" FromRole="Users" ToRole="UsersToUserGroups" />
+  </EntityType>
+  <EntityType Name="UsersToUserGroup">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="UserGroupId" Type="Int32" />
+    <NavigationProperty Name="UserGroup" Relationship="Self.FK__UsersToUs__UserG__4F7CD00D" FromRole="UsersToUserGroups" ToRole="UserGroups" />
+    <NavigationProperty Name="User" Relationship="Self.FK__UsersToUs__UserI__4E88ABD4" FromRole="UsersToUserGroups" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__BusinessO__Busin__5535A963">
+    <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+    <End Role="BusinessOperations" Type="Self.BusinessOperation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessOperations">
+        <PropertyRef Name="BusinessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsersToUs__UserG__4F7CD00D">
+    <End Role="UserGroups" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="UsersToUserGroups" Type="Self.UsersToUserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersToUserGroups">
+        <PropertyRef Name="UserGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsersToUs__UserI__4E88ABD4">
+    <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+    <End Role="UsersToUserGroups" Type="Self.UsersToUserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersToUserGroups">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QupEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Businesses" EntityType="Self.Business" />
+    <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperation" />
+    <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroup" />
+    <AssociationSet Name="FK__BusinessO__Busin__5535A963" Association="Self.FK__BusinessO__Busin__5535A963">
+      <End Role="Business" EntitySet="Businesses" />
+      <End Role="BusinessOperations" EntitySet="BusinessOperations" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsersToUs__UserG__4F7CD00D" Association="Self.FK__UsersToUs__UserG__4F7CD00D">
+      <End Role="UserGroups" EntitySet="UserGroups" />
+      <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsersToUs__UserI__4E88ABD4" Association="Self.FK__UsersToUs__UserI__4E88ABD4">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

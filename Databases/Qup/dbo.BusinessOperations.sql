@@ -1,0 +1,7 @@
+CREATE TABLE dbo.BusinessOperations (
+	Id INT PRIMARY KEY IDENTITY (1,1),
+	BusinessId INT FOREIGN KEY REFERENCES dbo.Business (Id), 
+	[Day] CHAR(3) NOT NULL, 
+	OpenTime DATETIME NOT NULL, 
+	CloseTime DATETIME NOT NULL
+)

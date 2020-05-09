@@ -1,0 +1,5 @@
+CREATE TABLE dbo.UsersToUserGroups (
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	UserId INT FOREIGN KEY REFERENCES dbo.Users (Id),
+	UserGroupId INT FOREIGN KEY REFERENCES dbo.UserGroups (Id) 
+)

@@ -25,6 +25,11 @@ namespace Qup
             {
                 Response.Redirect("/Manager/Dashboard.aspx");
             }
+            else if (username == "admin")
+            {
+                Response.Redirect("/Admins/AdminDashboard.aspx");
+            }
+
 
             //var userCredentials = new AuthenticateUserSession
             //{
