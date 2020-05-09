@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Qup.Business.Authentication.Models;
+using Qup.Business.Authentication;
 
 namespace Qup
 {
@@ -16,30 +13,31 @@ namespace Qup
 
         protected void login_Click(object sender, EventArgs e)
         {
-            var username = Request["username"];
-            if (username == "patron")
+            var userCredentials = new UserSession
             {
-                Response.Redirect("/Clients/PatronDashboard.aspx");
-            }
-            else if (username == "manager")
+                UserName = Request["username"],
+                Password = Request["password"],
+                IpAddress = Request.UserHostAddress
+            };
+
+            var authentication = new UserAuthenticationManagement();
+            var userValidationResults = authentication.AuthenticUserCredentials(userCredentials);
+
+            if (userValidationResults.SessionValidated)
             {
-                Response.Redirect("/Manager/Dashboard.aspx");
+                if (userValidationResults.UserGroup == 1)
+                {
+                    Response.Redirect("/Clients/PatronDashboard.aspx");
+                }
+                else if (userValidationResults.UserGroup == 2)
+                {
+                    Response.Redirect("/Manager/Dashboard.aspx");
+                }
+                else if (userValidationResults.UserGroup == 3)
+                {
+                    Response.Redirect("/Admins/AdminDashboard.aspx");
+                }
             }
-            else if (username == "admin")
-            {
-                Response.Redirect("/Admins/AdminDashboard.aspx");
-            }
-
-
-            //var userCredentials = new AuthenticateUserSession
-            //{
-            //    UserName = Request["username"],
-            //    Password = Request["password"],
-            //    IpAddress = Request.UserHostAddress
-            //};
-
-            //var authentication = new UserAuthentication();
-            //var sessionStatus = authentication.AuthenticateUserCredentials(userCredentials);
 
             //if (!sessionStatus.Equals("failed"))
             //{

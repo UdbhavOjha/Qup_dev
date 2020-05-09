@@ -11,7 +11,7 @@
                             </h4>
                         </div>
                         <div class="row text-muted">
-                            <small>Username</small>
+                            <small>Email</small>
                         </div>
                         <div class="row">
                             <div class="input-group">
@@ -20,7 +20,7 @@
                                         <i class="far fa-user"></i>
                                     </span>
                                 </div>
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username or Email Address" />
+                                <input type="email" class="form-control" id="username" name="username" placeholder="Username or Email Address" />
                             </div>
                         </div>
                         <div class="row text-muted mt-3">

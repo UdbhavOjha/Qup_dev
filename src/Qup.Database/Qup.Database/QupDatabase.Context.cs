@@ -12,6 +12,8 @@ namespace Qup.Database
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class QupEntities : DbContext
     {
@@ -30,5 +32,14 @@ namespace Qup.Database
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
+    
+        public virtual ObjectResult<spUsersByUserGroup_Result> spUsersByUserGroup(string userGroup)
+        {
+            var userGroupParameter = userGroup != null ?
+                new ObjectParameter("userGroup", userGroup) :
+                new ObjectParameter("userGroup", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUsersByUserGroup_Result>("spUsersByUserGroup", userGroupParameter);
+        }
     }
 }

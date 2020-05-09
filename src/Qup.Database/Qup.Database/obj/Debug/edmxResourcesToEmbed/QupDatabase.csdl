@@ -111,5 +111,15 @@
       <End Role="Users" EntitySet="Users" />
       <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
     </AssociationSet>
+    <FunctionImport Name="spUsersByUserGroup" ReturnType="Collection(QupModel.spUsersByUserGroup_Result)">
+      <Parameter Name="userGroup" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
+  <ComplexType Name="spUsersByUserGroup_Result">
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="false" MaxLength="101" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+  </ComplexType>
 </Schema>

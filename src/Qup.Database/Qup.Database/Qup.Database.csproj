@@ -76,6 +76,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QupDatabase.edmx</DependentUpon>
     </Compile>
+    <Compile Include="spUsersByUserGroup_Result.cs">
+      <DependentUpon>QupDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>QupDatabase.tt</DependentUpon>
     </Compile>

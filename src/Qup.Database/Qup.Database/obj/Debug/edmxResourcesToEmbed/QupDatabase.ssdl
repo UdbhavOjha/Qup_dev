@@ -87,6 +87,9 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="spUsersByUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="userGroup" Type="varchar" Mode="In" />
+  </Function>
   <EntityContainer Name="QupModelStoreContainer">
     <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperations" Schema="dbo" store:Type="Tables" />
