@@ -116,7 +116,6 @@
     <Content Include="Admins\CreateNewUser.aspx" />
     <Content Include="Admins\NewBusinessOnboard.aspx" />
     <Content Include="Bar101View.aspx" />
-    <Content Include="BusinessSignUp.aspx" />
     <Content Include="Clients\BookingHistory.aspx" />
     <Content Include="Clients\EditPatronProfile.aspx" />
     <Content Include="Clients\PatronDashboard.aspx" />
@@ -141,14 +140,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\icons8-clock.svg" />
     <Content Include="Images\Bar101.jpeg" />
-    <Content Include="Images\Dr Rudi%27s.jpg" />
-    <Content Include="Images\FreemanGrey.jpg" />
-    <Content Include="Images\Headquarters.jpeg" />
     <Content Include="Images\Kingslander.jpg" />
-    <Content Include="Images\Revelry.jpg" />
-    <Content Include="Images\Sweat Shop Brew Kitchen.jpg" />
-    <Content Include="Images\The Fox.jpg" />
-    <Content Include="Images\The Roxy.jpg" />
     <Content Include="Manager\Dashboard.aspx" />
     <Content Include="Patrons.Master" />
     <Content Include="Managers.Master" />
@@ -156,13 +148,6 @@
     <None Include="Properties\PublishProfiles\Qup - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Qup20200502110147 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Images\Carousal_2.jpg" />
-    <Content Include="Images\Carousal_1.jpg" />
-    <Content Include="Images\Rest1.jpg" />
-    <Content Include="Images\Rest2.jpg" />
-    <Content Include="Images\Rest3.jpg" />
-    <Content Include="Images\Rest4.jpg" />
-    <Content Include="Images\Rest5.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="PatronSignUp.aspx" />
     <Content Include="Images\qr-code.svg" />
@@ -236,13 +221,6 @@
     </Compile>
     <Compile Include="Bar101View.aspx.designer.cs">
       <DependentUpon>Bar101View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="BusinessSignUp.aspx.cs">
-      <DependentUpon>BusinessSignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="BusinessSignUp.aspx.designer.cs">
-      <DependentUpon>BusinessSignUp.aspx</DependentUpon>
     </Compile>
     <Compile Include="Clients\BookingHistory.aspx.cs">
       <DependentUpon>BookingHistory.aspx</DependentUpon>
