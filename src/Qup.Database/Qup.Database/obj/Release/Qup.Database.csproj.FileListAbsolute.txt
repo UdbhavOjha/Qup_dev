@@ -1,0 +1,11 @@
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\Qup.Database.dll.config
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\Qup.Database.dll
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\Qup.Database.pdb
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\EntityFramework.dll
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\EntityFramework.SqlServer.dll
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\EntityFramework.xml
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Release\EntityFramework.SqlServer.xml
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Release\Qup.Database.csprojAssemblyReference.cache
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Release\Qup.Database.csproj.CopyComplete
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Release\Qup.Database.dll
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Release\Qup.Database.pdb

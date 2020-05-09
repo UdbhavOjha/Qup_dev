@@ -7,9 +7,13 @@ namespace Qup.Business.AccountsManagement
 {
     public class AccountManagementService
     {
-        public bool CreateNewBusinessAccount(BusinessAccountInformation command)
+        private QupEntities _context;
+        public AccountManagementService()
         {
-            var context = new QupEntities();
+            _context = new QupEntities();
+        }
+        public bool CreateNewBusinessAccount(BusinessAccountInformation command)
+        {           
 
             try
             {
@@ -24,7 +28,7 @@ namespace Qup.Business.AccountsManagement
                     IsActive = true,
                     DateCreated = DateTime.Now
                 };
-                context.Businesses.Add(businessAccount);
+                _context.Businesses.Add(businessAccount);
 
                 // 2. Save Business Admin
                 // 2.1 generate password Hash
@@ -40,8 +44,8 @@ namespace Qup.Business.AccountsManagement
                     Salt = encryptedCredentials.Salt,
                     UserPassword = encryptedCredentials.EncryptedPassword
                 };
-                context.Users.Add(businessAdmin);
-                context.SaveChanges();
+                _context.Users.Add(businessAdmin);
+                _context.SaveChanges();
 
                 // Link User To UserGroup 
                 var mapUserToGroup = new UsersToUserGroup()
@@ -49,17 +53,60 @@ namespace Qup.Business.AccountsManagement
                     UserId = businessAdmin.Id,
                     UserGroupId = 2 // Bar Admin user group
                 };
-                context.UsersToUserGroups.Add(mapUserToGroup);
-                context.SaveChanges();
+                _context.UsersToUserGroups.Add(mapUserToGroup);
+                _context.SaveChanges();
 
                 // 4. Generate Business QR code
                 return true;
             }
             catch (Exception e)
             {
+                throw e;
                 // log exception in errorhandler
-                return false;
+                //return false;
             }            
+        }
+
+        public bool CreateNewUser(UserSetUp command) 
+        {
+            try
+            {
+                // Add transactions
+                // 2.1 generate password Hash
+                var encryptedCredentials = GenericUtilityService.EncryptPassword(command.Password); // Next item
+
+                var newUser = new Qup.Database.User()
+                {
+                    FirstName = command.FirstName,
+                    LastName = command.LastName,
+                    Email = command.Email,
+                    PhoneNumber = command.PhoneNumber,
+                    DateCreated = DateTime.Now,
+                    Salt = encryptedCredentials.Salt,
+                    UserPassword = encryptedCredentials.EncryptedPassword
+                };
+                _context.Users.Add(newUser);
+                _context.SaveChanges();
+
+                // Link User To UserGroup 
+                var mapUserToGroup = new UsersToUserGroup()
+                {
+                    UserId = newUser.Id,
+                    UserGroupId = command.UserType 
+                };
+
+                _context.UsersToUserGroups.Add(mapUserToGroup);
+                _context.SaveChanges();
+
+                // 4. Generate Business QR code
+                return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
+                // log exception in errorhandler
+                //return false;
+            }
         }
     }
 }

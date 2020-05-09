@@ -1,0 +1,14 @@
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\Qup.Business.dll.config
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\Qup.Business.dll
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\Qup.Business.pdb
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\EntityFramework.dll
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\EntityFramework.SqlServer.dll
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\Qup.Database.dll
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\Qup.Database.pdb
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\Qup.Database.dll.config
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\EntityFramework.xml
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Release\EntityFramework.SqlServer.xml
+C:\VisualStudioProjects\Qup\src\Qup.Business\obj\Release\Qup.Business.csprojAssemblyReference.cache
+C:\VisualStudioProjects\Qup\src\Qup.Business\obj\Release\Qup.Business.csproj.CopyComplete
+C:\VisualStudioProjects\Qup\src\Qup.Business\obj\Release\Qup.Business.dll
+C:\VisualStudioProjects\Qup\src\Qup.Business\obj\Release\Qup.Business.pdb

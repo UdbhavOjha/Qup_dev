@@ -152,3 +152,5 @@ C:\VisualStudioProjects\Qup\bin\Qup.Business.dll.config
 C:\VisualStudioProjects\Qup\bin\Qup.Database.pdb
 C:\VisualStudioProjects\Qup\bin\Qup.Database.dll.config
 C:\VisualStudioProjects\Qup\bin\EntityFramework.xml
+C:\VisualStudioProjects\Qup\bin\EntityFramework.SqlServer.dll
+C:\VisualStudioProjects\Qup\bin\EntityFramework.SqlServer.xml

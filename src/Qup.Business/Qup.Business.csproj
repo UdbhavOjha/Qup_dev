@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="AccountsManagement\AccountManagementService.cs" />
     <Compile Include="AccountsManagement\Models\BusinessAccountInformation.cs" />
+    <Compile Include="AccountsManagement\Models\UserSetUp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\GenericUtilityService.cs" />
   </ItemGroup>
