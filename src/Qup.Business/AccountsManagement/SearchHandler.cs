@@ -8,14 +8,13 @@ namespace Qup.Business.AccountsManagement
     public class SearchHandler
     {
         private readonly QupEntities dbContext = new QupEntities(); 
-        public IEnumerable<UserDetails> GetUsersByUserGroupsAndName(string userGroup, string name)
+        public IEnumerable<UserDetails> GetUsersByUserGroupsAndName(string userGroup)
         {
             var users = new List<UserDetails>();
 
             var queryResults = dbContext.spUsersByUserGroup(userGroup);
-            var filteredResults = queryResults.Where( r => r.FullName.Contains(name));
 
-            foreach (var item in filteredResults)
+            foreach (var item in queryResults)
             {
                 users.Add(new UserDetails
                 {

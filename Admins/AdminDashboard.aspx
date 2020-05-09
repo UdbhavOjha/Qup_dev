@@ -42,14 +42,6 @@
                             <option value="AdminSupport">Admin Support</option>
                         </select>
                       </div>
-                    <div class="form-group">
-                        <label class="form-text">Name</label>
-                        <div class="form-row">
-                            <div class="col">
-                                <input type="text" class="form-control" placeholder="Enter Name" id="name" value="" name="name" runat="server" />
-                            </div>
-                        </div>
-                    </div>
                     <div class="form-group py-2 mb-4">
                         <asp:Button id="search" Class="btn btn-outline-info" Text="Search" OnClick="searchSubmit_Click" runat="server" />
                     </div>
@@ -64,47 +56,57 @@
             <div class="row">
                 <div class="col-md-1"></div>
                 <div class="col-md-10">
-                    <% if(searchResultsCount != 0)
-        {%>
-           <% if (userSearchResults != null) 
-            { %>
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Phone</th>
-                </tr>
-              </thead>
-              <tbody>
-                
-                    <%  int i = 1;
-                        foreach (var item in userSearchResults)
+                    <% if (searchResultsCount >= 1)
                         {%>
-                  <tr>
-                    <td><%:i%></td>
-                    <td><%:item.FullName %></td>
-                    <td><%:item.Email %></td>
-                    <td><%:item.PhoneNumber %></td>
-                  </tr> 
-                       <% i++;
-                           } %>
+                       <% if (userSearchResults != null)
+                        { %>
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Email</th>
+                              <th scope="col">Phone</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                
+                                <%  int i = 1;
+                            foreach (var item in userSearchResults)
+                            {%>
+                              <tr>
+                                <td><%:i%></td>
+                                <td><%:item.FullName %></td>
+                                <td><%:item.Email %></td>
+                                <td><%:item.PhoneNumber %></td>
+                              </tr> 
+                                   <% i++;
+                                } %>
                   
                                
-              </tbody>
-            </table>
+                          </tbody>
+                        </table>
 
-            <% }
-            else
-            {
+                        <% }
+                        else
+                        {
 
-            }
+                        }
 
-        }
- %>
+                    }
+                else if(searchResultsCount == 0)
+                {%>
+                    <div class="row">
+                        <div class="col-md-2"> </div>
+                        <div class="col-md-8">
+                             <p class="text-danger"> Search yielded 0 results</p>
+                        </div>
+                        <div class="col-md-2"></div>  
+                    </div>
+                                     
+                <%} %>
                 </div>
-                <div class="col-md-1"></div>
+                
             </div>        
         </div>
     </section>

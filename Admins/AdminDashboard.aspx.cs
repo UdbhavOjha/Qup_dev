@@ -12,7 +12,7 @@ namespace Qup.Admins
     public partial class AdminDashboard : System.Web.UI.Page
     {
         protected IEnumerable<UserDetails> userSearchResults = new List<UserDetails>();
-        protected int searchResultsCount; 
+        protected int searchResultsCount = -1; 
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -22,11 +22,10 @@ namespace Qup.Admins
         {
             var searchTypeSelected = searchType.Value;
             var searchUserTypeSelected = userType.Value;
-            var searchedName = name.Value.Trim();
             var searchHandler = new SearchHandler();
             if (searchTypeSelected == "User")
             {
-                userSearchResults = searchHandler.GetUsersByUserGroupsAndName(searchUserTypeSelected, searchedName);
+                userSearchResults = searchHandler.GetUsersByUserGroupsAndName(searchUserTypeSelected);
                 searchResultsCount = userSearchResults.Count();
             }
         }
