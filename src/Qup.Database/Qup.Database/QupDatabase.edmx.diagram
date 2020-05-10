@@ -13,6 +13,8 @@
         <AssociationConnector Association="QupModel.FK__BusinessO__Busin__5535A963" ManuallyRouted="false" />
         <AssociationConnector Association="QupModel.FK__UsersToUs__UserG__4F7CD00D" ManuallyRouted="false" />
         <AssociationConnector Association="QupModel.FK__UsersToUs__UserI__4E88ABD4" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QupModel.UserLedger" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="QupModel.QueueTransaction" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

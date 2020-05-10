@@ -10,22 +10,22 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
       crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Qup | Admin</title>
+    <title>Qup | Manager</title>
 </head>
 <body>
     <!-- START HERE -->  
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
         <div class="container">
-            <a href="/Default.aspx" class="navbar-brand">Qup</a>
+            <a href="#" class="navbar-brand">Qup</a>
             <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a href="/Clients/PatronDashboard.aspx" class="nav-link">Dashboard</a>
+                        <a href="/Manager/Dashboard.aspx" class="nav-link">Dashboard</a>
                     </li>
-                    <li class="nav-item"> 
+                    <%--<li class="nav-item"> 
                         <a href="#" class="nav-link">Bookings</a>
                     </li>
                     <li class="nav-item"> 
@@ -39,7 +39,7 @@
                     </li>
                     <li class="nav-item"> 
                         <a href="#" class="nav-link">Issue Log</a>
-                    </li>
+                    </li>--%>
                     <li class="nav-item">
                         <a href="/Login.aspx" class="nav-link">Logout</a>
                     </li>
@@ -54,7 +54,7 @@
         </div>
     </form>
     <!--Footer -->
-    <footer id="main-footer" class="py-3 text-white footer bg-dark" style="margin-top: 100px;">
+    <footer id="main-footer" class="py-3 text-white footer bg-dark" style="margin-top: 300px;">
         <div class="container">
             <div class="text-center mb-0 pb-0">
                 <div>

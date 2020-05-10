@@ -22,6 +22,19 @@
     <Property Name="OpenTime" Type="datetime" Nullable="false" />
     <Property Name="CloseTime" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="QueueTransactions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessId" Type="int" Nullable="false" />
+    <Property Name="QueueJoinDateTime" Type="datetime" />
+    <Property Name="PatronId" Type="int" />
+    <Property Name="ExpectedEntryDateTime" Type="datetime" />
+    <Property Name="ActualEntryDateTime" Type="datetime" />
+    <Property Name="ExitTime" Type="datetime" />
+    <Property Name="UserLedgerId" Type="int" />
+  </EntityType>
   <EntityType Name="UserGroups">
     <Key>
       <PropertyRef Name="Id" />
@@ -29,6 +42,17 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserLedger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+    <Property Name="BusinessId" Type="int" Nullable="false" />
+    <Property Name="DateCreated" Type="datetime" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -87,13 +111,20 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Function Name="spGetCustomersInQueueByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fromDate" Type="datetime" Mode="In" />
+    <Parameter Name="toDate" Type="datetime" Mode="In" />
+    <Parameter Name="businessId" Type="int" Mode="In" />
+  </Function>
   <Function Name="spUsersByUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="userGroup" Type="varchar" Mode="In" />
   </Function>
   <EntityContainer Name="QupModelStoreContainer">
     <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QueueTransactions" EntityType="Self.QueueTransactions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserLedger" EntityType="Self.UserLedger" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroups" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__BusinessO__Busin__5535A963" Association="Self.FK__BusinessO__Busin__5535A963">

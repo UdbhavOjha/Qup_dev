@@ -68,5 +68,42 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="UserLedgers">
+      <EntityTypeMapping TypeName="QupModel.UserLedger">
+        <MappingFragment StoreEntitySet="UserLedger">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QueueTransactions">
+      <EntityTypeMapping TypeName="QupModel.QueueTransaction">
+        <MappingFragment StoreEntitySet="QueueTransactions">
+          <ScalarProperty Name="UserLedgerId" ColumnName="UserLedgerId" />
+          <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+          <ScalarProperty Name="ActualEntryDateTime" ColumnName="ActualEntryDateTime" />
+          <ScalarProperty Name="ExpectedEntryDateTime" ColumnName="ExpectedEntryDateTime" />
+          <ScalarProperty Name="PatronId" ColumnName="PatronId" />
+          <ScalarProperty Name="QueueJoinDateTime" ColumnName="QueueJoinDateTime" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spGetCustomersInQueueByDate" FunctionName="QupModel.Store.spGetCustomersInQueueByDate">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QupModel.spGetCustomersInQueueByDate_Result">
+          <ScalarProperty Name="QueueId" ColumnName="QueueId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+          <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

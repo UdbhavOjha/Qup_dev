@@ -2,174 +2,146 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     
-    <section id="home-icons" class="py-5">
-      <div class="container text-secondary">
-          <div class="row ">
-              <div class="col-md-4 mt-4 pt-4 text-center">
-                  <div class="p-2 border border-success rounded"> 
-                      <i class="fas fa-user fa-2x"></i>
-                      <h3><span class="badge badge-success">43</span> / <span class="badge badge-danger">45</span></h3>
-                      <h5 class="text-secondary">Customers in the house</h5>
-                  </div>                  
-              </div>              
-              <div class="col-md-4 mt-4 pt-4  text-center">
-                  <div class="p-2 border border-warning rounded"> 
-                      <i class="fas fa-user-clock fa-2x"></i>
-                    <h3><span class="badge badge-warning">25</span></h3>
-                    <h5 class="text-secondary">Customers in queue</h5>
-                  </div>
-
-                  
-              </div>
-              <div class="col-md-4 mt-4 pt-4  text-center">
-                  <div class="p-2 border border-info rounded">
-                      <i class="fas fa-hourglass-half fa-2x"></i>
-                    <h3><span class="badge badge-info">15 minutes</span></h3>
-                    <h5 class="text-secondary">Current waiting time</h5>
-                  </div>                  
-              </div>
-          </div>
-          <div class="row">
-              <div class="col-md-4 mt-4 pt-4  text-center">
-                  <div class="p-2 border border-success rounded">
-                      <i class="fas fa-user fa-2x"></i>
-                      <h3><span class="badge badge-success">1045</span></h3>
-                    <h5>Average daily customers</h5>
-                  </div>                  
-              </div>              
-              <div class="col-md-4 mt-4 pt-4  text-center">
-                  <div class="p-2 border border-success rounded">
-                      <i class="fas fa-user-clock fa-2x"></i>
-                    <h3><span class="badge badge-success">4550</span></h3>
-                    <h5>Average weekly customers</h5>
-                  </div>
-                  
-              </div>
-              <div class="col-md-4 mt-4 pt-4  text-center">
-                  <div class="p-2 border border-info rounded">
-                      <i class="fas fa-hourglass-half fa-2x"></i>
-                    <h3><span class="badge badge-info">7 minutes</span></h3>
-                     <h5>Average daily waiting time</h5>
-                  </div>                  
-              </div>
-          </div>
-      </div>
-  </section>
-
-    <!-- table --> 
-    <section class="mt-4">
+    <section id="home-icons" class="py-3 bg-light">
         <div class="container">
             <div class="row">
-                <div class="col mb-4 text-center">
-                    <h3 class="text-secondary">Customers</h3>
+                <div class="col mb-2 text-center p-2 mr-1">
+                    <h3>
+                        <span class="badge badge-info"> <%:ManagerDasboardData.CustomersAtPresent %> </span> 
+                        <span class="h5">out of</span> 
+                        <span class="badge badge-danger h3"><%:ManagerDasboardData.Capacity %></span>
+                    </h3>                                                  
+                    <p>Customers at present</p>
+                </div>
+                <div class="col mb-2 text-center p-2 ml-1">
+                    <h3 class="text-success">
+                        <span class="badge badge-success"><%:ManagerDasboardData.CustomersServedToday %></span>
+                    </h3> 
+                    <p>Customers Served Today</p>
                 </div>
             </div>
-            <div class="row">
-                <div class="col mb-4">
-                    <span class="btn btn-outline-secondary"><i class="fa fa-table" aria-hidden="true"></i> Download</span>
-                    <span class="btn btn-outline-secondary"><i class="fas fa-share-alt"></i> Share</span>                    
-                </div>
-                <div class="col mb-4">
-                    <p class="float-right">
-                        <span class="btn btn-outline-secondary">
-                            <i class="fas fa-user"></i> Add New Customer
-                        </span>
-                    </p>                 
-                </div>
-            </div>
-            
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Mark Otto</td>
-                  <td class="text-success">In the house</td>
-                    <td></td>
-                </tr>
-                <tr>
-                  <th scope="row">2</th>
-                  <td>Jacob Thornton</td>
-                  <td class="text-danger">In Queue</td>
-                  <td>
-                      <span class="btn btn-outline-success">Accept</span>
-                        <span class="btn btn-outline-danger">Deny</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">3</th>
-                  <td>Larry the Bird</td>
-                  <td class="text-success">In the house <span class="badge badge-info">Jumped Q</span></td>
-                    <td></td>
-                </tr>
-                <tr>
-                  <th scope="row">4</th>
-                  <td>Kane Williamson</td>
-                  <td class="text-success">In the house</td>
-                    <td></td>
-                </tr>
-                <tr>
-                <th scope="row">5</th>
-                    <td>Martin Guptill</td>
-                    <td class="text-success">In the house</td>
-                    <td></td>
-                </tr>
-
-                <tr>
-                  <th scope="row">6</th>
-                  <td>Mark Otto</td>
-                  <td class="text-danger">In Queue</td>
-                    <td>
-                        <span class="btn btn-outline-success">Accept</span>
-                        <span class="btn btn-outline-danger">Deny</span>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row">7</th>
-                  <td>Jacob Thornton</td>
-                  <td class="text-danger">In Queue</td>
-                  <td>
-                      <span class="btn btn-outline-success">Accept</span>
-                        <span class="btn btn-outline-danger">Deny</span>
-                  </td>
-                </tr>
-                <tr>
-                  <th scope="row">8</th>
-                  <td>Larry the Bird</td>
-                  <td class="text-danger">In Queue</td>
-                    <td>
-                        <span class="btn btn-outline-success">Accept</span>
-                        <span class="btn btn-outline-danger">Deny</span>
-                    </td>
-                </tr>
-                <tr>
-                  <th scope="row">9</th>
-                  <td>Kane Williamson</td>
-                  <td class="text-danger">In Queue</td>
-                    <td>
-                        <span class="btn btn-outline-success">Accept</span>
-                        <span class="btn btn-outline-danger">Deny</span>
-                    </td>
-                </tr>
-                <tr>
-                <th scope="row">10</th>
-                    <td>Martin Guptill</td>
-                    <td class="text-danger">In Queue</td>
-                    <td>
-                        <span class="btn btn-outline-success">Accept</span>
-                        <span class="btn btn-outline-danger">Deny</span>
-                    </td>
-                </tr>
-              </tbody>
-            </table>
         </div>
     </section>
+    <section id="managerActions">
+        <div class="container my-2 py-2">
+            <div class="row">
+                <div class="col text-center">
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#addnewCustomerModal">
+                      Add New Customer
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="addnewCustomerModal" tabindex="-1" role="dialog" aria-labelledby="addnewCustomerModalLabel" aria-hidden="true">
+                      <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="addnewCustomerModalLabel">Add New Customer</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name" class="col-form-label">Name</label>
+                                <input type="text" class="form-control" id="name" name="name" runat="server">
+                              </div>
+                              <div class="form-group">
+                                <label for="email" class="col-form-label">Email</label>
+                                <input type="text" class="form-control" id="email" name="email" runat="server">
+                              </div>
+                              <div class="form-group">
+                                <label for="mobile" class="col-form-label">Mobile Number</label>
+                                <input type="text" class="form-control" id="mobile" name="mobile" runat="server">
+                              </div>
+                          </div>
+                          <div class="modal-footer">
+                              <asp:Button id="submit" Class="btn btn-success" Text="Save" OnClick="saveSubmit_Click" runat="server" />
+                              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="customerSection" class="mt-2 pt-2">
+        <div class="container">
+            <div class="row">
+                <div class="col display-4 text-center">
+                    Customer Details
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col text-secondary text-center">
+                    <%: DateTime.Now.ToString("dd MMM yyyy hh:mm tt") %>
+                </div>                
+            </div>
+            <div class="row">
+                <div class="col text-secondary text-center">
+                    <small>The queue results refreshes at every 00:00 hrs</small>
+                </div>                
+            </div>
+        </div>
+    </section>
+    <section id="showCustomerServedToday">
+        <div class="container mt-4">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-10">
+                    <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Name</th>
+                              <th scope="col">Entry Time</th>
+                              <th scope="col">Exit Time</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                              
+                                  <%  int i = ManagerDasboardData.Customers.Count();
+                                      foreach (var item in ManagerDasboardData.Customers)
+                                      { %>
+                                <tr>
+                                    <td><%:i%></td>
+                                    <td><%:item.Name %></td>
+                                    <td><%:item.QueueEntryTime %></td>
+                                    <td><%if (item.QueueExitTime == null)
+                                            { %>
+                                        <input type="button"  onClick="Delete(<%:item.QueueId %>);" class="btn btn-outline-danger" value="Leave" />
+                                        <% }
+                                        else {%>
+                                        <%:item.QueueExitTime %>
+                                        <%} %>
+
+                                    </td>
+                                   </tr>  
+
+                                   <% i--;
+                                       } %>
+                                            
+                          </tbody>
+                        </table>
+                </div>
+                <div class="col-md-1"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <script type="text/javascript">
+        function Delete(id) {
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "deleteId";
+            input.value = id;
+            document.getElementById("form1").appendChild(input);
+
+            document.getElementById("form1").submit();
+        }
+    </script>
+    
     
 </asp:Content>

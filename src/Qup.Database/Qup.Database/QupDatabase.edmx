@@ -27,6 +27,19 @@
           <Property Name="OpenTime" Type="datetime" Nullable="false" />
           <Property Name="CloseTime" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="QueueTransactions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BusinessId" Type="int" Nullable="false" />
+          <Property Name="QueueJoinDateTime" Type="datetime" />
+          <Property Name="PatronId" Type="int" />
+          <Property Name="ExpectedEntryDateTime" Type="datetime" />
+          <Property Name="ActualEntryDateTime" Type="datetime" />
+          <Property Name="ExitTime" Type="datetime" />
+          <Property Name="UserLedgerId" Type="int" />
+        </EntityType>
         <EntityType Name="UserGroups">
           <Key>
             <PropertyRef Name="Id" />
@@ -34,6 +47,17 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+          <Property Name="BusinessId" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -92,13 +116,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="spGetCustomersInQueueByDate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="fromDate" Type="datetime" Mode="In" />
+          <Parameter Name="toDate" Type="datetime" Mode="In" />
+          <Parameter Name="businessId" Type="int" Mode="In" />
+        </Function>
         <Function Name="spUsersByUserGroup" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="userGroup" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="QupModelStoreContainer">
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="QueueTransactions" EntityType="Self.QueueTransactions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserLedger" EntityType="Self.UserLedger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroups" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__BusinessO__Busin__5535A963" Association="Self.FK__BusinessO__Busin__5535A963">
@@ -230,7 +261,14 @@
             <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
           </AssociationSet>
           <FunctionImport Name="spUsersByUserGroup" ReturnType="Collection(QupModel.spUsersByUserGroup_Result)">
-            <Parameter Name="userGroup" Mode="In" Type="String" />
+          <Parameter Name="userGroup" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="UserLedgers" EntityType="QupModel.UserLedger" />
+          <EntitySet Name="QueueTransactions" EntityType="QupModel.QueueTransaction" />
+          <FunctionImport Name="spGetCustomersInQueueByDate" ReturnType="Collection(QupModel.spGetCustomersInQueueByDate_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="businessId" Mode="In" Type="Int32" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="spUsersByUserGroup_Result">
@@ -239,6 +277,37 @@
           <Property Type="String" Name="FullName" Nullable="false" MaxLength="101" />
           <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+        </ComplexType>
+        <EntityType Name="UserLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="QueueTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessId" Type="Int32" Nullable="false" />
+          <Property Name="QueueJoinDateTime" Type="DateTime" Precision="3" />
+          <Property Name="PatronId" Type="Int32" />
+          <Property Name="ExpectedEntryDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ActualEntryDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ExitTime" Type="DateTime" Precision="3" />
+          <Property Name="UserLedgerId" Type="Int32" />
+        </EntityType>
+        <ComplexType Name="spGetCustomersInQueueByDate_Result">
+          <Property Type="Int32" Name="QueueId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="101" />
+          <Property Type="DateTime" Name="EntryTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ExitTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Capacity" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -310,6 +379,43 @@
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="UserLedgers">
+            <EntityTypeMapping TypeName="QupModel.UserLedger">
+              <MappingFragment StoreEntitySet="UserLedger">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueueTransactions">
+            <EntityTypeMapping TypeName="QupModel.QueueTransaction">
+              <MappingFragment StoreEntitySet="QueueTransactions">
+                <ScalarProperty Name="UserLedgerId" ColumnName="UserLedgerId" />
+                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+                <ScalarProperty Name="ActualEntryDateTime" ColumnName="ActualEntryDateTime" />
+                <ScalarProperty Name="ExpectedEntryDateTime" ColumnName="ExpectedEntryDateTime" />
+                <ScalarProperty Name="PatronId" ColumnName="PatronId" />
+                <ScalarProperty Name="QueueJoinDateTime" ColumnName="QueueJoinDateTime" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spGetCustomersInQueueByDate" FunctionName="QupModel.Store.spGetCustomersInQueueByDate">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QupModel.spGetCustomersInQueueByDate_Result">
+                <ScalarProperty Name="QueueId" ColumnName="QueueId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

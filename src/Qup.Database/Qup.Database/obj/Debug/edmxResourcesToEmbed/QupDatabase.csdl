@@ -114,6 +114,13 @@
     <FunctionImport Name="spUsersByUserGroup" ReturnType="Collection(QupModel.spUsersByUserGroup_Result)">
       <Parameter Name="userGroup" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="UserLedgers" EntityType="QupModel.UserLedger" />
+    <EntitySet Name="QueueTransactions" EntityType="QupModel.QueueTransaction" />
+    <FunctionImport Name="spGetCustomersInQueueByDate" ReturnType="Collection(QupModel.spGetCustomersInQueueByDate_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="businessId" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="spUsersByUserGroup_Result">
     <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
@@ -121,5 +128,36 @@
     <Property Type="String" Name="FullName" Nullable="false" MaxLength="101" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
     <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="UserLedger">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessId" Type="Int32" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="QueueTransaction">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessId" Type="Int32" Nullable="false" />
+    <Property Name="QueueJoinDateTime" Type="DateTime" Precision="3" />
+    <Property Name="PatronId" Type="Int32" />
+    <Property Name="ExpectedEntryDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ActualEntryDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ExitTime" Type="DateTime" Precision="3" />
+    <Property Name="UserLedgerId" Type="Int32" />
+  </EntityType>
+  <ComplexType Name="spGetCustomersInQueueByDate_Result">
+    <Property Type="Int32" Name="QueueId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="101" />
+    <Property Type="DateTime" Name="EntryTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ExitTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Capacity" Nullable="false" />
   </ComplexType>
 </Schema>

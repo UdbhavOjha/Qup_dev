@@ -32,6 +32,8 @@ namespace Qup.Database
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
+        public virtual DbSet<UserLedger> UserLedgers { get; set; }
+        public virtual DbSet<QueueTransaction> QueueTransactions { get; set; }
     
         public virtual ObjectResult<spUsersByUserGroup_Result> spUsersByUserGroup(string userGroup)
         {
@@ -40,6 +42,23 @@ namespace Qup.Database
                 new ObjectParameter("userGroup", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUsersByUserGroup_Result>("spUsersByUserGroup", userGroupParameter);
+        }
+    
+        public virtual ObjectResult<spGetCustomersInQueueByDate_Result> spGetCustomersInQueueByDate(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<int> businessId)
+        {
+            var fromDateParameter = fromDate.HasValue ?
+                new ObjectParameter("fromDate", fromDate) :
+                new ObjectParameter("fromDate", typeof(System.DateTime));
+    
+            var toDateParameter = toDate.HasValue ?
+                new ObjectParameter("toDate", toDate) :
+                new ObjectParameter("toDate", typeof(System.DateTime));
+    
+            var businessIdParameter = businessId.HasValue ?
+                new ObjectParameter("businessId", businessId) :
+                new ObjectParameter("businessId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCustomersInQueueByDate_Result>("spGetCustomersInQueueByDate", fromDateParameter, toDateParameter, businessIdParameter);
         }
     }
 }
