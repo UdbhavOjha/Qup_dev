@@ -2,6 +2,9 @@
 using Qup.Business.AccountsManagement.Models;
 using Qup.Database;
 using Qup.Business.Utilities;
+using QRCoder;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Qup.Business.AccountsManagement
 {
@@ -13,8 +16,7 @@ namespace Qup.Business.AccountsManagement
             _context = new QupEntities();
         }
         public bool CreateNewBusinessAccount(BusinessAccountInformation command)
-        {           
-
+        {          
             try
             {
                 // Add transactions
@@ -56,7 +58,16 @@ namespace Qup.Business.AccountsManagement
                 _context.UsersToUserGroups.Add(mapUserToGroup);
                 _context.SaveChanges();
 
+                //To Do: Make this task asyn and save the image in DB.
                 // 4. Generate Business QR code
+                //QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                //var payload = "https://qup.azurewebsites.net";
+                //QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
+                //QRCode qrCode = new QRCode(qrCodeData);
+                //Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                //var imageName = encryptedCredentials.Salt + ".jpg";
+                //qrCodeImage.Save(@"\App_Data\QrCodeImages\" + imageName, ImageFormat.Jpeg);
+
                 return true;
             }
             catch (Exception e)

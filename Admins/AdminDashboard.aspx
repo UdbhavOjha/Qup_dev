@@ -3,16 +3,18 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
       <!-- HOME ICON SECTION  -->
-      <section id="home-icons" class="py-5 bg-light">
+      <section id="home-icons" class="py-3 bg-light">
           <div class="container">
               <div class="row">
-                  <div class="col mb-4 text-center p-4 mr-1">
-                      <i class="fas fa-beer fa-5x"></i>
-                      <h3>0 Restaurants signed up.</h3>
+                  <div class="col mb-2 text-center p-2 mr-1">
+                      <h3 class="text-success"><span class="badge badge-info"> 0 </span></h3> 
+                      <p>Restaurants/Bars/Clubs</p>
                   </div>
-                  <div class="col mb-4 text-center p-4 ml-1">
-                      <i class="fas fa-users fa-5x"></i>
-                      <h3>0 Users signed up.</h3>
+                  <div class="col mb-2 text-center p-2 ml-1">
+                      <h3 class="text-success">
+                          <span class="badge badge-info"> 0</span>
+                      </h3> 
+                      <p>Users</p>
                   </div>
               </div>
           </div>
@@ -29,12 +31,13 @@
                 <div class="col-md-8">
                     <div class="form-group">
                         <label for="searchType">Search Type</label>
-                        <select class="form-control" id="searchType" runat="server">
+                        <select class="form-control" id="searchType" runat="server" onchange="showUserDropDown();">
                           <option value="Business">Business</option>
                           <option value="User">User</option>
                         </select>
                       </div>
-                    <div class="form-group">
+                    <div class="form-group" id="userTypeDiv" <%if (!userSearched)
+                        {%>style="display:none"<%} %>
                         <label for="userType">User Type</label>
                         <select class="form-control" id="userType" runat="server">
                           <option value="Patron">Patron</option>
@@ -58,9 +61,9 @@
                 <div class="col-md-10">
                     <% if (searchResultsCount >= 1)
                         {%>
-                       <% if (userSearchResults != null)
+                       <% if (userSearchResults.Count() > 0)
                         { %>
-                        <table class="table table-striped">
+                        <table class="table">
                           <thead>
                             <tr>
                               <th scope="col">#</th>
@@ -88,10 +91,40 @@
                         </table>
 
                         <% }
-                        else
-                        {
+                        else if( businessSearchResults.Count() > 0)
+                        { %>
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Business Name</th>
+                              <th scope="col">Address</th>
+                              <th scope="col">Capacity</th>
+                            <th scope="col"></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                
+                                <%  int i = 1;
+                            foreach (var item in businessSearchResults)
+                            {%>
+                              <tr>
+                                <td><%:i%></td>
+                                <td><%:item.BusinessName %></td>
+                                <td><%:item.Address %></td>
+                                <td><%:item.Capacity %></td>
+                                  <td>
+                                      <a href="#" class="btn btn-outline-info"> Profile </a>
+                                  </td>
+                              </tr> 
+                                   <% i++;
+                                } %>
+                  
+                               
+                          </tbody>
+                        </table>
 
-                        }
+                        <% }
 
                     }
                 else if(searchResultsCount == 0)
@@ -99,7 +132,12 @@
                     <div class="row">
                         <div class="col-md-2"> </div>
                         <div class="col-md-8">
-                             <p class="text-danger"> Search yielded 0 results</p>
+                            <div class="card">
+                                  <div class="card-body">
+                                    <%--<h4 class="card-title">Bar 101</h4>--%>
+                                    <p class="card-text text-danger ">Search yielded 0 results</p>                                    
+                                  </div>
+                              </div>                             
                         </div>
                         <div class="col-md-2"></div>  
                     </div>
@@ -110,4 +148,17 @@
             </div>        
         </div>
     </section>
+
+    <script type="text/javascript">
+        function showUserDropDown()
+        {
+            var x = document.getElementById("ContentPlaceHolder1_searchType").value;
+            if (x === "User") {
+                document.getElementById("userTypeDiv").style.display = "block";
+            } else {
+                document.getElementById("userTypeDiv").style.display = "none";
+            }
+        }
+        
+    </script>
 </asp:Content>

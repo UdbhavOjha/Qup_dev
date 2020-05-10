@@ -1,6 +1,9 @@
 ﻿using System;
 using Qup.Business.AccountsManagement;
 using Qup.Business.AccountsManagement.Models;
+using QRCoder;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace Qup.Admins
 {
@@ -51,6 +54,15 @@ namespace Qup.Admins
                 {
                     UserMessage = "New Business Account created successfully.";
                     ResetFieldValues();
+
+                    // Generate QR code - just for now - move this to Business Logic 
+                    QRCodeGenerator qrGenerator = new QRCodeGenerator();
+                    var payload = "https://qup.azurewebsites.net";
+                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
+                    QRCode qrCode = new QRCode(qrCodeData);
+                    Bitmap qrCodeImage = qrCode.GetGraphic(20);
+                    var imageName = businessName + ".jpg";
+                    qrCodeImage.Save(@"C:\VisualStudioProjects\Qup\App_Data\QrCodeImages\" + imageName, ImageFormat.Jpeg);
                 }
                 else
                 {

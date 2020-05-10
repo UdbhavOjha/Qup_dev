@@ -12,3 +12,4 @@ C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Debug\Qup.Database.dll.config
 C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Debug\EntityFramework.xml
 C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Debug\EntityFramework.SqlServer.xml
 C:\VisualStudioProjects\Qup\src\Qup.Business\obj\Debug\Qup.Business.csproj.CopyComplete
+C:\VisualStudioProjects\Qup\src\Qup.Business\bin\Debug\QRCoder.dll
