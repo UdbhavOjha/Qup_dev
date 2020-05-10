@@ -46,5 +46,19 @@ namespace Qup.Business.AccountsManagement
             
             return businessList;
         }
+
+        public int GetBusinessesOnPlatformCount()
+        {
+            var queryResults = from c in dbContext.Businesses
+                               where c.IsActive == true
+                               select c;
+            return queryResults.Count();
+        }
+
+        public int GetRegisteredPatronsOnPlatformCount()
+        {
+            var queryResults = dbContext.spUsersByUserGroup("Patron");
+            return queryResults.Count();
+        }
     }
 }

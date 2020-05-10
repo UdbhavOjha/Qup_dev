@@ -7,12 +7,12 @@
           <div class="container">
               <div class="row">
                   <div class="col mb-2 text-center p-2 mr-1">
-                      <h3 class="text-success"><span class="badge badge-info"> 0 </span></h3> 
+                      <h3 class="text-success"><span class="badge badge-info"><%:businessesOnPlatformCount%> </span></h3> 
                       <p>Restaurants/Bars/Clubs</p>
                   </div>
                   <div class="col mb-2 text-center p-2 ml-1">
                       <h3 class="text-success">
-                          <span class="badge badge-info"> 0</span>
+                          <span class="badge badge-info"><%:registeredPatronsOnPlatformCount%></span>
                       </h3> 
                       <p>Users</p>
                   </div>
@@ -36,15 +36,14 @@
                           <option value="User">User</option>
                         </select>
                       </div>
-                    <div class="form-group" id="userTypeDiv" <%if (!userSearched)
-                        {%>style="display:none"<%} %>
+                    <div class="form-group" id="userTypeDiv" <%if (!userSearched) {%>style="display:none"<%} %>>
                         <label for="userType">User Type</label>
                         <select class="form-control" id="userType" runat="server">
                           <option value="Patron">Patron</option>
                           <option value="Manager">Manager</option>
-                            <option value="AdminSupport">Admin Support</option>
+                          <option value="AdminSupport">Admin Support</option>
                         </select>
-                      </div>
+                    </div>
                     <div class="form-group py-2 mb-4">
                         <asp:Button id="search" Class="btn btn-outline-info" Text="Search" OnClick="searchSubmit_Click" runat="server" />
                     </div>
