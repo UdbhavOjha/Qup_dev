@@ -18,6 +18,7 @@ namespace Qup.Database
         public Business()
         {
             this.BusinessOperations = new HashSet<BusinessOperation>();
+            this.BusinessProfiles = new HashSet<BusinessProfile>();
         }
     
         public int Id { get; set; }
@@ -25,10 +26,11 @@ namespace Qup.Database
         public string Address { get; set; }
         public int Capacity { get; set; }
         public bool IsActive { get; set; }
-        public string BusinessProfile { get; set; }
         public System.DateTime DateCreated { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusinessOperation> BusinessOperations { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusinessProfile> BusinessProfiles { get; set; }
     }
 }

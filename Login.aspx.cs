@@ -1,6 +1,7 @@
 ﻿using System;
 using Qup.Business.Authentication.Models;
 using Qup.Business.Authentication;
+using System.Web;
 
 namespace Qup
 {
@@ -17,7 +18,11 @@ namespace Qup
             {
                 UserName = Request["username"],
                 Password = Request["password"],
-                IpAddress = Request.UserHostAddress
+                IpAddress = Request.UserHostAddress,
+                XForwardedFor = Request.Headers["X-Forwarded-For"],
+                Browser = HttpContext.Current.Request.Browser.Browser,
+                ServerName = Request.ServerVariables["SERVER_NAME"],
+                DateCreated = DateTime.Now
             };
 
             var authentication = new UserAuthenticationManagement();
@@ -25,6 +30,9 @@ namespace Qup
 
             if (userValidationResults.SessionValidated)
             {
+                Response.Cookies["SessionInfo"].Value = userValidationResults.SessionKey;
+                Response.Cookies["SessionInfo"].Expires = DateTime.Now.AddHours(3);
+
                 if (userValidationResults.UserGroup == 1)
                 {
                     Response.Redirect("/Clients/PatronDashboard.aspx");
@@ -38,15 +46,6 @@ namespace Qup
                     Response.Redirect("/Admins/AdminDashboard.aspx");
                 }
             }
-
-            //if (!sessionStatus.Equals("failed"))
-            //{
-            //    HttpCookie sessionInfo = new HttpCookie("SessionInfo");
-            //    sessionInfo["Session"] = sessionStatus;
-
-            //    Response.Cookies.Add(sessionInfo);
-            //    Response.Redirect("/Admin/Users/Dashboard.aspx");
-            //}
         }
     }
 }

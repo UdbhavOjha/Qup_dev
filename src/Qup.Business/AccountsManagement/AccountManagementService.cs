@@ -5,6 +5,7 @@ using Qup.Business.Utilities;
 using QRCoder;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 
 namespace Qup.Business.AccountsManagement
 {
@@ -15,7 +16,7 @@ namespace Qup.Business.AccountsManagement
         {
             _context = new QupEntities();
         }
-        public bool CreateNewBusinessAccount(BusinessAccountInformation command)
+        public BusinessAccountInformation CreateNewBusinessAccount(BusinessAccountInformation command)
         {          
             try
             {
@@ -49,6 +50,8 @@ namespace Qup.Business.AccountsManagement
                 _context.Users.Add(businessAdmin);
                 _context.SaveChanges();
 
+                command.BusinessId = businessAccount.Id;
+
                 // Link User To UserGroup 
                 var mapUserToGroup = new UsersToUserGroup()
                 {
@@ -58,24 +61,43 @@ namespace Qup.Business.AccountsManagement
                 _context.UsersToUserGroups.Add(mapUserToGroup);
                 _context.SaveChanges();
 
-                //To Do: Make this task asyn and save the image in DB.
-                // 4. Generate Business QR code
-                //QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                //var payload = "https://qup.azurewebsites.net";
-                //QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
-                //QRCode qrCode = new QRCode(qrCodeData);
-                //Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                //var imageName = encryptedCredentials.Salt + ".jpg";
-                //qrCodeImage.Save(@"\App_Data\QrCodeImages\" + imageName, ImageFormat.Jpeg);
-
-                return true;
+                // Generate QR code - just for now - move this to Business Logic
+                GenerateQuickResponseCodeForNewBusiness(businessAccount.Id);
+                
+                command.BusinessAccountCreated = true;                
             }
             catch (Exception e)
             {
-                throw e;
-                // log exception in errorhandler
-                //return false;
-            }            
+                command.BusinessAccountCreated = false;
+            }
+
+            return command;
+        }
+
+        private void GenerateQuickResponseCodeForNewBusiness(int id)
+        {
+            QRCodeGenerator qrGenerator = new QRCodeGenerator();
+            var payload = "https://qup.azurewebsites.net?profile=" + id.ToString();
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
+            QRCode qrCode = new QRCode(qrCodeData);
+            Bitmap qrCodeImage = qrCode.GetGraphic(20);
+
+            _context.BusinessProfiles.Add(new BusinessProfile
+            {
+                BusinessId = id,
+                ProfileImage = ConvertImageToByte(qrCodeImage)
+            });
+
+            _context.SaveChanges();
+        }
+
+        private byte[] ConvertImageToByte(Image img)
+        {
+            using (var stream = new MemoryStream())
+            {
+                img.Save(stream, System.Drawing.Imaging.ImageFormat.Jpeg);
+                return stream.ToArray();
+            }
         }
 
         public bool CreateNewUser(UserSetUp command) 

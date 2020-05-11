@@ -9,7 +9,6 @@
     <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="Capacity" Type="int" Nullable="false" />
     <Property Name="IsActive" Type="bit" Nullable="false" />
-    <Property Name="BusinessProfile" Type="varchar(max)" />
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="BusinessOperations">
@@ -21,6 +20,14 @@
     <Property Name="Day" Type="char" MaxLength="3" Nullable="false" />
     <Property Name="OpenTime" Type="datetime" Nullable="false" />
     <Property Name="CloseTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BusinessProfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BusinessId" Type="int" />
+    <Property Name="ProfileImage" Type="image" />
   </EntityType>
   <EntityType Name="QueueTransactions">
     <Key>
@@ -34,6 +41,19 @@
     <Property Name="ActualEntryDateTime" Type="datetime" />
     <Property Name="ExitTime" Type="datetime" />
     <Property Name="UserLedgerId" Type="int" />
+  </EntityType>
+  <EntityType Name="SessionLog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="IpAddress" Type="varchar" MaxLength="50" />
+    <Property Name="ServerName" Type="varchar" MaxLength="50" />
+    <Property Name="SessionKey" Type="varchar" MaxLength="50" />
+    <Property Name="XForwardedFor" Type="varchar" MaxLength="50" />
+    <Property Name="Browser" Type="varchar" MaxLength="50" />
+    <Property Name="DateCreated" Type="datetime" />
   </EntityType>
   <EntityType Name="UserGroups">
     <Key>
@@ -66,6 +86,7 @@
     <Property Name="Salt" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="UserPassword" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
+    <Property Name="SessionKey" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UsersToUserGroups">
     <Key>
@@ -75,7 +96,7 @@
     <Property Name="UserId" Type="int" />
     <Property Name="UserGroupId" Type="int" />
   </EntityType>
-  <Association Name="FK__BusinessO__Busin__5535A963">
+  <Association Name="FK__BusinessO__Busin__7F2BE32F">
     <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
     <End Role="BusinessOperations" Type="Self.BusinessOperations" Multiplicity="*" />
     <ReferentialConstraint>
@@ -87,7 +108,31 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UsersToUs__UserG__4F7CD00D">
+  <Association Name="FK__BusinessP__Busin__7C4F7684">
+    <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+    <End Role="BusinessProfile" Type="Self.BusinessProfile" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessProfile">
+        <PropertyRef Name="BusinessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SessionLo__UserI__71D1E811">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="SessionLog" Type="Self.SessionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SessionLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsersToUs__UserG__6EF57B66">
     <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="0..1" />
     <End Role="UsersToUserGroups" Type="Self.UsersToUserGroups" Multiplicity="*" />
     <ReferentialConstraint>
@@ -99,7 +144,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UsersToUs__UserI__4E88ABD4">
+  <Association Name="FK__UsersToUs__UserI__6E01572D">
     <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
     <End Role="UsersToUserGroups" Type="Self.UsersToUserGroups" Multiplicity="*" />
     <ReferentialConstraint>
@@ -122,20 +167,30 @@
   <EntityContainer Name="QupModelStoreContainer">
     <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperations" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusinessProfile" EntityType="Self.BusinessProfile" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QueueTransactions" EntityType="Self.QueueTransactions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SessionLog" EntityType="Self.SessionLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLedger" EntityType="Self.UserLedger" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroups" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__BusinessO__Busin__5535A963" Association="Self.FK__BusinessO__Busin__5535A963">
+    <AssociationSet Name="FK__BusinessO__Busin__7F2BE32F" Association="Self.FK__BusinessO__Busin__7F2BE32F">
       <End Role="Business" EntitySet="Business" />
       <End Role="BusinessOperations" EntitySet="BusinessOperations" />
     </AssociationSet>
-    <AssociationSet Name="FK__UsersToUs__UserG__4F7CD00D" Association="Self.FK__UsersToUs__UserG__4F7CD00D">
+    <AssociationSet Name="FK__BusinessP__Busin__7C4F7684" Association="Self.FK__BusinessP__Busin__7C4F7684">
+      <End Role="Business" EntitySet="Business" />
+      <End Role="BusinessProfile" EntitySet="BusinessProfile" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SessionLo__UserI__71D1E811" Association="Self.FK__SessionLo__UserI__71D1E811">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="SessionLog" EntitySet="SessionLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsersToUs__UserG__6EF57B66" Association="Self.FK__UsersToUs__UserG__6EF57B66">
       <End Role="UserGroups" EntitySet="UserGroups" />
       <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
     </AssociationSet>
-    <AssociationSet Name="FK__UsersToUs__UserI__4E88ABD4" Association="Self.FK__UsersToUs__UserI__4E88ABD4">
+    <AssociationSet Name="FK__UsersToUs__UserI__6E01572D" Association="Self.FK__UsersToUs__UserI__6E01572D">
       <End Role="Users" EntitySet="Users" />
       <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
     </AssociationSet>

@@ -4,6 +4,5 @@ CREATE TABLE dbo.Business (
 	[Address] VARCHAR(200) NOT NULL, 
 	Capacity INT NOT NULL, 
 	IsActive BIT NOT NULL, 
-	BusinessProfile VARCHAR(MAX) NULL,
 	DateCreated DATETIME NOT NULL DEFAULT GETDATE() 
 )

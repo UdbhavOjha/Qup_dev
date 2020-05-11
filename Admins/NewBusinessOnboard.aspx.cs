@@ -10,6 +10,8 @@ namespace Qup.Admins
     public partial class NewBusinessOnboard : System.Web.UI.Page
     {
         protected string UserMessage = String.Empty;
+
+        protected string businessProfileUrl = String.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -50,19 +52,11 @@ namespace Qup.Admins
 
                 var accountSetService = new AccountManagementService();
                 var result = accountSetService.CreateNewBusinessAccount(businessAccountInformation);
-                if (result)
+                if (result.BusinessAccountCreated)
                 {
                     UserMessage = "New Business Account created successfully.";
-                    ResetFieldValues();
-
-                    // Generate QR code - just for now - move this to Business Logic 
-                    QRCodeGenerator qrGenerator = new QRCodeGenerator();
-                    var payload = "https://qup.azurewebsites.net";
-                    QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
-                    QRCode qrCode = new QRCode(qrCodeData);
-                    Bitmap qrCodeImage = qrCode.GetGraphic(20);
-                    var imageName = businessName + ".jpg";
-                    qrCodeImage.Save(@"C:\VisualStudioProjects\Qup\App_Data\QrCodeImages\" + imageName, ImageFormat.Jpeg);
+                    businessProfileUrl = "/Admins/ViewProfile?businessId=" + result.BusinessId.ToString();
+                    ResetFieldValues();                    
                 }
                 else
                 {

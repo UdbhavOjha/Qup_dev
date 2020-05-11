@@ -1,0 +1,12 @@
+CREATE TABLE [dbo].[SessionLog] (
+	Id INT PRIMARY KEY IDENTITY(1,1),
+	UserId INT FOREIGN KEY REFERENCES Users(Id),
+	IpAddress VARCHAR(50) NULL, 
+	ServerName VARCHAR(50) NULL,
+	SessionKey VARCHAR(50) NULL,
+	XForwardedFor VARCHAR(50) NULL,
+	Browser VARCHAR(50) NULL,
+	DateCreated DATETIME DEFAULT GETDATE()	
+)
+
+ 

@@ -30,8 +30,6 @@ namespace Qup.Business.Authentication
 
                 var salt = foundMatch.Salt;
                 var saltBytes = Guid.Parse(salt).ToByteArray();
-                //byte[] saltBytes = Convert.FromBase64String(salt);
-                //byte[] saltBytes = Encoding.ASCII.GetBytes(salt);
 
                 var pbkdf2 = new Rfc2898DeriveBytes(userCredentials.Password, saltBytes);
                 byte[] hash = pbkdf2.GetBytes(20);
@@ -39,41 +37,33 @@ namespace Qup.Business.Authentication
                 if (String.Equals(Convert.ToBase64String(hash), passwordHash))
                 {
                     // If success - log the session 
-                    //var sessionInfo = new SessionLog
-                    //{
-                    //    UserId = foundMatch.UserId,
-                    //    Ipaddress = userCredentials.IpAddress,
-                    //    LoginDate = DateTime.Now
-                    //};
 
-                    //UserId = foundMatch.UserId;
-
-
-                    //using (var context = new ZeroDbContext())
-                    //{
-                    //    context.Entry(sessionInfo).State = EntityState.Added;
-                    //    context.SaveChanges();
-                    //}
-
-                    // Create New Session
+                    // Create New Session Token
                     // 1. Get a random number between 1 and 100000, hash it to get the sessionId, save string to DB and in cookie, return   
-                    //var randomSessionId = new Random().Next(1, 100000).ToString();
-                    //var sessionHash = new Rfc2898DeriveBytes(randomSessionId, 10).GetBytes(7);
+                    var randomSessionId = new Random().Next(1, 100000).ToString();
+                    var sessionHash = new Rfc2898DeriveBytes(randomSessionId, 10).GetBytes(7);
 
-                    // Save the String of Session Hash in DB for the authenticated user
-                    //using (var context = new ZeroDbContext())
-                    //{
-                    //    var userResult = context.UserCredentials.Single(u => u.UserId == foundMatch.UserId);
-                    //    if (userResult != null)
-                    //    {
-                    //        userResult.DateLastLogged = DateTime.Now;
-                    //        userResult.SessionKey = Convert.ToBase64String(sessionHash);
-                    //        context.SaveChanges();
-                    //    }
-                    //}
-                    //return Convert.ToBase64String(sessionHash);
+                    userCredentials.UserId = foundMatch.Id;
+                    _dbContext.SessionLogs.Add(new SessionLog
+                    {
+                        UserId = userCredentials.UserId,
+                        Browser = userCredentials.Browser,
+                        IpAddress = userCredentials.IpAddress,
+                        XForwardedFor = userCredentials.XForwardedFor,
+                        ServerName = userCredentials.ServerName,
+                        SessionKey = Convert.ToBase64String(sessionHash),
+                        DateCreated = userCredentials.DateCreated
+                    });
+                    _dbContext.SaveChanges();
+
+                    //Save the String of Session Hash in DB for the authenticated user
+                    var userResult = _dbContext.Users.Find(foundMatch.Id);
+                    userResult.SessionKey = Convert.ToBase64String(sessionHash);
+                    _dbContext.SaveChanges();
 
                     userCredentials.SessionValidated = true;
+                    userCredentials.SessionKey = userResult.SessionKey;
+
                     // Get User Group
                     int userId = foundMatch.Id;
 

@@ -17,6 +17,7 @@ namespace Qup.Database
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
+            this.SessionLogs = new HashSet<SessionLog>();
             this.UsersToUserGroups = new HashSet<UsersToUserGroup>();
         }
     
@@ -28,7 +29,10 @@ namespace Qup.Database
         public string Salt { get; set; }
         public string UserPassword { get; set; }
         public System.DateTime DateCreated { get; set; }
+        public string SessionKey { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SessionLog> SessionLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersToUserGroup> UsersToUserGroups { get; set; }
     }

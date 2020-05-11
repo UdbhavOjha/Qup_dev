@@ -27,13 +27,15 @@ namespace Qup.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Business> Businesses { get; set; }
-        public virtual DbSet<BusinessOperation> BusinessOperations { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
         public virtual DbSet<UserLedger> UserLedgers { get; set; }
         public virtual DbSet<QueueTransaction> QueueTransactions { get; set; }
+        public virtual DbSet<SessionLog> SessionLogs { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
+        public virtual DbSet<Business> Businesses { get; set; }
+        public virtual DbSet<BusinessOperation> BusinessOperations { get; set; }
+        public virtual DbSet<BusinessProfile> BusinessProfiles { get; set; }
     
         public virtual ObjectResult<spUsersByUserGroup_Result> spUsersByUserGroup(string userGroup)
         {

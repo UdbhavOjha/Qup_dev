@@ -41,7 +41,6 @@ namespace Qup.Business.Transactions
                     QueueId = item.QueueId
                 });
             }
-            customersInQueue.Reverse();
 
             return customersInQueue;
         }

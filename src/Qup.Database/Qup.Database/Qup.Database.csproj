@@ -59,6 +59,9 @@
     <Compile Include="BusinessOperation.cs">
       <DependentUpon>QupDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="BusinessProfile.cs">
+      <DependentUpon>QupDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueTransaction.cs">
@@ -78,6 +81,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>QupDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="SessionLog.cs">
+      <DependentUpon>QupDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetCustomersInQueueByDate_Result.cs">
       <DependentUpon>QupDatabase.tt</DependentUpon>

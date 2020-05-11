@@ -1,59 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QupModelStoreContainer" CdmEntityContainer="QupEntities">
-    <EntitySetMapping Name="Businesses">
-      <EntityTypeMapping TypeName="QupModel.Business">
-        <MappingFragment StoreEntitySet="Business">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="BusinessProfile" ColumnName="BusinessProfile" />
-          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BusinessOperations">
-      <EntityTypeMapping TypeName="QupModel.BusinessOperation">
-        <MappingFragment StoreEntitySet="BusinessOperations">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
-          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="UserGroups">
       <EntityTypeMapping TypeName="QupModel.UserGroup">
         <MappingFragment StoreEntitySet="UserGroups">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="QupModel.User">
-        <MappingFragment StoreEntitySet="Users">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="Salt" ColumnName="Salt" />
-          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UsersToUserGroups">
-      <EntityTypeMapping TypeName="QupModel.UsersToUserGroup">
-        <MappingFragment StoreEntitySet="UsersToUserGroups">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -105,5 +58,75 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <EntitySetMapping Name="SessionLogs">
+      <EntityTypeMapping TypeName="QupModel.SessionLog">
+        <MappingFragment StoreEntitySet="SessionLog">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Browser" ColumnName="Browser" />
+          <ScalarProperty Name="XForwardedFor" ColumnName="XForwardedFor" />
+          <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+          <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+          <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="QupModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+          <ScalarProperty Name="Salt" ColumnName="Salt" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsersToUserGroups">
+      <EntityTypeMapping TypeName="QupModel.UsersToUserGroup">
+        <MappingFragment StoreEntitySet="UsersToUserGroups">
+          <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Businesses">
+      <EntityTypeMapping TypeName="QupModel.Business">
+        <MappingFragment StoreEntitySet="Business">
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessOperations">
+      <EntityTypeMapping TypeName="QupModel.BusinessOperation">
+        <MappingFragment StoreEntitySet="BusinessOperations">
+          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+          <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessProfiles">
+      <EntityTypeMapping TypeName="QupModel.BusinessProfile">
+        <MappingFragment StoreEntitySet="BusinessProfile">
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

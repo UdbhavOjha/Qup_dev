@@ -122,6 +122,7 @@
     <Content Include="Admins\CreateNewUser.aspx" />
     <Content Include="Admins\NewBusinessOnboard.aspx" />
     <Content Include="Admins\ViewBusinessProfile.aspx" />
+    <Content Include="Admins\ViewProfile.aspx" />
     <Content Include="Bar101View.aspx" />
     <Content Include="Clients\BookingHistory.aspx" />
     <Content Include="Clients\EditPatronProfile.aspx" />
@@ -133,6 +134,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Errors\404.aspx" />
+    <Content Include="Errors\GenericError.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -223,6 +226,13 @@
     <Compile Include="Admins\ViewBusinessProfile.aspx.designer.cs">
       <DependentUpon>ViewBusinessProfile.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admins\ViewProfile.aspx.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admins\ViewProfile.aspx.designer.cs">
+      <DependentUpon>ViewProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bar101View.aspx.cs">
@@ -266,6 +276,20 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\404.aspx.designer.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Errors\GenericError.aspx.cs">
+      <DependentUpon>GenericError.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Errors\GenericError.aspx.designer.cs">
+      <DependentUpon>GenericError.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

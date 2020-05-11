@@ -24,5 +24,9 @@ namespace Qup.Business.AccountsManagement.Models
 
         public string AdminPassword { get; set; }
 
+        public bool BusinessAccountCreated { get; set; }
+
+        public int BusinessId { get; set; }
+
     }
 }
