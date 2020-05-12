@@ -8,3 +8,4 @@ C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\bin\Debug\EntityFramew
 C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Debug\Qup.Database.csproj.CopyComplete
 C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Debug\Qup.Database.dll
 C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Debug\Qup.Database.pdb
+C:\VisualStudioProjects\Qup\src\Qup.Database\Qup.Database\obj\Debug\Qup.Database.csprojAssemblyReference.cache

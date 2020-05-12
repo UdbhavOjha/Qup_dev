@@ -123,11 +123,7 @@
     <Content Include="Admins\NewBusinessOnboard.aspx" />
     <Content Include="Admins\ViewBusinessProfile.aspx" />
     <Content Include="Admins\ViewProfile.aspx" />
-    <Content Include="Bar101View.aspx" />
-    <Content Include="Clients\BookingHistory.aspx" />
-    <Content Include="Clients\EditPatronProfile.aspx" />
     <Content Include="Clients\PatronDashboard.aspx" />
-    <Content Include="Clients\ViewPatronProfile.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -236,40 +232,12 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Bar101View.aspx.cs">
-      <DependentUpon>Bar101View.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Bar101View.aspx.designer.cs">
-      <DependentUpon>Bar101View.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Clients\BookingHistory.aspx.cs">
-      <DependentUpon>BookingHistory.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Clients\BookingHistory.aspx.designer.cs">
-      <DependentUpon>BookingHistory.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Clients\EditPatronProfile.aspx.cs">
-      <DependentUpon>EditPatronProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Clients\EditPatronProfile.aspx.designer.cs">
-      <DependentUpon>EditPatronProfile.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Clients\PatronDashboard.aspx.cs">
       <DependentUpon>PatronDashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Clients\PatronDashboard.aspx.designer.cs">
       <DependentUpon>PatronDashboard.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Clients\ViewPatronProfile.aspx.cs">
-      <DependentUpon>ViewPatronProfile.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Clients\ViewPatronProfile.aspx.designer.cs">
-      <DependentUpon>ViewPatronProfile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>

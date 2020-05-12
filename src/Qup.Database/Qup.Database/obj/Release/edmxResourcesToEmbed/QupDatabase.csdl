@@ -22,18 +22,9 @@
       <Parameter Name="businessId" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="SessionLogs" EntityType="QupModel.SessionLog" />
-    <EntitySet Name="Users" EntityType="QupModel.User" />
     <EntitySet Name="UsersToUserGroups" EntityType="QupModel.UsersToUserGroup" />
-    <AssociationSet Name="FK__SessionLo__UserI__71D1E811" Association="QupModel.FK__SessionLo__UserI__71D1E811">
-      <End Role="User" EntitySet="Users" />
-      <End Role="SessionLog" EntitySet="SessionLogs" />
-    </AssociationSet>
     <AssociationSet Name="FK__UsersToUs__UserG__6EF57B66" Association="QupModel.FK__UsersToUs__UserG__6EF57B66">
       <End Role="UserGroup" EntitySet="UserGroups" />
-      <End Role="UsersToUserGroup" EntitySet="UsersToUserGroups" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UsersToUs__UserI__6E01572D" Association="QupModel.FK__UsersToUs__UserI__6E01572D">
-      <End Role="User" EntitySet="Users" />
       <End Role="UsersToUserGroup" EntitySet="UsersToUserGroups" />
     </AssociationSet>
     <EntitySet Name="Businesses" EntityType="QupModel.Business" />
@@ -48,6 +39,15 @@
       <End Role="BusinessProfile" EntitySet="BusinessProfiles" />
     </AssociationSet>
     <EntitySet Name="vwGetBusinessDetails" EntityType="QupModel.vwGetBusinessDetail" />
+    <EntitySet Name="Users" EntityType="QupModel.User" />
+    <AssociationSet Name="FK__SessionLo__UserI__71D1E811" Association="QupModel.FK__SessionLo__UserI__71D1E811">
+      <End Role="User" EntitySet="Users" />
+      <End Role="SessionLog" EntitySet="SessionLogs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsersToUs__UserI__6E01572D" Association="QupModel.FK__UsersToUs__UserI__6E01572D">
+      <End Role="User" EntitySet="Users" />
+      <End Role="UsersToUserGroup" EntitySet="UsersToUserGroups" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="spUsersByUserGroup_Result">
     <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
@@ -101,22 +101,6 @@
     <Property Name="DateCreated" Type="DateTime" Precision="3" />
     <NavigationProperty Name="User" Relationship="QupModel.FK__SessionLo__UserI__71D1E811" FromRole="SessionLog" ToRole="User" />
   </EntityType>
-  <EntityType Name="User">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="SessionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="SessionLogs" Relationship="QupModel.FK__SessionLo__UserI__71D1E811" FromRole="User" ToRole="SessionLog" />
-    <NavigationProperty Name="UsersToUserGroups" Relationship="QupModel.FK__UsersToUs__UserI__6E01572D" FromRole="User" ToRole="UsersToUserGroup" />
-  </EntityType>
   <EntityType Name="UsersToUserGroup">
     <Key>
       <PropertyRef Name="Id" />
@@ -127,18 +111,6 @@
     <NavigationProperty Name="UserGroup" Relationship="QupModel.FK__UsersToUs__UserG__6EF57B66" FromRole="UsersToUserGroup" ToRole="UserGroup" />
     <NavigationProperty Name="User" Relationship="QupModel.FK__UsersToUs__UserI__6E01572D" FromRole="UsersToUserGroup" ToRole="User" />
   </EntityType>
-  <Association Name="FK__SessionLo__UserI__71D1E811">
-    <End Type="QupModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="QupModel.SessionLog" Role="SessionLog" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="SessionLog">
-        <PropertyRef Name="UserId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK__UsersToUs__UserG__6EF57B66">
     <End Type="QupModel.UserGroup" Role="UserGroup" Multiplicity="0..1" />
     <End Type="QupModel.UsersToUserGroup" Role="UsersToUserGroup" Multiplicity="*" />
@@ -148,18 +120,6 @@
       </Principal>
       <Dependent Role="UsersToUserGroup">
         <PropertyRef Name="UserGroupId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__UsersToUs__UserI__6E01572D">
-    <End Type="QupModel.User" Role="User" Multiplicity="0..1" />
-    <End Type="QupModel.UsersToUserGroup" Role="UsersToUserGroup" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="Id" />
-      </Principal>
-      <Dependent Role="UsersToUserGroup">
-        <PropertyRef Name="UserId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -235,4 +195,45 @@
     <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SessionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SessionLogs" Relationship="QupModel.FK__SessionLo__UserI__71D1E811" FromRole="User" ToRole="SessionLog" />
+    <NavigationProperty Name="UsersToUserGroups" Relationship="QupModel.FK__UsersToUs__UserI__6E01572D" FromRole="User" ToRole="UsersToUserGroup" />
+  </EntityType>
+  <Association Name="FK__SessionLo__UserI__71D1E811">
+    <End Type="QupModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="QupModel.SessionLog" Role="SessionLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SessionLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsersToUs__UserI__6E01572D">
+    <End Type="QupModel.User" Role="User" Multiplicity="0..1" />
+    <End Type="QupModel.UsersToUserGroup" Role="UsersToUserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersToUserGroup">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

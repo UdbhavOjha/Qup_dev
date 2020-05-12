@@ -8,12 +8,19 @@ namespace Qup
     public partial class Login : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
-        {
-
+        {            
+            Verify();
         }
 
         protected void login_Click(object sender, EventArgs e)
         {
+            Verify();
+        }
+
+        private void Verify() 
+        {
+            string userCookie = Request.Cookies["User"] != null ? Request.Cookies["User"].Value : string.Empty;
+
             var userCredentials = new UserSession
             {
                 UserName = Request["username"],
@@ -22,16 +29,33 @@ namespace Qup
                 XForwardedFor = Request.Headers["X-Forwarded-For"],
                 Browser = HttpContext.Current.Request.Browser.Browser,
                 ServerName = Request.ServerVariables["SERVER_NAME"],
-                DateCreated = DateTime.Now
+                DateCreated = DateTime.Now,
+                UserKey = userCookie
             };
 
             var authentication = new UserAuthenticationManagement();
-            var userValidationResults = authentication.AuthenticUserCredentials(userCredentials);
+            UserSession userValidationResults;
+
+            if (userCredentials.UserName != null)
+            {
+                userValidationResults = authentication.AuthenticUserCredentials(userCredentials);
+            }
+            else if (userCookie != string.Empty)
+            {
+                userValidationResults = authentication.AuthenticateUserByCookie(userCredentials);
+            }
+            else
+            {
+                Response.Redirect("/PatronSignUp.aspx");
+                return;
+            }
+
 
             if (userValidationResults.SessionValidated)
             {
                 Response.Cookies["SessionInfo"].Value = userValidationResults.SessionKey;
                 Response.Cookies["SessionInfo"].Expires = DateTime.Now.AddHours(3);
+                Response.Cookies["User"].Value = userValidationResults.UserKey;
 
                 if (userValidationResults.UserGroup == 1)
                 {
@@ -46,6 +70,7 @@ namespace Qup
                     Response.Redirect("/Admins/AdminDashboard.aspx");
                 }
             }
+
         }
     }
 }

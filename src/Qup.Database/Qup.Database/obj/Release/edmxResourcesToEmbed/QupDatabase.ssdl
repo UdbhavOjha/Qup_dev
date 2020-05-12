@@ -87,6 +87,7 @@
     <Property Name="UserPassword" Type="varchar" MaxLength="500" Nullable="false" />
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
     <Property Name="SessionKey" Type="varchar" MaxLength="50" />
+    <Property Name="UserKey" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="UsersToUserGroups">
     <Key>

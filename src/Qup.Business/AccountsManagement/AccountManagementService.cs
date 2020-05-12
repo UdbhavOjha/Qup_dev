@@ -6,6 +6,7 @@ using QRCoder;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
+using System.Security.Cryptography;
 
 namespace Qup.Business.AccountsManagement
 {
@@ -77,7 +78,7 @@ namespace Qup.Business.AccountsManagement
         private void GenerateQuickResponseCodeForNewBusiness(int id)
         {
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
-            var payload = "https://qup.azurewebsites.net?profile=" + id.ToString();
+            var payload = "https://qup.azurewebsites.net/Login.aspx?profile=" + id.ToString();
             QRCodeData qrCodeData = qrGenerator.CreateQrCode(payload, QRCodeGenerator.ECCLevel.Q);
             QRCode qrCode = new QRCode(qrCodeData);
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
@@ -108,6 +109,11 @@ namespace Qup.Business.AccountsManagement
                 // 2.1 generate password Hash
                 var encryptedCredentials = GenericUtilityService.EncryptPassword(command.Password); // Next item
 
+                // Create New User Token
+                // Get a random number between 1 and 100000, hash it to get the sessionId, save string to DB and in cookie, return   
+                var randomSessionId = new Random().Next(1, 100000).ToString();
+                var sessionHash = new Rfc2898DeriveBytes(randomSessionId, 10).GetBytes(10);
+
                 var newUser = new Qup.Database.User()
                 {
                     FirstName = command.FirstName,
@@ -116,7 +122,8 @@ namespace Qup.Business.AccountsManagement
                     PhoneNumber = command.PhoneNumber,
                     DateCreated = DateTime.Now,
                     Salt = encryptedCredentials.Salt,
-                    UserPassword = encryptedCredentials.EncryptedPassword
+                    UserPassword = encryptedCredentials.EncryptedPassword,
+                    UserKey = Convert.ToBase64String(sessionHash)
                 };
                 _context.Users.Add(newUser);
                 _context.SaveChanges();
@@ -131,7 +138,7 @@ namespace Qup.Business.AccountsManagement
                 _context.UsersToUserGroups.Add(mapUserToGroup);
                 _context.SaveChanges();
 
-                // 4. Generate Business QR code
+                // 4. Generate User QR code
                 return true;
             }
             catch (Exception e)

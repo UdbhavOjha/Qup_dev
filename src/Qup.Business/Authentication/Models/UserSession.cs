@@ -25,5 +25,7 @@ namespace Qup.Business.Authentication.Models
         public string SessionKey { get; set; }
 
         public DateTime DateCreated { get; set; }
+
+        public string UserKey { get; set; }
     }
 }

@@ -30,6 +30,7 @@ namespace Qup.Database
         public string UserPassword { get; set; }
         public System.DateTime DateCreated { get; set; }
         public string SessionKey { get; set; }
+        public string UserKey { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionLog> SessionLogs { get; set; }

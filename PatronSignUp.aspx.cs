@@ -1,14 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+using Qup.Business.AccountsManagement;
+using Qup.Business.AccountsManagement.Models;
+using Qup.Business.Authentication;
+using Qup.Business.Authentication.Models;
 
 namespace Qup
 {
     public partial class PatronSignUp : System.Web.UI.Page
     {
+        private const int PatronUserGroup = 1;
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -16,25 +17,56 @@ namespace Qup
 
         protected void signUpSubmit_Click(object sender, EventArgs e)
         {
-            //var formData = GetFormData();
-            //var validator = new NewAccountSignUpFormValidator();
-            //var results = validator.Validate(formData);
-            //bool validationSuccess = results.IsValid;
-            //Failures = results.Errors;
+            var patronFirstName = firstName.Value;
+            var patronLastName = lastName.Value;
+            var patronEmail = email.Value;
+            var patronPhoneNumber = mobileNumber.Value;
+            var patronPassword = password.Value;
 
-            //if (!validationSuccess)
-            //{
-            //    return;
-            //}
+            // Validate form
 
-            //// Recaptcha check
-            //if (!IsRecaptchaValid())
-            //{
-            //    RecaptchaError = "Please tick the recaptcha checkbox.";
-            //    return;
-            //}
+            // create account if validation successful
+            var accountHandler = new AccountManagementService();
+            accountHandler.CreateNewUser( new UserSetUp 
+            {
+                FirstName = patronFirstName,
+                LastName = patronLastName,
+                Email = patronEmail,
+                PhoneNumber = patronPhoneNumber,
+                Password = patronPassword,
+                UserType = PatronUserGroup
+            });
+            // user key has been created
 
-            Response.Redirect("/Clients/PatronDashboard.aspx");
+
+            var userCredentials = new UserSession
+            {
+                UserName = patronEmail,
+                Password = patronPassword,
+                IpAddress = Request.UserHostAddress,
+                XForwardedFor = Request.Headers["X-Forwarded-For"],
+                Browser = HttpContext.Current.Request.Browser.Browser,
+                ServerName = Request.ServerVariables["SERVER_NAME"],
+                DateCreated = DateTime.Now,
+                UserKey = String.Empty
+            };
+
+            var authenticationHandler = new UserAuthenticationManagement();
+            UserSession userValidationResults = new UserSession();
+            
+            userValidationResults = authenticationHandler.LogSessionForNewUserAfterSignUp(userCredentials);
+            
+            if (userValidationResults.SessionValidated)
+            {
+                Response.Cookies["SessionInfo"].Value = userValidationResults.SessionKey;
+                Response.Cookies["SessionInfo"].Expires = DateTime.Now.AddHours(3);
+                Response.Cookies["User"].Value = userValidationResults.UserKey;
+
+                if (userValidationResults.UserGroup == PatronUserGroup)
+                {
+                    Response.Redirect("/Clients/PatronDashboard.aspx");
+                }
+            }
         }
     }
 }

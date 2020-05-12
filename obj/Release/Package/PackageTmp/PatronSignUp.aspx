@@ -21,10 +21,10 @@
                         <label class="form-text h5">Name <span>&#42;</span></label>
                         <div class="form-row">
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="First name">
+                              <input type="text" class="form-control" placeholder="First name" id="firstName" name="firstName" runat="server">
                             </div>
                             <div class="col">
-                              <input type="text" class="form-control" placeholder="Last name">
+                              <input type="text" class="form-control" placeholder="Last name" id="lastName" name="lastName" runat="server">
                             </div>
                           </div>
                     </div>

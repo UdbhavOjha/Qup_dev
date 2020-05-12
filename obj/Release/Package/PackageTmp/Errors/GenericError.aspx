@@ -39,8 +39,8 @@
     </form>--%>
     <section>
         <div class="container mt-4 p-4">
-            <div class="row display-4">
-                Oops, something went wrong. Please login again. 
+            <div class="row">
+                <p class="h3">Oops, something went wrong. Please login again. </p>
             </div>
         </div>
     </section>
