@@ -53,13 +53,13 @@
         </div>
     </section>
     <%--Search Results--%>
-    <section id="searchResultsSection">
+    <section id="searchResultsSection" style="overflow-x:hidden">
         <div id="container" class="mt-4 pt-4">
+            <%if (searchResultsCount >= 0) { %>            
             <div class="row">
                 <div class="col-md-1"></div>
-                <div class="col-md-10">
-                    <% if (searchResultsCount >= 1)
-                        {%>
+                <div class="col">
+                    <% if (searchResultsCount >= 1) {%>
                        <% if (userSearchResults.Count() > 0)
                         { %>
                         <table class="table" id="userResults">
@@ -113,7 +113,7 @@
                                 <td><%:item.Address %></td>
                                 <td><%:item.Capacity %></td>
                                   <td>
-                                      <a href="#" class="btn btn-outline-info"> Profile </a>
+                                      <a href="/Admins/ViewProfile?businessId=<%:item.BusinessId%>" class="btn btn-outline-info" target="_blank"> Profile </a>
                                   </td>
                               </tr> 
                                    <% i++;
@@ -126,25 +126,25 @@
                         <% }
 
                     }
-                else if(searchResultsCount == 0)
-                {%>
-                    <div class="row">
-                        <div class="col-md-2"> </div>
-                        <div class="col-md-8">
-                            <div class="card">
-                                  <div class="card-body">
-                                    <%--<h4 class="card-title">Bar 101</h4>--%>
-                                    <p class="card-text text-danger ">Search yielded 0 results</p>                                    
-                                  </div>
-                              </div>                             
+                    else if(searchResultsCount == 0)
+                    {%>
+                        <div class="row">
+                            <div class="col-md-2"> </div>
+                            <div class="col-md-8">
+                                <div class="card">
+                                      <div class="card-body">
+                                        <p class="card-text text-danger ">Search yielded 0 results</p>                                    
+                                      </div>
+                                  </div>                             
+                            </div>
+                            <div class="col-md-2"></div>  
                         </div>
-                        <div class="col-md-2"></div>  
-                    </div>
                                      
-                <%} %>
+                    <%} %>
                 </div>
-                
-            </div>        
+                <div class="col-md-1"></div>
+            </div>
+            <%} %>
         </div>
     </section>
 

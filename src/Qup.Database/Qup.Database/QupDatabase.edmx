@@ -101,6 +101,23 @@
           <Property Name="UserId" Type="int" />
           <Property Name="UserGroupId" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vwGetBusinessDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="DateCreated" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Capacity" Type="int" Nullable="false" />
+          <Property Name="DateCreated" Type="datetime" Nullable="false" />
+          <Property Name="ProfileImage" Type="image" />
+        </EntityType>
         <Association Name="FK__BusinessO__Busin__7F2BE32F">
           <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
           <End Role="BusinessOperations" Type="Self.BusinessOperations" Multiplicity="*" />
@@ -179,6 +196,16 @@
           <EntitySet Name="UserLedger" EntityType="Self.UserLedger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="vwGetBusinessDetails" EntityType="Self.vwGetBusinessDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vwGetBusinessDetails].[Id] AS [Id], 
+    [vwGetBusinessDetails].[Name] AS [Name], 
+    [vwGetBusinessDetails].[Address] AS [Address], 
+    [vwGetBusinessDetails].[Capacity] AS [Capacity], 
+    [vwGetBusinessDetails].[DateCreated] AS [DateCreated], 
+    [vwGetBusinessDetails].[ProfileImage] AS [ProfileImage]
+    FROM [dbo].[vwGetBusinessDetails] AS [vwGetBusinessDetails]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__BusinessO__Busin__7F2BE32F" Association="Self.FK__BusinessO__Busin__7F2BE32F">
             <End Role="Business" EntitySet="Business" />
             <End Role="BusinessOperations" EntitySet="BusinessOperations" />
@@ -251,6 +278,7 @@
             <End Role="Business" EntitySet="Businesses" />
             <End Role="BusinessProfile" EntitySet="BusinessProfiles" />
           </AssociationSet>
+          <EntitySet Name="vwGetBusinessDetails" EntityType="QupModel.vwGetBusinessDetail" />
           </EntityContainer>
         <ComplexType Name="spUsersByUserGroup_Result">
           <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
@@ -423,6 +451,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="vwGetBusinessDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="Name" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="Capacity" />
+            <PropertyRef Name="DateCreated" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -552,6 +595,18 @@
               <MappingFragment StoreEntitySet="BusinessProfile">
                 <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
                 <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwGetBusinessDetails">
+            <EntityTypeMapping TypeName="QupModel.vwGetBusinessDetail">
+              <MappingFragment StoreEntitySet="vwGetBusinessDetails">
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

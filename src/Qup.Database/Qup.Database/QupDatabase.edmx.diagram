@@ -19,6 +19,7 @@
         <EntityTypeShape EntityType="QupModel.BusinessProfile" Width="1.5" PointX="7.625" PointY="8" />
         <AssociationConnector Association="QupModel.FK__BusinessO__Busin__7F2BE32F" />
         <AssociationConnector Association="QupModel.FK__BusinessP__Busin__7C4F7684" />
+        <EntityTypeShape EntityType="QupModel.vwGetBusinessDetail" Width="1.5" PointX="0.75" PointY="3.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

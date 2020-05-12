@@ -16,8 +16,11 @@
                                     Success!
                                 </div>
                                 <div class="card-body text-success">
-                                    <%:UserMessage %> 
-                                </div>
+                                    <%:UserMessage %> <br />
+                                    <div class="mt-3">
+                                        <a href="<%:businessProfileUrl %>" class="btn btn-outline-success" target="_blank"> View Profile </a>
+                                    </div>                                    
+                                </div> 
                                 <%}
                                 else if (UserMessage.Contains("fail"))
                                 {%>

@@ -47,6 +47,7 @@
       <End Role="Business" EntitySet="Businesses" />
       <End Role="BusinessProfile" EntitySet="BusinessProfiles" />
     </AssociationSet>
+    <EntitySet Name="vwGetBusinessDetails" EntityType="QupModel.vwGetBusinessDetail" />
   </EntityContainer>
   <ComplexType Name="spUsersByUserGroup_Result">
     <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
@@ -219,4 +220,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="vwGetBusinessDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="DateCreated" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
 </Schema>

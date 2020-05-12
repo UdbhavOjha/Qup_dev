@@ -36,6 +36,7 @@ namespace Qup.Database
         public virtual DbSet<Business> Businesses { get; set; }
         public virtual DbSet<BusinessOperation> BusinessOperations { get; set; }
         public virtual DbSet<BusinessProfile> BusinessProfiles { get; set; }
+        public virtual DbSet<vwGetBusinessDetail> vwGetBusinessDetails { get; set; }
     
         public virtual ObjectResult<spUsersByUserGroup_Result> spUsersByUserGroup(string userGroup)
         {

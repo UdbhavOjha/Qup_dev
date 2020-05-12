@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Qup.Business.AccountsManagement.Models;
 using Qup.Database;
@@ -38,6 +39,7 @@ namespace Qup.Business.AccountsManagement
             foreach (var item in queryResults)
             {
                 businessList.Add(new BusinessDetails { 
+                    BusinessId = item.Id,
                     BusinessName = item.Name, 
                     Address = item.Address,
                     Capacity = item.Capacity
@@ -59,6 +61,29 @@ namespace Qup.Business.AccountsManagement
         {
             var queryResults = dbContext.spUsersByUserGroup("Patron");
             return queryResults.Count();
+        }
+
+        public BusinessDetails GetBusinessDetailsByBusinessId(int businessId)
+        {
+            
+            var queryResults = from c in dbContext.vwGetBusinessDetails
+                               where c.Id == businessId
+                               select c;
+
+            if (queryResults.Any() && queryResults.Count() == 1)
+            {
+                var result = queryResults.FirstOrDefault();
+                var businessDetails = new BusinessDetails() 
+                {
+                    BusinessName = result.Name,
+                    Address = result.Address,
+                    Capacity = result.Capacity,
+                    Profile = Convert.ToBase64String(result.ProfileImage)
+                };
+                return businessDetails;
+            }
+
+            return new BusinessDetails();
         }
     }
 }

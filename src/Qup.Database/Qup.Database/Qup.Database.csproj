@@ -103,6 +103,9 @@
     <Compile Include="UsersToUserGroup.cs">
       <DependentUpon>QupDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="vwGetBusinessDetail.cs">
+      <DependentUpon>QupDatabase.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
