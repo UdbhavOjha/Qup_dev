@@ -149,6 +149,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\Kingslander.jpg" />
     <Content Include="Manager\Dashboard.aspx" />
+    <Content Include="Manager\SearchHistory.aspx" />
     <Content Include="Patrons.Master" />
     <Content Include="Managers.Master" />
     <Content Include="Admin.Master" />
@@ -314,6 +315,13 @@
     </Compile>
     <Compile Include="Manager\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Manager\SearchHistory.aspx.cs">
+      <DependentUpon>SearchHistory.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Manager\SearchHistory.aspx.designer.cs">
+      <DependentUpon>SearchHistory.aspx</DependentUpon>
     </Compile>
     <Compile Include="Patrons.Master.cs">
       <DependentUpon>Patrons.Master</DependentUpon>
