@@ -44,14 +44,14 @@
                         <div class="row my-4">
                             <asp:Button class="btn btn-success" type="submit" runat="server" Text="Login" ID="login" OnClick="login_Click"></asp:Button>
                         </div>
-                        <%--<div class="row mt-2 py-2">
+                        <div class="row">
                             <small class="text-muted">
-                                 Don't have an account? <a href="/SignUp.aspx" class="text-primary">Create one</a> 
+                                 Don't have an account? <a href="/PatronSignUp.aspx" class="text-primary">Create one</a> 
                             </small>
-                        </div>--%>
+                        </div>
                     </div>
                     <div class="col-md-3"></div>
                 </div>
             </div>
-        </section>
+        </section>    
 </asp:Content>

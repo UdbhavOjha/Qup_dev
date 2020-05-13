@@ -7,6 +7,7 @@ namespace Qup
 {
     public partial class Login : System.Web.UI.Page
     {
+        protected string cookiesOnBrowser;
         protected void Page_Load(object sender, EventArgs e)
         {            
             Verify();
@@ -34,7 +35,7 @@ namespace Qup
             };
 
             var authentication = new UserAuthenticationManagement();
-            UserSession userValidationResults;
+            UserSession userValidationResults = new UserSession();
 
             if (userCredentials.UserName != null)
             {
@@ -43,11 +44,6 @@ namespace Qup
             else if (userCookie != string.Empty)
             {
                 userValidationResults = authentication.AuthenticateUserByCookie(userCredentials);
-            }
-            else
-            {
-                Response.Redirect("/PatronSignUp.aspx");
-                return;
             }
 
 
@@ -70,7 +66,6 @@ namespace Qup
                     Response.Redirect("/Admins/AdminDashboard.aspx");
                 }
             }
-
         }
     }
 }
