@@ -9,16 +9,20 @@ namespace Qup
     {
         protected string cookiesOnBrowser;
         protected void Page_Load(object sender, EventArgs e)
-        {            
-            Verify();
+        {
+            var profileQuery = Request.QueryString["profile"];
+            if (profileQuery != null && int.TryParse(profileQuery, out int businessId))
+            {
+                Verify(businessId);
+            }            
         }
 
         protected void login_Click(object sender, EventArgs e)
         {
-            Verify();
+            Verify(null);
         }
 
-        private void Verify() 
+        private void Verify(int? businessId) 
         {
             string userCookie = Request.Cookies["User"] != null ? Request.Cookies["User"].Value : string.Empty;
 
@@ -53,9 +57,9 @@ namespace Qup
                 Response.Cookies["SessionInfo"].Expires = DateTime.Now.AddHours(3);
                 Response.Cookies["User"].Value = userValidationResults.UserKey;
 
-                if (userValidationResults.UserGroup == 1)
+                if (userValidationResults.UserGroup == 1 && businessId != null)
                 {
-                    Response.Redirect("/Clients/PatronDashboard.aspx");
+                    Response.Redirect("/Clients/JoinQueue.aspx?profile=" + Convert.ToString(businessId));
                 }
                 else if (userValidationResults.UserGroup == 2)
                 {

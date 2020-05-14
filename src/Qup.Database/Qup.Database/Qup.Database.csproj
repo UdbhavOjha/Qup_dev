@@ -88,6 +88,9 @@
     <Compile Include="spGetCustomersInQueueByDate_Result.cs">
       <DependentUpon>QupDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="spGetUserQueue_Result.cs">
+      <DependentUpon>QupDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="spUsersByUserGroup_Result.cs">
       <DependentUpon>QupDatabase.tt</DependentUpon>
     </Compile>

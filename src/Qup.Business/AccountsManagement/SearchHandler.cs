@@ -75,6 +75,8 @@ namespace Qup.Business.AccountsManagement
                 var result = queryResults.FirstOrDefault();
                 var businessDetails = new BusinessDetails() 
                 {
+                    BusinessId = result.Id,
+                    DateCreated = result.DateCreated,
                     BusinessName = result.Name,
                     Address = result.Address,
                     Capacity = result.Capacity,
@@ -84,6 +86,21 @@ namespace Qup.Business.AccountsManagement
             }
 
             return new BusinessDetails();
+        }
+
+        public int GetPatronIdBySessionId(string sessionId)
+        {
+            var queryResult = from c in dbContext.Users
+                              where c.SessionKey == sessionId
+                              select c;
+
+            if (queryResult.Any())
+            {
+                return queryResult.FirstOrDefault().Id;
+            }
+
+            return 0;
+
         }
     }
 }

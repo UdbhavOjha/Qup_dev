@@ -21,5 +21,7 @@ namespace Qup.Business.Transactions.Models
         public int? PatronId { get; set; }
 
         public int? UserLedgerId { get; set; }
+
+        public string SessionId { get; set; }
     }
 }

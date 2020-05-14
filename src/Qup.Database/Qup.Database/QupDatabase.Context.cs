@@ -63,5 +63,18 @@ namespace Qup.Database
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetCustomersInQueueByDate_Result>("spGetCustomersInQueueByDate", fromDateParameter, toDateParameter, businessIdParameter);
         }
+    
+        public virtual ObjectResult<spGetUserQueue_Result> spGetUserQueue(string sessionId, Nullable<int> businessId)
+        {
+            var sessionIdParameter = sessionId != null ?
+                new ObjectParameter("sessionId", sessionId) :
+                new ObjectParameter("sessionId", typeof(string));
+    
+            var businessIdParameter = businessId.HasValue ?
+                new ObjectParameter("businessId", businessId) :
+                new ObjectParameter("businessId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserQueue_Result>("spGetUserQueue", sessionIdParameter, businessIdParameter);
+        }
     }
 }

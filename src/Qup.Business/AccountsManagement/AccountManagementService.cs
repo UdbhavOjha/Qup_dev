@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Qup.Business.AccountsManagement.Models;
 using Qup.Database;
 using Qup.Business.Utilities;
@@ -147,6 +148,17 @@ namespace Qup.Business.AccountsManagement
                 // log exception in errorhandler
                 //return false;
             }
+        }
+
+        public UserDetails GetUserBySessionId(string sessionId)
+        {
+            var user = new UserDetails();
+
+            var userQuery = from c in _context.Users
+                            where c.SessionKey == sessionId
+                            select c;
+
+            return user;
         }
     }
 }

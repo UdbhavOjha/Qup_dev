@@ -2,6 +2,8 @@
 using Qup.Database;
 using System;
 using System.Collections.Generic;
+using Qup.Business.Authentication;
+using Qup.Business.AccountsManagement;
 
 namespace Qup.Business.Transactions
 {
@@ -54,6 +56,30 @@ namespace Qup.Business.Transactions
                 result.ExitTime = DateTime.Now;
                 dbContext.SaveChanges();
             }
+        }
+
+        public bool LeaveQueue(QueueInstruction leaveInstruction)
+        {
+            if (leaveInstruction.SessionId != null)
+            {
+                // Get Customer Queue
+                var userQueue = dbContext.spGetUserQueue(leaveInstruction.SessionId, leaveInstruction.BusinessId);
+                int queueId = 0;
+
+                foreach (var item in userQueue)
+                {
+                    queueId = item.Id;
+                }
+
+                if (queueId != 0)
+                {
+                    SaveCustomerQueueExit(queueId);
+                }                
+
+                return true;
+            }
+
+            return false;
         }
 
     }
