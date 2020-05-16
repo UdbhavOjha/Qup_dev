@@ -2,14 +2,16 @@
 using System.Web;
 using Qup.Business.AccountsManagement;
 using Qup.Business.AccountsManagement.Models;
+using Qup.Security;
 
 namespace Qup.Admins
 {
-    public partial class ViewProfile : System.Web.UI.Page
+    public partial class ViewProfile : WebPage
     {
         protected BusinessDetails BusinessDetails = new BusinessDetails();
         protected void Page_Load(object sender, EventArgs e)
         {
+            AuthenticateUser();
             var businessId = Request.QueryString["businessId"];
 
             if (businessId != null)
@@ -27,9 +29,6 @@ namespace Qup.Admins
                     throw new HttpException(404, "File Not Found"); 
                 }
             }
-            
-
-            
         }
     }
 }

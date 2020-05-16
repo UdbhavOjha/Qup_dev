@@ -59,6 +59,7 @@ namespace Qup.Business.Authentication
                     //Save the String of Session Hash in DB for the authenticated user
                     var userResult = _dbContext.Users.Find(foundMatch.Id);
                     userResult.SessionKey = Convert.ToBase64String(sessionHash);
+                    userResult.LastLogged = DateTime.Now;
                     _dbContext.SaveChanges();
 
                     userCredentials.SessionValidated = true;

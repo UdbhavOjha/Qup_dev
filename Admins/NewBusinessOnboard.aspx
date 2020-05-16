@@ -28,7 +28,7 @@
                                     Failed!
                                 </div>
                                 <div class="card-body text-danger">
-                                    <%:UserMessage %> 
+                                    <%: UserMessage %> 
                                 </div>
                                 <%} %>
                             </div>

@@ -4,17 +4,18 @@ using Qup.Business.AccountsManagement.Models;
 using QRCoder;
 using System.Drawing;
 using System.Drawing.Imaging;
+using Qup.Security;
 
 namespace Qup.Admins
 {
-    public partial class NewBusinessOnboard : System.Web.UI.Page
+    public partial class NewBusinessOnboard : WebPage
     {
         protected string UserMessage = String.Empty;
 
         protected string businessProfileUrl = String.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            AuthenticateUser();
         }
 
         protected void signUpSubmit_Click(object sender, EventArgs e)

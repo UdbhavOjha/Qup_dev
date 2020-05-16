@@ -2,14 +2,17 @@
 using Qup.Business.Transactions.Models;
 using Qup.Business.Transactions;
 using System.Collections.Generic;
+using Qup.Security;
 
 namespace Qup.Manager
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class Dashboard : WebPage
     {
         protected ManagerDashboardViewModel ManagerDasboardData = new ManagerDashboardViewModel();
         protected void Page_Load(object sender, EventArgs e)
         {
+            AuthenticateUser();
+
             if (!IsPostBack)
             {
                 SetCustomerData();
@@ -56,7 +59,7 @@ namespace Qup.Manager
             var queueHandler = new QueueLedger();
             var fromDate = DateTime.Now.Date;
             var toDate = DateTime.Now.Date.AddDays(1);
-            int businessId = 1;
+            int businessId = BusinessId;
             ManagerDasboardData.Customers = queueHandler.GetCustomersInQueue(businessId, fromDate, toDate);
 
             foreach (var item in ManagerDasboardData.Customers)

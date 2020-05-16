@@ -3,10 +3,11 @@ using Qup.Business.AccountsManagement.Models;
 using System.Collections.Generic;
 using Qup.Business.AccountsManagement;
 using System.Linq;
+using Qup.Security;
 
 namespace Qup.Admins
 {
-    public partial class AdminDashboard : System.Web.UI.Page
+    public partial class AdminDashboard : WebPage
     {
         protected int businessesOnPlatformCount;
         protected int registeredPatronsOnPlatformCount;
@@ -18,6 +19,7 @@ namespace Qup.Admins
         private SearchHandler searchHandler = new SearchHandler();
         protected void Page_Load(object sender, EventArgs e)
         {
+            AuthenticateUser();
             businessesOnPlatformCount = searchHandler.GetBusinessesOnPlatformCount();
             registeredPatronsOnPlatformCount = searchHandler.GetRegisteredPatronsOnPlatformCount();
         }

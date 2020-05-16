@@ -19,6 +19,7 @@ namespace Qup.Database
         {
             this.SessionLogs = new HashSet<SessionLog>();
             this.UsersToUserGroups = new HashSet<UsersToUserGroup>();
+            this.BusinessAccountSecurities = new HashSet<BusinessAccountSecurity>();
         }
     
         public int Id { get; set; }
@@ -31,10 +32,13 @@ namespace Qup.Database
         public System.DateTime DateCreated { get; set; }
         public string SessionKey { get; set; }
         public string UserKey { get; set; }
+        public Nullable<System.DateTime> LastLogged { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SessionLog> SessionLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UsersToUserGroup> UsersToUserGroups { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusinessAccountSecurity> BusinessAccountSecurities { get; set; }
     }
 }

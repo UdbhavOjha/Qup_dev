@@ -221,11 +221,13 @@ C:\VisualStudioProjects\Qup_Dev\bin\Microsoft.Web.Infrastructure.dll
 C:\VisualStudioProjects\Qup_Dev\bin\Newtonsoft.Json.dll
 C:\VisualStudioProjects\Qup_Dev\bin\QRCoder.dll
 C:\VisualStudioProjects\Qup_Dev\bin\Qup.Business.dll
+C:\VisualStudioProjects\Qup_Dev\bin\Qup.Database.dll
 C:\VisualStudioProjects\Qup_Dev\bin\System.Web.Optimization.dll
 C:\VisualStudioProjects\Qup_Dev\bin\WebGrease.dll
-C:\VisualStudioProjects\Qup_Dev\bin\Qup.Database.dll
 C:\VisualStudioProjects\Qup_Dev\bin\Qup.Business.pdb
 C:\VisualStudioProjects\Qup_Dev\bin\Qup.Business.dll.config
+C:\VisualStudioProjects\Qup_Dev\bin\Qup.Database.pdb
+C:\VisualStudioProjects\Qup_Dev\bin\Qup.Database.dll.config
 C:\VisualStudioProjects\Qup_Dev\bin\EntityFramework.xml
 C:\VisualStudioProjects\Qup_Dev\bin\EntityFramework.SqlServer.xml
 C:\VisualStudioProjects\Qup_Dev\bin\System.Web.Optimization.xml
@@ -233,8 +235,6 @@ C:\VisualStudioProjects\Qup_Dev\bin\Newtonsoft.Json.xml
 C:\VisualStudioProjects\Qup_Dev\bin\Antlr3.Runtime.pdb
 C:\VisualStudioProjects\Qup_Dev\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\VisualStudioProjects\Qup_Dev\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\VisualStudioProjects\Qup_Dev\bin\Qup.Database.pdb
-C:\VisualStudioProjects\Qup_Dev\bin\Qup.Database.dll.config
 C:\VisualStudioProjects\Qup_Dev\obj\Debug\Qup.csprojAssemblyReference.cache
 C:\VisualStudioProjects\Qup_Dev\obj\Debug\Qup.csproj.CopyComplete
 C:\VisualStudioProjects\Qup_Dev\obj\Debug\Qup.dll

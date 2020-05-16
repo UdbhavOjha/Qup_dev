@@ -1,18 +1,17 @@
 ﻿using System;
 using Qup.Business.AccountsManagement;
 using Qup.Business.AccountsManagement.Models;
+using Qup.Security;
 
 namespace Qup.Admins
 {
-    public partial class CreateNewUser : System.Web.UI.Page
+    public partial class CreateNewUser : WebPage
     {
         protected string UserMessage = String.Empty;
         protected void Page_Load(object sender, EventArgs e)
         {
-
-        }
-
-        
+            AuthenticateUser();
+        }        
 
         private bool ValidateRequest()
         {

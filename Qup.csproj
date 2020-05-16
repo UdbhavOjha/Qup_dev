@@ -145,6 +145,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Images\Kingslander.jpg" />
+    <Content Include="LogOut.aspx" />
     <Content Include="Manager\Dashboard.aspx" />
     <Content Include="Manager\SearchHistory.aspx" />
     <Content Include="Patrons.Master" />
@@ -281,6 +282,13 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Managers.Master.cs">
       <DependentUpon>Managers.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -343,7 +351,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\QrCodeImages\" />
+    <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -361,6 +369,10 @@
     <ProjectReference Include="src\Qup.Business\Qup.Business.csproj">
       <Project>{9d272a04-9213-4015-9505-ef2ee3b95781}</Project>
       <Name>Qup.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="src\Qup.Database\Qup.Database\Qup.Database.csproj">
+      <Project>{269364B3-5D9F-4DAD-9C4F-B1603D217718}</Project>
+      <Name>Qup.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

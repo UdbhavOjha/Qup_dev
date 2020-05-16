@@ -34,11 +34,13 @@ namespace Qup.Database
         public virtual DbSet<SessionLog> SessionLogs { get; set; }
         public virtual DbSet<UserGroup> UserGroups { get; set; }
         public virtual DbSet<UserLedger> UserLedgers { get; set; }
-        public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
         public virtual DbSet<vwGetBusinessDetail> vwGetBusinessDetails { get; set; }
         public virtual DbSet<PlatformPage> PlatformPages { get; set; }
         public virtual DbSet<UserGroupsToPage> UserGroupsToPages { get; set; }
+        public virtual DbSet<vwUserPagePermission> vwUserPagePermissions { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<BusinessAccountSecurity> BusinessAccountSecurities { get; set; }
     
         public virtual ObjectResult<spGetCustomersInQueueByDate_Result> spGetCustomersInQueueByDate(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<int> businessId)
         {

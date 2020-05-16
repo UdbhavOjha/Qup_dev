@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Qup.Database;
+using System;
 using System.Linq;
 using System.Web;
 
@@ -7,121 +7,158 @@ namespace Qup.Security
 {
     public class WebPage : System.Web.UI.Page
     {
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
-        //public void AuthenticateUser()
-        //{
-        //    string sessionId = Request.Cookies.Get("SessionInfo")?.Value != null ? Request.Cookies.Get("SessionInfo")?.Value.Remove(0, 8) : string.Empty;
-        //    // Session Id is stored in the cookie like "Session=" - so 8 characters need to be removed
+        public int BusinessId { get; set; }
 
-        //    try
-        //    {
-        //        if (sessionId != string.Empty)
-        //        {
-        //            // verify session id from DB 
-        //            using (var context = new ZeroDbContext())
-        //            {
-        //                var userSessionDetails = context.UserCredentials.First(u => u.SessionKey == sessionId);
+        public string UserGroupOfUser { get; set; }
 
-        //                // session time of 30 minutes Max
-        //                if (userSessionDetails != null && userSessionDetails.DateLastLogged >= DateTime.Now.AddMinutes(-30) && userSessionDetails.DateLastLogged <= DateTime.Now.AddMinutes(30))
-        //                {
-        //                    if (userSessionDetails.Active == true && IsRequestedPagePermissionedToUser(userSessionDetails.UserId, Request.RawUrl))
-        //                    {
-        //                        // update DateLastLogged to 30 minutes from now for session expiry
-        //                        userSessionDetails.DateLastLogged = DateTime.Now;
-        //                        context.SaveChanges();
+        public void AuthenticateUser()
+        {
+            string sessionId = Request.Cookies.Get("SessionInfo").Value != null ? Request.Cookies.Get("SessionInfo")?.Value : string.Empty;            
 
-        //                        UserId = userSessionDetails.UserId;
-        //                    }
-        //                    else
-        //                    {
-        //                        // Expire Session 
-        //                        userSessionDetails.SessionKey = string.Empty;
-        //                        userSessionDetails.DateLastLogged = DateTime.Now.AddMinutes(-60);
-        //                        context.SaveChanges();
+            try
+            {
+                if (sessionId != string.Empty)
+                {
+                    // verify session id from DB 
+                    using (var context = new QupEntities())
+                    {
+                        var userSessionDetails = context.Users.First(u => u.SessionKey == sessionId);
 
-        //                        DeleteSession();
-        //                        Response.Redirect("/AccessDenied.aspx");
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        else
-        //        {
-        //            DeleteSession();
-        //            Response.Redirect("/AccessDenied.aspx");
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        DeleteSession();
-        //        Response.Redirect("/AccessDenied.aspx");
-        //    }
+                        // session time of 30 minutes Max
+                        if (userSessionDetails != null && userSessionDetails.LastLogged >= DateTime.Now.AddMinutes(-60) && userSessionDetails.LastLogged <= DateTime.Now.AddMinutes(60))
+                        {
+                            if (IsRequestedPagePermissionedToUser(userSessionDetails.Id, Request.RawUrl))
+                            {
+                                // update DateLastLogged to 60 minutes from now for session expiry
+                                userSessionDetails.LastLogged = DateTime.Now;
+                                context.SaveChanges();
 
-        //}
+                                UserId = userSessionDetails.Id;
 
-        //private void DeleteSession()
-        //{
-        //    HttpCookie sessionCookie = new HttpCookie("SessionInfo");
-        //    sessionCookie["Session"] = string.Empty;
-        //    Response.Cookies.Set(sessionCookie);
-        //}
+                                // Set Business Permissions 
+                                var userGroupOfUser = context.UsersToUserGroups.First(u => u.UserId == UserId);
+                                // clean the below later
+                                switch (userGroupOfUser.UserGroupId)
+                                {
+                                    case 3:
+                                        UserGroupOfUser = "AdminSupport";
+                                        break;
 
-        //public void LogOutUser()
-        //{
-        //    string sessionId = Request.Cookies.Get("SessionInfo")?.Value != null ? Request.Cookies.Get("SessionInfo")?.Value.Remove(0, 8) : string.Empty;
-        //    // Session Id is stored in the cookie like "Session=" - so 8 characters need to be removed
+                                    case 2:
+                                        UserGroupOfUser = "Manager";
+                                        var userBusiness = context.BusinessAccountSecurities.First(u => u.UserId == UserId);
+                                        if (userBusiness != null && userBusiness.BusinessId.HasValue)
+                                        {
+                                            BusinessId = Convert.ToInt16(userBusiness.BusinessId);
+                                        }
+                                        else
+                                        {
+                                            // user not registered
+                                            DeleteSession();
+                                            Response.Redirect("/Errors/GenericError.aspx");
+                                        }
+                                        break;
 
-        //    if (sessionId != string.Empty)
-        //    {
-        //        // verify session id from DB 
-        //        using (var context = new ZeroDbContext())
-        //        {
-        //            var userSessionDetails = context.UserCredentials.First(u => u.SessionKey == sessionId);
+                                    default:
+                                        // user not registered
+                                        DeleteSession();
+                                        Response.Redirect("/Errors/GenericError.aspx");
+                                        break;
+                                }                                
+                            }
+                            else
+                            {
+                                // Expire Session 
+                                userSessionDetails.SessionKey = string.Empty;
+                                userSessionDetails.LastLogged = DateTime.Now.AddMinutes(-60);
+                                context.SaveChanges();
 
-        //            // session time of 30 minutes Max
-        //            if (userSessionDetails != null)
-        //            {
-        //                // update DateLastLogged to 30 minutes from now for session expiry
-        //                userSessionDetails.SessionKey = string.Empty;
-        //                userSessionDetails.DateLastLogged = DateTime.Now.AddMinutes(-60);
-        //                context.SaveChanges();
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        Response.Redirect("/AccessDenied.aspx");
-        //    }
+                                DeleteSession();
+                                Response.Redirect("/Errors/GenericError.aspx");
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    DeleteSession();
+                    Response.Redirect("/Errors/GenericError.aspx");
+                }
+            }
+            catch
+            {
+                DeleteSession();
+                Response.Redirect("/Errors/GenericError.aspx");
+            }
 
-        //    HttpCookie sessionCookie = new HttpCookie("SessionInfo");
-        //    sessionCookie["Session"] = string.Empty;
-        //    Response.Cookies.Set(sessionCookie);
-        //}
+        }
 
-        //public bool IsRequestedPagePermissionedToUser(int? userId, string pageUrl)
-        //{
-        //    var context = new ZeroDbContext();
-        //    var pageAccessible = from c in context.vwUserPagePermissions
-        //                         where c.UserId == userId && c.PageUrl == pageUrl
-        //                         select c;
+        private void DeleteSession()
+        {
+            HttpCookie sessionCookie = new HttpCookie("SessionInfo");
+            sessionCookie["Session"] = string.Empty;
+            Response.Cookies.Set(sessionCookie);
+        }
 
-        //    if (pageAccessible.Any())
-        //    {
-        //        return true;
-        //    }
+        public void LogOutUser()
+        {
+            string sessionId = Request.Cookies.Get("SessionInfo")?.Value != null ? Request.Cookies.Get("SessionInfo")?.Value.Remove(0, 8) : string.Empty;
+            // Session Id is stored in the cookie like "Session=" - so 8 characters need to be removed
 
-        //    return false;
-        //}
+            if (sessionId != string.Empty)
+            {
+                // verify session id from DB 
+                using (var context = new QupEntities())
+                {
+                    var userSessionDetails = context.Users.First(u => u.SessionKey == sessionId);
 
-        //public int? GetUserIdFromSessionId(string sessionId)
-        //{
-        //    using (var context = new ZeroDbContext())
-        //    {
-        //        var userSessionDetails = context.UserCredentials.First(u => u.SessionKey == sessionId);
-        //        return userSessionDetails.UserId;
-        //    }
-        //}
+                    // session time of 30 minutes Max
+                    if (userSessionDetails != null)
+                    {
+                        // update DateLastLogged to 30 minutes from now for session expiry
+                        userSessionDetails.SessionKey = string.Empty;
+                        userSessionDetails.LastLogged = DateTime.Now.AddMinutes(-60);
+                        context.SaveChanges();
+                    }
+                }
+            }
+            else
+            {
+                Response.Redirect("/Errors/GenericError.aspx");
+            }
+
+            HttpCookie sessionCookie = new HttpCookie("SessionInfo");
+            sessionCookie["Session"] = string.Empty;
+            Response.Cookies.Set(sessionCookie);
+        }
+
+        public bool IsRequestedPagePermissionedToUser(int? userId, string pageUrl)
+        {
+            // Remove query string if any from the url before checking
+            var queryStringFreeUrl = pageUrl.Contains('?') ? pageUrl.Split('?')[0] : pageUrl;
+
+            var context = new QupEntities();
+            var pageAccessible = from c in context.vwUserPagePermissions
+                                 where c.UserId == userId && c.Url == queryStringFreeUrl
+                                 select c;
+
+            if (pageAccessible.Any())
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public int? GetUserIdFromSessionId(string sessionId)
+        {
+            using (var context = new QupEntities())
+            {
+                var userSessionDetails = context.Users.First(u => u.SessionKey == sessionId);
+                return userSessionDetails.Id;
+            }
+        }
     }
 }

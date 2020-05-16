@@ -61,6 +61,15 @@ namespace Qup.Business.AccountsManagement
                     UserGroupId = 2 // Bar Admin user group
                 };
                 _context.UsersToUserGroups.Add(mapUserToGroup);
+                
+                // Map User to Business account
+                var mapUserToBusiness = new BusinessAccountSecurity() 
+                { 
+                    BusinessId = businessAccount.Id, 
+                    UserId = businessAdmin.Id 
+                };
+                _context.BusinessAccountSecurities.Add(mapUserToBusiness);
+
                 _context.SaveChanges();
 
                 // Generate QR code - just for now - move this to Business Logic

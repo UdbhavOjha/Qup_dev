@@ -12,18 +12,22 @@
         <EntityTypeShape EntityType="QupModel.SessionLog" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
         <EntityTypeShape EntityType="QupModel.UserGroup" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
         <EntityTypeShape EntityType="QupModel.UserLedger" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QupModel.User" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QupModel.UsersToUserGroup" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QupModel.vwGetBusinessDetail" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
         <AssociationConnector Association="QupModel.FK__BusinessO__Busin__4CA06362" ManuallyRouted="false" />
         <AssociationConnector Association="QupModel.FK__BusinessP__Busin__4F7CD00D" ManuallyRouted="false" />
-        <AssociationConnector Association="QupModel.FK__SessionLo__UserI__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="QupModel.FK__UsersToUs__UserG__619B8048" ManuallyRouted="false" />
-        <AssociationConnector Association="QupModel.FK__UsersToUs__UserI__60A75C0F" ManuallyRouted="false" />
         <EntityTypeShape EntityType="QupModel.PlatformPage" Width="1.5" PointX="3.75" PointY="12.25" />
         <EntityTypeShape EntityType="QupModel.UserGroupsToPage" Width="1.5" PointX="6" PointY="12" />
         <AssociationConnector Association="QupModel.FK__UserGroup__PageI__6FE99F9F" />
         <AssociationConnector Association="QupModel.FK__UserGroup__UserG__6EF57B66" />
+        <EntityTypeShape EntityType="QupModel.vwUserPagePermission" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="QupModel.User" Width="1.5" PointX="0.75" PointY="2.125" />
+        <AssociationConnector Association="QupModel.FK__SessionLo__UserI__6477ECF3" />
+        <AssociationConnector Association="QupModel.FK__UsersToUs__UserI__60A75C0F" />
+        <EntityTypeShape EntityType="QupModel.BusinessAccountSecurity" Width="1.5" PointX="11" PointY="5" />
+        <AssociationConnector Association="QupModel.FK__BusinessA__Busin__74AE54BC" />
+        <AssociationConnector Association="QupModel.FK__BusinessA__UserI__73BA3083" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

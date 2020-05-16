@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Globalization;
 using Qup.Business.Transactions;
 using Qup.Business.Transactions.Models;
+using Qup.Security;
 
 namespace Qup.Manager
 {
-    public partial class SearchHistory : System.Web.UI.Page
+    public partial class SearchHistory : WebPage
     {
         protected IEnumerable<CustomerInQueue> customerSearchResults;
 
@@ -17,14 +18,14 @@ namespace Qup.Manager
         protected bool noResults = true;
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            AuthenticateUser();
         }
 
         protected void searchSubmit_Click(object sender, EventArgs e)
         {
             var fromDateSelected = Request.Form["fromDate"];
             var toDateSelected = Request.Form["toDate"];
-            int businessId = 1;
+            int businessId = BusinessId;
 
             var fromDateParsed = ParseSelectedDate(fromDateSelected.Trim());
             var toDateParsed = ParseSelectedDate(toDateSelected.Trim());

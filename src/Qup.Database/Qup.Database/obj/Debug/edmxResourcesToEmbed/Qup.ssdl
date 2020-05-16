@@ -11,6 +11,14 @@
     <Property Name="IsActive" Type="bit" Nullable="false" />
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="BusinessAccountSecurity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="BusinessId" Type="int" />
+  </EntityType>
   <EntityType Name="BusinessOperations">
     <Key>
       <PropertyRef Name="Id" />
@@ -28,6 +36,13 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="BusinessId" Type="int" />
     <Property Name="ProfileImage" Type="image" />
+  </EntityType>
+  <EntityType Name="PlatformPages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="QueueTransactions">
     <Key>
@@ -63,6 +78,14 @@
     <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
   </EntityType>
+  <EntityType Name="UserGroupsToPages">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserGroupId" Type="int" />
+    <Property Name="PageId" Type="int" />
+  </EntityType>
   <EntityType Name="UserLedger">
     <Key>
       <PropertyRef Name="Id" />
@@ -88,6 +111,7 @@
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
     <Property Name="SessionKey" Type="varchar" MaxLength="50" />
     <Property Name="UserKey" Type="varchar" MaxLength="50" />
+    <Property Name="LastLogged" Type="datetime" />
   </EntityType>
   <EntityType Name="UsersToUserGroups">
     <Key>
@@ -101,11 +125,11 @@
 warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="vwGetBusinessDetails">
     <Key>
-      <PropertyRef Name="Id" />
       <PropertyRef Name="Name" />
       <PropertyRef Name="Address" />
       <PropertyRef Name="Capacity" />
       <PropertyRef Name="DateCreated" />
+      <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
@@ -114,6 +138,42 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
     <Property Name="DateCreated" Type="datetime" Nullable="false" />
     <Property Name="ProfileImage" Type="image" />
   </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Qup.dbo.vwUserPagePermissions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vwUserPagePermissions">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Url" Type="varchar" MaxLength="50" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="UserGroupId" Type="int" />
+    <Property Name="PageId" Type="int" />
+  </EntityType>
+  <Association Name="FK__BusinessA__Busin__74AE54BC">
+    <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+    <End Role="BusinessAccountSecurity" Type="Self.BusinessAccountSecurity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessAccountSecurity">
+        <PropertyRef Name="BusinessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessA__UserI__73BA3083">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="BusinessAccountSecurity" Type="Self.BusinessAccountSecurity" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessAccountSecurity">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__BusinessO__Busin__4CA06362">
     <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
     <End Role="BusinessOperations" Type="Self.BusinessOperations" Multiplicity="*" />
@@ -147,6 +207,30 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
       </Principal>
       <Dependent Role="SessionLog">
         <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserGroup__PageI__6FE99F9F">
+    <End Role="PlatformPages" Type="Self.PlatformPages" Multiplicity="0..1" />
+    <End Role="UserGroupsToPages" Type="Self.UserGroupsToPages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PlatformPages">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroupsToPages">
+        <PropertyRef Name="PageId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UserGroup__UserG__6EF57B66">
+    <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="0..1" />
+    <End Role="UserGroupsToPages" Type="Self.UserGroupsToPages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroups">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserGroupsToPages">
+        <PropertyRef Name="UserGroupId" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -188,11 +272,14 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
   </Function>
   <EntityContainer Name="QupModelStoreContainer">
     <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BusinessAccountSecurity" EntityType="Self.BusinessAccountSecurity" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperations" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BusinessProfile" EntityType="Self.BusinessProfile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PlatformPages" EntityType="Self.PlatformPages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="QueueTransactions" EntityType="Self.QueueTransactions" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="SessionLog" EntityType="Self.SessionLog" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroupsToPages" EntityType="Self.UserGroupsToPages" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLedger" EntityType="Self.UserLedger" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroups" Schema="dbo" store:Type="Tables" />
@@ -206,6 +293,23 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
     [vwGetBusinessDetails].[ProfileImage] AS [ProfileImage]
     FROM [dbo].[vwGetBusinessDetails] AS [vwGetBusinessDetails]</DefiningQuery>
     </EntitySet>
+    <EntitySet Name="vwUserPagePermissions" EntityType="Self.vwUserPagePermissions" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vwUserPagePermissions].[Id] AS [Id], 
+    [vwUserPagePermissions].[Url] AS [Url], 
+    [vwUserPagePermissions].[UserId] AS [UserId], 
+    [vwUserPagePermissions].[UserGroupId] AS [UserGroupId], 
+    [vwUserPagePermissions].[PageId] AS [PageId]
+    FROM [dbo].[vwUserPagePermissions] AS [vwUserPagePermissions]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__BusinessA__Busin__74AE54BC" Association="Self.FK__BusinessA__Busin__74AE54BC">
+      <End Role="Business" EntitySet="Business" />
+      <End Role="BusinessAccountSecurity" EntitySet="BusinessAccountSecurity" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessA__UserI__73BA3083" Association="Self.FK__BusinessA__UserI__73BA3083">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="BusinessAccountSecurity" EntitySet="BusinessAccountSecurity" />
+    </AssociationSet>
     <AssociationSet Name="FK__BusinessO__Busin__4CA06362" Association="Self.FK__BusinessO__Busin__4CA06362">
       <End Role="Business" EntitySet="Business" />
       <End Role="BusinessOperations" EntitySet="BusinessOperations" />
@@ -217,6 +321,14 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
     <AssociationSet Name="FK__SessionLo__UserI__6477ECF3" Association="Self.FK__SessionLo__UserI__6477ECF3">
       <End Role="Users" EntitySet="Users" />
       <End Role="SessionLog" EntitySet="SessionLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserGroup__PageI__6FE99F9F" Association="Self.FK__UserGroup__PageI__6FE99F9F">
+      <End Role="PlatformPages" EntitySet="PlatformPages" />
+      <End Role="UserGroupsToPages" EntitySet="UserGroupsToPages" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserGroup__UserG__6EF57B66" Association="Self.FK__UserGroup__UserG__6EF57B66">
+      <End Role="UserGroups" EntitySet="UserGroups" />
+      <End Role="UserGroupsToPages" EntitySet="UserGroupsToPages" />
     </AssociationSet>
     <AssociationSet Name="FK__UsersToUs__UserG__619B8048" Association="Self.FK__UsersToUs__UserG__619B8048">
       <End Role="UserGroups" EntitySet="UserGroups" />

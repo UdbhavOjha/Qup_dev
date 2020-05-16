@@ -68,7 +68,6 @@
                     <div class="form-group py-4">
                         <label for="userType">User Type</label>
                         <select class="form-control" id="userType" runat="server">
-                          <option value="1">Patron</option>
                           <option value="2">Manager</option>
                           <option value="3">Super Admin</option>
                         </select>

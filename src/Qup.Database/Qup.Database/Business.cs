@@ -19,6 +19,7 @@ namespace Qup.Database
         {
             this.BusinessOperations = new HashSet<BusinessOperation>();
             this.BusinessProfiles = new HashSet<BusinessProfile>();
+            this.BusinessAccountSecurities = new HashSet<BusinessAccountSecurity>();
         }
     
         public int Id { get; set; }
@@ -32,5 +33,7 @@ namespace Qup.Database
         public virtual ICollection<BusinessOperation> BusinessOperations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusinessProfile> BusinessProfiles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BusinessAccountSecurity> BusinessAccountSecurities { get; set; }
     }
 }
