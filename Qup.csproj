@@ -152,6 +152,9 @@
     <Content Include="Admin.Master" />
     <None Include="Properties\PublishProfiles\Qup - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\Qup20200502110147 - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Qupdev - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Qupdev - ReadOnly - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\Qupdev - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="PatronSignUp.aspx" />

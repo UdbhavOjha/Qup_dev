@@ -64,7 +64,7 @@ namespace Qup
 
                 if (userValidationResults.UserGroup == PatronUserGroup)
                 {
-                    Response.Redirect("/Clients/PatronDashboard.aspx");
+                    Response.Redirect("/Clients/JoinQueue.aspx?profile=1");
                 }
             }
         }

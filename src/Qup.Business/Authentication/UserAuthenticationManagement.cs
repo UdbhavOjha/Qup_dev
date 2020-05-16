@@ -198,5 +198,12 @@ namespace Qup.Business.Authentication
 
             return sessionDetails;
         }
+
+        public string GenerateNewCookie()
+        {
+            var randomSessionId = new Random().Next(1, 100000).ToString();
+            var sessionHash = new Rfc2898DeriveBytes(randomSessionId, 10).GetBytes(7);
+            return Convert.ToBase64String(sessionHash);
+        }
     }
 }

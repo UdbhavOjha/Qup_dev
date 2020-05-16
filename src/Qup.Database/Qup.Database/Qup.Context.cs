@@ -27,25 +27,16 @@ namespace Qup.Database
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<UserGroup> UserGroups { get; set; }
-        public virtual DbSet<UserLedger> UserLedgers { get; set; }
-        public virtual DbSet<QueueTransaction> QueueTransactions { get; set; }
-        public virtual DbSet<SessionLog> SessionLogs { get; set; }
-        public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
         public virtual DbSet<Business> Businesses { get; set; }
         public virtual DbSet<BusinessOperation> BusinessOperations { get; set; }
         public virtual DbSet<BusinessProfile> BusinessProfiles { get; set; }
-        public virtual DbSet<vwGetBusinessDetail> vwGetBusinessDetails { get; set; }
+        public virtual DbSet<QueueTransaction> QueueTransactions { get; set; }
+        public virtual DbSet<SessionLog> SessionLogs { get; set; }
+        public virtual DbSet<UserGroup> UserGroups { get; set; }
+        public virtual DbSet<UserLedger> UserLedgers { get; set; }
         public virtual DbSet<User> Users { get; set; }
-    
-        public virtual ObjectResult<spUsersByUserGroup_Result> spUsersByUserGroup(string userGroup)
-        {
-            var userGroupParameter = userGroup != null ?
-                new ObjectParameter("userGroup", userGroup) :
-                new ObjectParameter("userGroup", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUsersByUserGroup_Result>("spUsersByUserGroup", userGroupParameter);
-        }
+        public virtual DbSet<UsersToUserGroup> UsersToUserGroups { get; set; }
+        public virtual DbSet<vwGetBusinessDetail> vwGetBusinessDetails { get; set; }
     
         public virtual ObjectResult<spGetCustomersInQueueByDate_Result> spGetCustomersInQueueByDate(Nullable<System.DateTime> fromDate, Nullable<System.DateTime> toDate, Nullable<int> businessId)
         {
@@ -75,6 +66,15 @@ namespace Qup.Database
                 new ObjectParameter("businessId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetUserQueue_Result>("spGetUserQueue", sessionIdParameter, businessIdParameter);
+        }
+    
+        public virtual ObjectResult<spUsersByUserGroup_Result> spUsersByUserGroup(string userGroup)
+        {
+            var userGroupParameter = userGroup != null ?
+                new ObjectParameter("userGroup", userGroup) :
+                new ObjectParameter("userGroup", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spUsersByUserGroup_Result>("spUsersByUserGroup", userGroupParameter);
         }
     }
 }

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="edada638d13f44fc9670ab5e88d883ce" Name="Diagram1">
+        <EntityTypeShape EntityType="QupModel.Business" Width="1.5" PointX="5.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.BusinessOperation" Width="1.5" PointX="8" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.BusinessProfile" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.QueueTransaction" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.SessionLog" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.UserGroup" Width="1.5" PointX="3.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.UserLedger" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.User" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.UsersToUserGroup" Width="1.5" PointX="6" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QupModel.vwGetBusinessDetail" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QupModel.FK__BusinessO__Busin__4CA06362" ManuallyRouted="false" />
+        <AssociationConnector Association="QupModel.FK__BusinessP__Busin__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="QupModel.FK__SessionLo__UserI__6477ECF3" ManuallyRouted="false" />
+        <AssociationConnector Association="QupModel.FK__UsersToUs__UserG__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="QupModel.FK__UsersToUs__UserI__60A75C0F" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

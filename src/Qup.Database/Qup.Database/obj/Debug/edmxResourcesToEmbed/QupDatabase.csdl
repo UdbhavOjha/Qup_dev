@@ -52,6 +52,48 @@
       <Parameter Name="sessionId" Mode="In" Type="String" />
       <Parameter Name="businessId" Mode="In" Type="Int32" />
     </FunctionImport>
+    <EntitySet Name="Business1" EntityType="QupModel.Business1" />
+    <EntitySet Name="BusinessOperation1" EntityType="QupModel.BusinessOperation1" />
+    <EntitySet Name="BusinessProfile1" EntityType="QupModel.BusinessProfile1" />
+    <EntitySet Name="QueueTransaction1" EntityType="QupModel.QueueTransaction1" />
+    <EntitySet Name="SessionLog1" EntityType="QupModel.SessionLog1" />
+    <EntitySet Name="UserGroup1" EntityType="QupModel.UserGroup1" />
+    <EntitySet Name="UserLedger1" EntityType="QupModel.UserLedger1" />
+    <EntitySet Name="User1" EntityType="QupModel.User1" />
+    <EntitySet Name="UsersToUserGroup1" EntityType="QupModel.UsersToUserGroup1" />
+    <EntitySet Name="vwGetBusinessDetail1" EntityType="QupModel.vwGetBusinessDetail1" />
+    <AssociationSet Name="FK__BusinessO__Busin__4CA06362" Association="QupModel.FK__BusinessO__Busin__4CA06362">
+      <End Role="Business1" EntitySet="Business1" />
+      <End Role="BusinessOperation1" EntitySet="BusinessOperation1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__BusinessP__Busin__4F7CD00D" Association="QupModel.FK__BusinessP__Busin__4F7CD00D">
+      <End Role="Business1" EntitySet="Business1" />
+      <End Role="BusinessProfile1" EntitySet="BusinessProfile1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SessionLo__UserI__6477ECF3" Association="QupModel.FK__SessionLo__UserI__6477ECF3">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="SessionLog1" EntitySet="SessionLog1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsersToUs__UserG__619B8048" Association="QupModel.FK__UsersToUs__UserG__619B8048">
+      <End Role="UserGroup1" EntitySet="UserGroup1" />
+      <End Role="UsersToUserGroup1" EntitySet="UsersToUserGroup1" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UsersToUs__UserI__60A75C0F" Association="QupModel.FK__UsersToUs__UserI__60A75C0F">
+      <End Role="User1" EntitySet="User1" />
+      <End Role="UsersToUserGroup1" EntitySet="UsersToUserGroup1" />
+    </AssociationSet>
+    <FunctionImport Name="spGetCustomersInQueueByDate1" ReturnType="Collection(QupModel.spGetCustomersInQueueByDate1_Result)">
+      <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+      <Parameter Name="toDate" Mode="In" Type="DateTime" />
+      <Parameter Name="businessId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetUserQueue1" ReturnType="Collection(QupModel.spGetUserQueue1_Result)">
+      <Parameter Name="sessionId" Mode="In" Type="String" />
+      <Parameter Name="businessId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spUsersByUserGroup1" ReturnType="Collection(QupModel.spUsersByUserGroup1_Result)">
+      <Parameter Name="userGroup" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="spUsersByUserGroup_Result">
     <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
@@ -247,6 +289,212 @@
     <Property Type="DateTime" Name="ActualEntryDateTime" Nullable="true" Precision="23" />
     <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
     <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <EntityType Name="Business1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="BusinessOperations" Relationship="QupModel.FK__BusinessO__Busin__4CA06362" FromRole="Business1" ToRole="BusinessOperation1" />
+    <NavigationProperty Name="BusinessProfiles" Relationship="QupModel.FK__BusinessP__Busin__4F7CD00D" FromRole="Business1" ToRole="BusinessProfile1" />
+  </EntityType>
+  <EntityType Name="BusinessOperation1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessId" Type="Int32" />
+    <Property Name="Day" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="OpenTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CloseTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Business" Relationship="QupModel.FK__BusinessO__Busin__4CA06362" FromRole="BusinessOperation1" ToRole="Business1" />
+  </EntityType>
+  <EntityType Name="BusinessProfile1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessId" Type="Int32" />
+    <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Business" Relationship="QupModel.FK__BusinessP__Busin__4F7CD00D" FromRole="BusinessProfile1" ToRole="Business1" />
+  </EntityType>
+  <EntityType Name="QueueTransaction1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BusinessId" Type="Int32" Nullable="false" />
+    <Property Name="QueueJoinDateTime" Type="DateTime" Precision="3" />
+    <Property Name="PatronId" Type="Int32" />
+    <Property Name="ExpectedEntryDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ActualEntryDateTime" Type="DateTime" Precision="3" />
+    <Property Name="ExitTime" Type="DateTime" Precision="3" />
+    <Property Name="UserLedgerId" Type="Int32" />
+  </EntityType>
+  <EntityType Name="SessionLog1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="IpAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ServerName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SessionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="XForwardedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="QupModel.FK__SessionLo__UserI__6477ECF3" FromRole="SessionLog1" ToRole="User1" />
+  </EntityType>
+  <EntityType Name="UserGroup1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="UsersToUserGroups" Relationship="QupModel.FK__UsersToUs__UserG__619B8048" FromRole="UserGroup1" ToRole="UsersToUserGroup1" />
+  </EntityType>
+  <EntityType Name="UserLedger1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="BusinessId" Type="Int32" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="User1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SessionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UserKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SessionLogs" Relationship="QupModel.FK__SessionLo__UserI__6477ECF3" FromRole="User1" ToRole="SessionLog1" />
+    <NavigationProperty Name="UsersToUserGroups" Relationship="QupModel.FK__UsersToUs__UserI__60A75C0F" FromRole="User1" ToRole="UsersToUserGroup1" />
+  </EntityType>
+  <EntityType Name="UsersToUserGroup1">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="UserGroupId" Type="Int32" />
+    <NavigationProperty Name="UserGroup" Relationship="QupModel.FK__UsersToUs__UserG__619B8048" FromRole="UsersToUserGroup1" ToRole="UserGroup1" />
+    <NavigationProperty Name="User" Relationship="QupModel.FK__UsersToUs__UserI__60A75C0F" FromRole="UsersToUserGroup1" ToRole="User1" />
+  </EntityType>
+  <EntityType Name="vwGetBusinessDetail1">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Address" />
+      <PropertyRef Name="Capacity" />
+      <PropertyRef Name="DateCreated" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Capacity" Type="Int32" Nullable="false" />
+    <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK__BusinessO__Busin__4CA06362">
+    <End Type="QupModel.Business1" Role="Business1" Multiplicity="0..1" />
+    <End Type="QupModel.BusinessOperation1" Role="BusinessOperation1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessOperation1">
+        <PropertyRef Name="BusinessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__BusinessP__Busin__4F7CD00D">
+    <End Type="QupModel.Business1" Role="Business1" Multiplicity="0..1" />
+    <End Type="QupModel.BusinessProfile1" Role="BusinessProfile1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Business1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BusinessProfile1">
+        <PropertyRef Name="BusinessId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SessionLo__UserI__6477ECF3">
+    <End Type="QupModel.User1" Role="User1" Multiplicity="0..1" />
+    <End Type="QupModel.SessionLog1" Role="SessionLog1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="SessionLog1">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsersToUs__UserG__619B8048">
+    <End Type="QupModel.UserGroup1" Role="UserGroup1" Multiplicity="0..1" />
+    <End Type="QupModel.UsersToUserGroup1" Role="UsersToUserGroup1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersToUserGroup1">
+        <PropertyRef Name="UserGroupId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UsersToUs__UserI__60A75C0F">
+    <End Type="QupModel.User1" Role="User1" Multiplicity="0..1" />
+    <End Type="QupModel.UsersToUserGroup1" Role="UsersToUserGroup1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User1">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsersToUserGroup1">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="spGetCustomersInQueueByDate1_Result">
+    <Property Type="Int32" Name="QueueId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="101" />
+    <Property Type="DateTime" Name="EntryTime" Nullable="true" Precision="23" />
+    <Property Type="DateTime" Name="ExitTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Capacity" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spGetUserQueue1_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="DateTime" Name="QueueJoinDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="PatronId" Nullable="true" />
+    <Property Type="DateTime" Name="ActualEntryDateTime" Nullable="true" Precision="23" />
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+    <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="spUsersByUserGroup1_Result">
+    <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FullName" Nullable="false" MaxLength="101" />
     <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
     <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
   </ComplexType>

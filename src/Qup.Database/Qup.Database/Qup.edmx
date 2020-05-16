@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Business">
           <Key>
             <PropertyRef Name="Id" />
@@ -119,7 +119,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Name="DateCreated" Type="datetime" Nullable="false" />
           <Property Name="ProfileImage" Type="image" />
         </EntityType>
-        <Association Name="FK__BusinessO__Busin__7F2BE32F">
+        <Association Name="FK__BusinessO__Busin__4CA06362">
           <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
           <End Role="BusinessOperations" Type="Self.BusinessOperations" Multiplicity="*" />
           <ReferentialConstraint>
@@ -131,7 +131,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__BusinessP__Busin__7C4F7684">
+        <Association Name="FK__BusinessP__Busin__4F7CD00D">
           <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
           <End Role="BusinessProfile" Type="Self.BusinessProfile" Multiplicity="*" />
           <ReferentialConstraint>
@@ -143,7 +143,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SessionLo__UserI__71D1E811">
+        <Association Name="FK__SessionLo__UserI__6477ECF3">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="SessionLog" Type="Self.SessionLog" Multiplicity="*" />
           <ReferentialConstraint>
@@ -155,7 +155,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsersToUs__UserG__6EF57B66">
+        <Association Name="FK__UsersToUs__UserG__619B8048">
           <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="0..1" />
           <End Role="UsersToUserGroups" Type="Self.UsersToUserGroups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -167,7 +167,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsersToUs__UserI__6E01572D">
+        <Association Name="FK__UsersToUs__UserI__60A75C0F">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="UsersToUserGroups" Type="Self.UsersToUserGroups" Multiplicity="*" />
           <ReferentialConstraint>
@@ -211,101 +211,64 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
     [vwGetBusinessDetails].[ProfileImage] AS [ProfileImage]
     FROM [dbo].[vwGetBusinessDetails] AS [vwGetBusinessDetails]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__BusinessO__Busin__7F2BE32F" Association="Self.FK__BusinessO__Busin__7F2BE32F">
+          <AssociationSet Name="FK__BusinessO__Busin__4CA06362" Association="Self.FK__BusinessO__Busin__4CA06362">
             <End Role="Business" EntitySet="Business" />
             <End Role="BusinessOperations" EntitySet="BusinessOperations" />
           </AssociationSet>
-          <AssociationSet Name="FK__BusinessP__Busin__7C4F7684" Association="Self.FK__BusinessP__Busin__7C4F7684">
+          <AssociationSet Name="FK__BusinessP__Busin__4F7CD00D" Association="Self.FK__BusinessP__Busin__4F7CD00D">
             <End Role="Business" EntitySet="Business" />
             <End Role="BusinessProfile" EntitySet="BusinessProfile" />
           </AssociationSet>
-          <AssociationSet Name="FK__SessionLo__UserI__71D1E811" Association="Self.FK__SessionLo__UserI__71D1E811">
+          <AssociationSet Name="FK__SessionLo__UserI__6477ECF3" Association="Self.FK__SessionLo__UserI__6477ECF3">
             <End Role="Users" EntitySet="Users" />
             <End Role="SessionLog" EntitySet="SessionLog" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsersToUs__UserG__6EF57B66" Association="Self.FK__UsersToUs__UserG__6EF57B66">
+          <AssociationSet Name="FK__UsersToUs__UserG__619B8048" Association="Self.FK__UsersToUs__UserG__619B8048">
             <End Role="UserGroups" EntitySet="UserGroups" />
             <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
           </AssociationSet>
-          <AssociationSet Name="FK__UsersToUs__UserI__6E01572D" Association="Self.FK__UsersToUs__UserI__6E01572D">
+          <AssociationSet Name="FK__UsersToUs__UserI__60A75C0F" Association="Self.FK__UsersToUs__UserI__60A75C0F">
             <End Role="Users" EntitySet="Users" />
             <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="UserGroup">
+        <EntityType Name="Business">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="UsersToUserGroups" Relationship="QupModel.FK__UsersToUs__UserG__6EF57B66" FromRole="UserGroup" ToRole="UsersToUserGroup" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Capacity" Type="Int32" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="BusinessOperations" Relationship="Self.FK__BusinessO__Busin__4CA06362" FromRole="Business" ToRole="BusinessOperations" />
+          <NavigationProperty Name="BusinessProfiles" Relationship="Self.FK__BusinessP__Busin__4F7CD00D" FromRole="Business" ToRole="BusinessProfile" />
         </EntityType>
-        <EntityContainer Name="QupEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
-          <FunctionImport Name="spUsersByUserGroup" ReturnType="Collection(QupModel.spUsersByUserGroup_Result)">
-          <Parameter Name="userGroup" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="UserLedgers" EntityType="QupModel.UserLedger" />
-          <EntitySet Name="QueueTransactions" EntityType="QupModel.QueueTransaction" />
-          <FunctionImport Name="spGetCustomersInQueueByDate" ReturnType="Collection(QupModel.spGetCustomersInQueueByDate_Result)">
-            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
-            <Parameter Name="toDate" Mode="In" Type="DateTime" />
-            <Parameter Name="businessId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="SessionLogs" EntityType="QupModel.SessionLog" />
-          <EntitySet Name="UsersToUserGroups" EntityType="QupModel.UsersToUserGroup" />
-          <AssociationSet Name="FK__UsersToUs__UserG__6EF57B66" Association="QupModel.FK__UsersToUs__UserG__6EF57B66">
-            <End Role="UserGroup" EntitySet="UserGroups" />
-            <End Role="UsersToUserGroup" EntitySet="UsersToUserGroups" />
-          </AssociationSet>
-          <EntitySet Name="Businesses" EntityType="QupModel.Business" />
-          <EntitySet Name="BusinessOperations" EntityType="QupModel.BusinessOperation" />
-          <EntitySet Name="BusinessProfiles" EntityType="QupModel.BusinessProfile" />
-          <AssociationSet Name="FK__BusinessO__Busin__7F2BE32F" Association="QupModel.FK__BusinessO__Busin__7F2BE32F">
-            <End Role="Business" EntitySet="Businesses" />
-            <End Role="BusinessOperation" EntitySet="BusinessOperations" />
-          </AssociationSet>
-          <AssociationSet Name="FK__BusinessP__Busin__7C4F7684" Association="QupModel.FK__BusinessP__Busin__7C4F7684">
-            <End Role="Business" EntitySet="Businesses" />
-            <End Role="BusinessProfile" EntitySet="BusinessProfiles" />
-          </AssociationSet>
-          <EntitySet Name="vwGetBusinessDetails" EntityType="QupModel.vwGetBusinessDetail" />
-          <EntitySet Name="Users" EntityType="QupModel.User" />
-          <AssociationSet Name="FK__SessionLo__UserI__71D1E811" Association="QupModel.FK__SessionLo__UserI__71D1E811">
-            <End Role="User" EntitySet="Users" />
-            <End Role="SessionLog" EntitySet="SessionLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UsersToUs__UserI__6E01572D" Association="QupModel.FK__UsersToUs__UserI__6E01572D">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UsersToUserGroup" EntitySet="UsersToUserGroups" />
-          </AssociationSet>
-          <FunctionImport Name="spGetUserQueue" ReturnType="Collection(QupModel.spGetUserQueue_Result)">
-            <Parameter Name="sessionId" Mode="In" Type="String" />
-            <Parameter Name="businessId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          </EntityContainer>
-        <ComplexType Name="spUsersByUserGroup_Result">
-          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="FullName" Nullable="false" MaxLength="101" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
-          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
-        </ComplexType>
-        <EntityType Name="UserLedger">
+        <EntityType Name="BusinessOperation">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="BusinessId" Type="Int32" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+          <Property Name="BusinessId" Type="Int32" />
+          <Property Name="Day" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="OpenTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CloseTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Business" Relationship="Self.FK__BusinessO__Busin__4CA06362" FromRole="BusinessOperations" ToRole="Business" />
+        </EntityType>
+        <EntityType Name="BusinessProfile">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BusinessId" Type="Int32" />
+          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Business" Relationship="Self.FK__BusinessP__Busin__4F7CD00D" FromRole="BusinessProfile" ToRole="Business" />
         </EntityType>
         <EntityType Name="QueueTransaction">
           <Key>
@@ -320,13 +283,6 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Name="ExitTime" Type="DateTime" Precision="3" />
           <Property Name="UserLedgerId" Type="Int32" />
         </EntityType>
-        <ComplexType Name="spGetCustomersInQueueByDate_Result">
-          <Property Type="Int32" Name="QueueId" Nullable="false" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="101" />
-          <Property Type="DateTime" Name="EntryTime" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="ExitTime" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="Capacity" Nullable="false" />
-        </ComplexType>
         <EntityType Name="SessionLog">
           <Key>
             <PropertyRef Name="Id" />
@@ -339,7 +295,44 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Name="XForwardedFor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Browser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="DateCreated" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="User" Relationship="QupModel.FK__SessionLo__UserI__71D1E811" FromRole="SessionLog" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="Self.FK__SessionLo__UserI__6477ECF3" FromRole="SessionLog" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="UserGroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="UsersToUserGroups" Relationship="Self.FK__UsersToUs__UserG__619B8048" FromRole="UserGroups" ToRole="UsersToUserGroups" />
+        </EntityType>
+        <EntityType Name="UserLedger">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="BusinessId" Type="Int32" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Salt" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SessionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="SessionLogs" Relationship="Self.FK__SessionLo__UserI__6477ECF3" FromRole="Users" ToRole="SessionLog" />
+          <NavigationProperty Name="UsersToUserGroups" Relationship="Self.FK__UsersToUs__UserI__60A75C0F" FromRole="Users" ToRole="UsersToUserGroups" />
         </EntityType>
         <EntityType Name="UsersToUserGroup">
           <Key>
@@ -348,78 +341,9 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserId" Type="Int32" />
           <Property Name="UserGroupId" Type="Int32" />
-          <NavigationProperty Name="UserGroup" Relationship="QupModel.FK__UsersToUs__UserG__6EF57B66" FromRole="UsersToUserGroup" ToRole="UserGroup" />
-          <NavigationProperty Name="User" Relationship="QupModel.FK__UsersToUs__UserI__6E01572D" FromRole="UsersToUserGroup" ToRole="User" />
+          <NavigationProperty Name="UserGroup" Relationship="Self.FK__UsersToUs__UserG__619B8048" FromRole="UsersToUserGroups" ToRole="UserGroups" />
+          <NavigationProperty Name="User" Relationship="Self.FK__UsersToUs__UserI__60A75C0F" FromRole="UsersToUserGroups" ToRole="Users" />
         </EntityType>
-        <Association Name="FK__UsersToUs__UserG__6EF57B66">
-          <End Type="QupModel.UserGroup" Role="UserGroup" Multiplicity="0..1" />
-          <End Type="QupModel.UsersToUserGroup" Role="UsersToUserGroup" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserGroup">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="UsersToUserGroup">
-              <PropertyRef Name="UserGroupId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Business">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Capacity" Type="Int32" Nullable="false" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="BusinessOperations" Relationship="QupModel.FK__BusinessO__Busin__7F2BE32F" FromRole="Business" ToRole="BusinessOperation" />
-          <NavigationProperty Name="BusinessProfiles" Relationship="QupModel.FK__BusinessP__Busin__7C4F7684" FromRole="Business" ToRole="BusinessProfile" />
-        </EntityType>
-        <EntityType Name="BusinessOperation">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BusinessId" Type="Int32" />
-          <Property Name="Day" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
-          <Property Name="OpenTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CloseTime" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Business" Relationship="QupModel.FK__BusinessO__Busin__7F2BE32F" FromRole="BusinessOperation" ToRole="Business" />
-        </EntityType>
-        <EntityType Name="BusinessProfile">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="BusinessId" Type="Int32" />
-          <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Business" Relationship="QupModel.FK__BusinessP__Busin__7C4F7684" FromRole="BusinessProfile" ToRole="Business" />
-        </EntityType>
-        <Association Name="FK__BusinessO__Busin__7F2BE32F">
-          <End Type="QupModel.Business" Role="Business" Multiplicity="0..1" />
-          <End Type="QupModel.BusinessOperation" Role="BusinessOperation" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Business">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BusinessOperation">
-              <PropertyRef Name="BusinessId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__BusinessP__Busin__7C4F7684">
-          <End Type="QupModel.Business" Role="Business" Multiplicity="0..1" />
-          <End Type="QupModel.BusinessProfile" Role="BusinessProfile" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Business">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="BusinessProfile">
-              <PropertyRef Name="BusinessId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="vwGetBusinessDetail">
           <Key>
             <PropertyRef Name="Id" />
@@ -429,34 +353,41 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             <PropertyRef Name="DateCreated" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Capacity" Type="Int32" Nullable="false" />
           <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ProfileImage" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Salt" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="DateCreated" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SessionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="SessionLogs" Relationship="QupModel.FK__SessionLo__UserI__71D1E811" FromRole="User" ToRole="SessionLog" />
-          <NavigationProperty Name="UsersToUserGroups" Relationship="QupModel.FK__UsersToUs__UserI__6E01572D" FromRole="User" ToRole="UsersToUserGroup" />
-        </EntityType>
-        <Association Name="FK__SessionLo__UserI__71D1E811">
-          <End Type="QupModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="QupModel.SessionLog" Role="SessionLog" Multiplicity="*" />
+        <Association Name="FK__BusinessO__Busin__4CA06362">
+          <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+          <End Role="BusinessOperations" Type="Self.BusinessOperation" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Business">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BusinessOperations">
+              <PropertyRef Name="BusinessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__BusinessP__Busin__4F7CD00D">
+          <End Role="Business" Type="Self.Business" Multiplicity="0..1" />
+          <End Role="BusinessProfile" Type="Self.BusinessProfile" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Business">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BusinessProfile">
+              <PropertyRef Name="BusinessId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SessionLo__UserI__6477ECF3">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="SessionLog" Type="Self.SessionLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="SessionLog">
@@ -464,18 +395,81 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UsersToUs__UserI__6E01572D">
-          <End Type="QupModel.User" Role="User" Multiplicity="0..1" />
-          <End Type="QupModel.UsersToUserGroup" Role="UsersToUserGroup" Multiplicity="*" />
+        <Association Name="FK__UsersToUs__UserG__619B8048">
+          <End Role="UserGroups" Type="Self.UserGroup" Multiplicity="0..1" />
+          <End Role="UsersToUserGroups" Type="Self.UsersToUserGroup" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="UserGroups">
               <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="UsersToUserGroup">
+            <Dependent Role="UsersToUserGroups">
+              <PropertyRef Name="UserGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UsersToUs__UserI__60A75C0F">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="UsersToUserGroups" Type="Self.UsersToUserGroup" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UsersToUserGroups">
               <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="QupEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Businesses" EntityType="Self.Business" />
+          <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperation" />
+          <EntitySet Name="BusinessProfiles" EntityType="Self.BusinessProfile" />
+          <EntitySet Name="QueueTransactions" EntityType="Self.QueueTransaction" />
+          <EntitySet Name="SessionLogs" EntityType="Self.SessionLog" />
+          <EntitySet Name="UserGroups" EntityType="Self.UserGroup" />
+          <EntitySet Name="UserLedgers" EntityType="Self.UserLedger" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroup" />
+          <EntitySet Name="vwGetBusinessDetails" EntityType="Self.vwGetBusinessDetail" />
+          <AssociationSet Name="FK__BusinessO__Busin__4CA06362" Association="Self.FK__BusinessO__Busin__4CA06362">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="BusinessOperations" EntitySet="BusinessOperations" />
+          </AssociationSet>
+          <AssociationSet Name="FK__BusinessP__Busin__4F7CD00D" Association="Self.FK__BusinessP__Busin__4F7CD00D">
+            <End Role="Business" EntitySet="Businesses" />
+            <End Role="BusinessProfile" EntitySet="BusinessProfiles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SessionLo__UserI__6477ECF3" Association="Self.FK__SessionLo__UserI__6477ECF3">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="SessionLog" EntitySet="SessionLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsersToUs__UserG__619B8048" Association="Self.FK__UsersToUs__UserG__619B8048">
+            <End Role="UserGroups" EntitySet="UserGroups" />
+            <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UsersToUs__UserI__60A75C0F" Association="Self.FK__UsersToUs__UserI__60A75C0F">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
+          </AssociationSet>
+          <FunctionImport Name="spGetCustomersInQueueByDate" ReturnType="Collection(QupModel.spGetCustomersInQueueByDate_Result)">
+            <Parameter Name="fromDate" Mode="In" Type="DateTime" />
+            <Parameter Name="toDate" Mode="In" Type="DateTime" />
+            <Parameter Name="businessId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spGetUserQueue" ReturnType="Collection(QupModel.spGetUserQueue_Result)">
+            <Parameter Name="sessionId" Mode="In" Type="String" />
+            <Parameter Name="businessId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spUsersByUserGroup" ReturnType="Collection(QupModel.spUsersByUserGroup_Result)">
+            <Parameter Name="userGroup" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="spGetCustomersInQueueByDate_Result">
+          <Property Type="Int32" Name="QueueId" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="101" />
+          <Property Type="DateTime" Name="EntryTime" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="ExitTime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="Capacity" Nullable="false" />
+        </ComplexType>
         <ComplexType Name="spGetUserQueue_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
           <Property Type="DateTime" Name="QueueJoinDateTime" Nullable="true" Precision="23" />
@@ -486,12 +480,79 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
         </ComplexType>
-        </Schema>
+        <ComplexType Name="spUsersByUserGroup_Result">
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="FullName" Nullable="false" MaxLength="101" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
+        </ComplexType>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="QupModelStoreContainer" CdmEntityContainer="QupEntities">
+          <EntitySetMapping Name="Businesses">
+            <EntityTypeMapping TypeName="QupModel.Business">
+              <MappingFragment StoreEntitySet="Business">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessOperations">
+            <EntityTypeMapping TypeName="QupModel.BusinessOperation">
+              <MappingFragment StoreEntitySet="BusinessOperations">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessProfiles">
+            <EntityTypeMapping TypeName="QupModel.BusinessProfile">
+              <MappingFragment StoreEntitySet="BusinessProfile">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueueTransactions">
+            <EntityTypeMapping TypeName="QupModel.QueueTransaction">
+              <MappingFragment StoreEntitySet="QueueTransactions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="QueueJoinDateTime" ColumnName="QueueJoinDateTime" />
+                <ScalarProperty Name="PatronId" ColumnName="PatronId" />
+                <ScalarProperty Name="ExpectedEntryDateTime" ColumnName="ExpectedEntryDateTime" />
+                <ScalarProperty Name="ActualEntryDateTime" ColumnName="ActualEntryDateTime" />
+                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+                <ScalarProperty Name="UserLedgerId" ColumnName="UserLedgerId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SessionLogs">
+            <EntityTypeMapping TypeName="QupModel.SessionLog">
+              <MappingFragment StoreEntitySet="SessionLog">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
+                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
+                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+                <ScalarProperty Name="XForwardedFor" ColumnName="XForwardedFor" />
+                <ScalarProperty Name="Browser" ColumnName="Browser" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserGroups">
             <EntityTypeMapping TypeName="QupModel.UserGroup">
               <MappingFragment StoreEntitySet="UserGroups">
@@ -501,40 +562,52 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="spUsersByUserGroup" FunctionName="QupModel.Store.spUsersByUserGroup">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="QupModel.spUsersByUserGroup_Result">
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <EntitySetMapping Name="UserLedgers">
             <EntityTypeMapping TypeName="QupModel.UserLedger">
               <MappingFragment StoreEntitySet="UserLedger">
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="QueueTransactions">
-            <EntityTypeMapping TypeName="QupModel.QueueTransaction">
-              <MappingFragment StoreEntitySet="QueueTransactions">
-                <ScalarProperty Name="UserLedgerId" ColumnName="UserLedgerId" />
-                <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
-                <ScalarProperty Name="ActualEntryDateTime" ColumnName="ActualEntryDateTime" />
-                <ScalarProperty Name="ExpectedEntryDateTime" ColumnName="ExpectedEntryDateTime" />
-                <ScalarProperty Name="PatronId" ColumnName="PatronId" />
-                <ScalarProperty Name="QueueJoinDateTime" ColumnName="QueueJoinDateTime" />
-                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="QupModel.User">
+              <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Salt" ColumnName="Salt" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersToUserGroups">
+            <EntityTypeMapping TypeName="QupModel.UsersToUserGroup">
+              <MappingFragment StoreEntitySet="UsersToUserGroups">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vwGetBusinessDetails">
+            <EntityTypeMapping TypeName="QupModel.vwGetBusinessDetail">
+              <MappingFragment StoreEntitySet="vwGetBusinessDetails">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -549,89 +622,6 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="SessionLogs">
-            <EntityTypeMapping TypeName="QupModel.SessionLog">
-              <MappingFragment StoreEntitySet="SessionLog">
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Browser" ColumnName="Browser" />
-                <ScalarProperty Name="XForwardedFor" ColumnName="XForwardedFor" />
-                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
-                <ScalarProperty Name="ServerName" ColumnName="ServerName" />
-                <ScalarProperty Name="IpAddress" ColumnName="IpAddress" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UsersToUserGroups">
-            <EntityTypeMapping TypeName="QupModel.UsersToUserGroup">
-              <MappingFragment StoreEntitySet="UsersToUserGroups">
-                <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Businesses">
-            <EntityTypeMapping TypeName="QupModel.Business">
-              <MappingFragment StoreEntitySet="Business">
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BusinessOperations">
-            <EntityTypeMapping TypeName="QupModel.BusinessOperation">
-              <MappingFragment StoreEntitySet="BusinessOperations">
-                <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
-                <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
-                <ScalarProperty Name="Day" ColumnName="Day" />
-                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BusinessProfiles">
-            <EntityTypeMapping TypeName="QupModel.BusinessProfile">
-              <MappingFragment StoreEntitySet="BusinessProfile">
-                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
-                <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vwGetBusinessDetails">
-            <EntityTypeMapping TypeName="QupModel.vwGetBusinessDetail">
-              <MappingFragment StoreEntitySet="vwGetBusinessDetails">
-                <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="QupModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
-                <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
-                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="Salt" ColumnName="Salt" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="spGetUserQueue" FunctionName="QupModel.Store.spGetUserQueue">
             <ResultMapping>
               <ComplexTypeMapping TypeName="QupModel.spGetUserQueue_Result">
@@ -641,6 +631,17 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
                 <ScalarProperty Name="ActualEntryDateTime" ColumnName="ActualEntryDateTime" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="spUsersByUserGroup" FunctionName="QupModel.Store.spUsersByUserGroup">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="QupModel.spUsersByUserGroup_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
               </ComplexTypeMapping>

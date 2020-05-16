@@ -36,11 +36,6 @@
                                 <input class="form-control" id="password" name="password" type="password" placeholder="Password"  />
                             </div>
                         </div>
-                        <%--<div class="row mt-2 py-2">
-                            <a href="/Base/ForgotPassword.aspx">
-                                <small class="text-primary">Forgot Your Password</small>
-                            </a>
-                        </div>--%>
                         <div class="row my-4">
                             <asp:Button class="btn btn-success" type="submit" runat="server" Text="Login" ID="login" OnClick="login_Click"></asp:Button>
                         </div>
@@ -51,6 +46,9 @@
                         </div>
                     </div>
                     <div class="col-md-3"></div>
+                </div>                
+                <div>
+                    <input type="text" name="profileHiddenField" id="profileHiddenField" runat="server" hidden />
                 </div>
             </div>
         </section>

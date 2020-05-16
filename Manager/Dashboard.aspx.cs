@@ -19,6 +19,8 @@ namespace Qup.Manager
             {
                 SaveCustomerExitTime(Request["deleteId"]);
             }
+
+            Response.AddHeader("Refresh", "30");
         }
 
         protected void saveSubmit_Click(object sender, EventArgs e)

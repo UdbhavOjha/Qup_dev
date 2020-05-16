@@ -54,87 +54,87 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessOperation.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="BusinessProfile.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QueueTransaction.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
-    <Compile Include="QupDatabase.Context.cs">
+    <Compile Include="Qup.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QupDatabase.Context.tt</DependentUpon>
+      <DependentUpon>Qup.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="QupDatabase.cs">
+    <Compile Include="Qup.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
-    <Compile Include="QupDatabase.Designer.cs">
+    <Compile Include="Qup.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>QupDatabase.edmx</DependentUpon>
+      <DependentUpon>Qup.edmx</DependentUpon>
     </Compile>
     <Compile Include="SessionLog.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetCustomersInQueueByDate_Result.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="spGetUserQueue_Result.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="spUsersByUserGroup_Result.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="UserGroup.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="UserLedger.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="UsersToUserGroup.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
     <Compile Include="vwGetBusinessDetail.cs">
-      <DependentUpon>QupDatabase.tt</DependentUpon>
+      <DependentUpon>Qup.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="QupDatabase.edmx">
+    <EntityDeploy Include="Qup.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>QupDatabase.Designer.cs</LastGenOutput>
+      <LastGenOutput>Qup.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="QupDatabase.edmx.diagram">
-      <DependentUpon>QupDatabase.edmx</DependentUpon>
+    <None Include="Qup.edmx.diagram">
+      <DependentUpon>Qup.edmx</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="QupDatabase.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QupDatabase.edmx</DependentUpon>
-      <LastGenOutput>QupDatabase.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="QupDatabase.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>QupDatabase.edmx</DependentUpon>
-      <LastGenOutput>QupDatabase.cs</LastGenOutput>
-    </Content>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+    <Content Include="Qup.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Qup.edmx</DependentUpon>
+      <LastGenOutput>Qup.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Qup.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Qup.edmx</DependentUpon>
+      <LastGenOutput>Qup.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

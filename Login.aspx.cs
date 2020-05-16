@@ -7,19 +7,36 @@ namespace Qup
 {
     public partial class Login : System.Web.UI.Page
     {
-        protected string cookiesOnBrowser;
         protected void Page_Load(object sender, EventArgs e)
         {
             var profileQuery = Request.QueryString["profile"];
+            var profileHiddenFieldValue = profileHiddenField;
             if (profileQuery != null && int.TryParse(profileQuery, out int businessId))
             {
                 Verify(businessId);
-            }            
+            }
+            else if (profileHiddenFieldValue != null && int.TryParse(Convert.ToString(profileHiddenFieldValue), out int profileHiddenFieldId))
+            {
+                Verify(profileHiddenFieldId);
+            }
         }
 
         protected void login_Click(object sender, EventArgs e)
         {
-            Verify(null);
+            var profileQuery = Request.QueryString["profile"];
+            var profileHiddenFieldValue = profileHiddenField;
+            if (profileQuery != null && int.TryParse(Convert.ToString(profileQuery), out int businessId))
+            {
+                Verify(businessId);
+            }
+            else if (profileHiddenFieldValue != null && int.TryParse(Convert.ToString(profileHiddenFieldValue), out int profileHiddenFieldId))
+            {
+                Verify(profileHiddenFieldId);
+            }
+            else
+            {
+                Verify(null);
+            }            
         }
 
         private void Verify(int? businessId) 
@@ -61,6 +78,10 @@ namespace Qup
                 {
                     Response.Redirect("/Clients/JoinQueue.aspx?profile=" + Convert.ToString(businessId));
                 }
+                else if (userValidationResults.UserGroup == 1 && businessId == null)
+                {
+                    Response.Redirect("/Clients/PatronDashboard.aspx");
+                }
                 else if (userValidationResults.UserGroup == 2)
                 {
                     Response.Redirect("/Manager/Dashboard.aspx");
@@ -69,6 +90,10 @@ namespace Qup
                 {
                     Response.Redirect("/Admins/AdminDashboard.aspx");
                 }
+            }
+            else if (Request.QueryString["profile"] != string.Empty)
+            {
+                profileHiddenField.Value = Request.QueryString["profile"];
             }
         }
     }

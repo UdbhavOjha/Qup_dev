@@ -113,7 +113,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-2"></div>
-                    <div class="col-md-8 text-info border border-info p-4">
+                    <div class="col-md-8 text-info border border-info rounded p-4">
                         No results. 
                     </div>
                     <div class="col-md-2"></div>
@@ -125,9 +125,7 @@
     <!-- Script -->    
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.datepicker').datepicker({
-                endDate: "today"
-            });
+            $('.datepicker').datepicker();
 
             var table = $('#customerSearch').DataTable();
             table.draw();

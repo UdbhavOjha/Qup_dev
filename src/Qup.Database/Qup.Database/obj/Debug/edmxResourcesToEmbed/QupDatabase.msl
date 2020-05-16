@@ -1,40 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="QupModelStoreContainer" CdmEntityContainer="QupEntities">
-    <EntitySetMapping Name="UserGroups">
-      <EntityTypeMapping TypeName="QupModel.UserGroup">
-        <MappingFragment StoreEntitySet="UserGroups">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="spUsersByUserGroup" FunctionName="QupModel.Store.spUsersByUserGroup">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="QupModel.spUsersByUserGroup_Result">
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="UserLedgers">
-      <EntityTypeMapping TypeName="QupModel.UserLedger">
-        <MappingFragment StoreEntitySet="UserLedger">
+    <EntitySetMapping Name="Business1">
+      <EntityTypeMapping TypeName="QupModel.Business1">
+        <MappingFragment StoreEntitySet="Business">
           <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="QueueTransactions">
-      <EntityTypeMapping TypeName="QupModel.QueueTransaction">
+    <EntitySetMapping Name="BusinessOperation1">
+      <EntityTypeMapping TypeName="QupModel.BusinessOperation1">
+        <MappingFragment StoreEntitySet="BusinessOperations">
+          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+          <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
+          <ScalarProperty Name="Day" ColumnName="Day" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BusinessProfile1">
+      <EntityTypeMapping TypeName="QupModel.BusinessProfile1">
+        <MappingFragment StoreEntitySet="BusinessProfile">
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QueueTransaction1">
+      <EntityTypeMapping TypeName="QupModel.QueueTransaction1">
         <MappingFragment StoreEntitySet="QueueTransactions">
           <ScalarProperty Name="UserLedgerId" ColumnName="UserLedgerId" />
           <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
@@ -47,19 +47,8 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="spGetCustomersInQueueByDate" FunctionName="QupModel.Store.spGetCustomersInQueueByDate">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="QupModel.spGetCustomersInQueueByDate_Result">
-          <ScalarProperty Name="QueueId" ColumnName="QueueId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
-          <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
-          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="SessionLogs">
-      <EntityTypeMapping TypeName="QupModel.SessionLog">
+    <EntitySetMapping Name="SessionLog1">
+      <EntityTypeMapping TypeName="QupModel.SessionLog1">
         <MappingFragment StoreEntitySet="SessionLog">
           <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
           <ScalarProperty Name="Browser" ColumnName="Browser" />
@@ -72,61 +61,29 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="UsersToUserGroups">
-      <EntityTypeMapping TypeName="QupModel.UsersToUserGroup">
-        <MappingFragment StoreEntitySet="UsersToUserGroups">
-          <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Businesses">
-      <EntityTypeMapping TypeName="QupModel.Business">
-        <MappingFragment StoreEntitySet="Business">
-          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
+    <EntitySetMapping Name="UserGroup1">
+      <EntityTypeMapping TypeName="QupModel.UserGroup1">
+        <MappingFragment StoreEntitySet="UserGroups">
+          <ScalarProperty Name="Description" ColumnName="Description" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="BusinessOperations">
-      <EntityTypeMapping TypeName="QupModel.BusinessOperation">
-        <MappingFragment StoreEntitySet="BusinessOperations">
-          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
-          <ScalarProperty Name="OpenTime" ColumnName="OpenTime" />
-          <ScalarProperty Name="Day" ColumnName="Day" />
-          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="BusinessProfiles">
-      <EntityTypeMapping TypeName="QupModel.BusinessProfile">
-        <MappingFragment StoreEntitySet="BusinessProfile">
-          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
-          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="vwGetBusinessDetails">
-      <EntityTypeMapping TypeName="QupModel.vwGetBusinessDetail">
-        <MappingFragment StoreEntitySet="vwGetBusinessDetails">
-          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+    <EntitySetMapping Name="UserLedger1">
+      <EntityTypeMapping TypeName="QupModel.UserLedger1">
+        <MappingFragment StoreEntitySet="UserLedger">
           <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
-          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BusinessId" ColumnName="BusinessId" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="QupModel.User">
+    <EntitySetMapping Name="User1">
+      <EntityTypeMapping TypeName="QupModel.User1">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="UserKey" ColumnName="UserKey" />
           <ScalarProperty Name="SessionKey" ColumnName="SessionKey" />
@@ -141,15 +98,58 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="spGetUserQueue" FunctionName="QupModel.Store.spGetUserQueue">
+    <EntitySetMapping Name="UsersToUserGroup1">
+      <EntityTypeMapping TypeName="QupModel.UsersToUserGroup1">
+        <MappingFragment StoreEntitySet="UsersToUserGroups">
+          <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vwGetBusinessDetail1">
+      <EntityTypeMapping TypeName="QupModel.vwGetBusinessDetail1">
+        <MappingFragment StoreEntitySet="vwGetBusinessDetails">
+          <ScalarProperty Name="ProfileImage" ColumnName="ProfileImage" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spGetCustomersInQueueByDate1" FunctionName="QupModel.Store.spGetCustomersInQueueByDate">
       <ResultMapping>
-        <ComplexTypeMapping TypeName="QupModel.spGetUserQueue_Result">
+        <ComplexTypeMapping TypeName="QupModel.spGetCustomersInQueueByDate1_Result">
+          <ScalarProperty Name="QueueId" ColumnName="QueueId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EntryTime" ColumnName="EntryTime" />
+          <ScalarProperty Name="ExitTime" ColumnName="ExitTime" />
+          <ScalarProperty Name="Capacity" ColumnName="Capacity" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spGetUserQueue1" FunctionName="QupModel.Store.spGetUserQueue">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QupModel.spGetUserQueue1_Result">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="QueueJoinDateTime" ColumnName="QueueJoinDateTime" />
           <ScalarProperty Name="PatronId" ColumnName="PatronId" />
           <ScalarProperty Name="ActualEntryDateTime" ColumnName="ActualEntryDateTime" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spUsersByUserGroup1" FunctionName="QupModel.Store.spUsersByUserGroup">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="QupModel.spUsersByUserGroup1_Result">
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
         </ComplexTypeMapping>

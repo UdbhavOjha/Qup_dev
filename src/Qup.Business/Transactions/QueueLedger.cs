@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using Qup.Business.Authentication;
 using Qup.Business.AccountsManagement;
+using System.Linq;
 
 namespace Qup.Business.Transactions
 {
@@ -32,17 +33,22 @@ namespace Qup.Business.Transactions
             var customersInQueue = new List<CustomerInQueue>();
             var queryResults = dbContext.spGetCustomersInQueueByDate(fromDate, toDate, businessId);
 
-            foreach (var item in queryResults)
+            var results = queryResults.ToList();
+
+            if (results.Count > 0 )
             {
-                customersInQueue.Add(new CustomerInQueue
+                foreach (var item in results)
                 {
-                    Name = item.Name,
-                    QueueEntryTime = item.EntryTime,
-                    QueueExitTime = item.ExitTime,
-                    Capacity = item.Capacity,
-                    QueueId = item.QueueId
-                });
-            }
+                    customersInQueue.Add(new CustomerInQueue
+                    {
+                        Name = item.Name,
+                        QueueEntryTime = item.EntryTime,
+                        QueueExitTime = item.ExitTime,
+                        Capacity = item.Capacity,
+                        QueueId = item.QueueId
+                    });
+                }
+            }                      
 
             return customersInQueue;
         }

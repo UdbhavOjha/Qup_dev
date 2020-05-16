@@ -9,6 +9,10 @@ namespace Qup.Manager
     {
         protected IEnumerable<CustomerInQueue> customerSearchResults;
 
+        protected DateTime fromDateConverted;
+
+        protected DateTime toDateConverted;
+
         protected bool noResults = true;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -21,16 +25,24 @@ namespace Qup.Manager
             var toDateSelected = toDate.Value;
             int businessId = 1;
 
+            var fromDateConvertTest = DateTime.TryParse(fromDateSelected.Trim(), out DateTime fromDateConverted);
+            var toDateConvertTest = DateTime.TryParse(toDateSelected.Trim(), out DateTime toDateConverted);
+
             // Put Validation
-
-            var queueHandler = new QueueLedger();
-            customerSearchResults = queueHandler.GetCustomersInQueue(businessId, Convert.ToDateTime(fromDateSelected).Date, Convert.ToDateTime(toDateSelected).Date);
-
-            foreach (var item in customerSearchResults)
+            if (fromDateConvertTest && toDateConvertTest)
             {
-                noResults = false;
-                break;
+                var queueHandler = new QueueLedger();
+                customerSearchResults = queueHandler.GetCustomersInQueue(businessId, fromDateConverted, toDateConverted);
+
+                foreach (var item in customerSearchResults)
+                {
+                    noResults = false;
+                    break;
+                }
             }
+            
+
+            
         }
     }
 }

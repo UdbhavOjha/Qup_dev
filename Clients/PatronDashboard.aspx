@@ -12,7 +12,7 @@
                   <div class="card-body">
                     <h4 class="card-title">The Kingslander</h4>
                     <p class="card-text">470 New North Road, Kingsland, Auckland</p>
-                    <a href="#" class="btn btn-outline-primary">Profile</a>
+                    <a href="/Clients/JoinQueue.aspx?profile=1" class="btn btn-outline-primary">Join Queue</a>
                   </div>
               </div>
               
