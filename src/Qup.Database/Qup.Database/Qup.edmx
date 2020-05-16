@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="QupModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Business">
           <Key>
             <PropertyRef Name="Id" />
@@ -33,6 +33,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="BusinessId" Type="int" />
           <Property Name="ProfileImage" Type="image" />
+        </EntityType>
+        <EntityType Name="PlatformPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Url" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="QueueTransactions">
           <Key>
@@ -67,6 +74,14 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserGroupsToPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserGroupId" Type="int" />
+          <Property Name="PageId" Type="int" />
         </EntityType>
         <EntityType Name="UserLedger">
           <Key>
@@ -155,6 +170,30 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__UserGroup__PageI__6FE99F9F">
+          <End Role="PlatformPages" Type="Self.PlatformPages" Multiplicity="0..1" />
+          <End Role="UserGroupsToPages" Type="Self.UserGroupsToPages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatformPages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGroupsToPages">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserGroup__UserG__6EF57B66">
+          <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="0..1" />
+          <End Role="UserGroupsToPages" Type="Self.UserGroupsToPages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroups">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGroupsToPages">
+              <PropertyRef Name="UserGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__UsersToUs__UserG__619B8048">
           <End Role="UserGroups" Type="Self.UserGroups" Multiplicity="0..1" />
           <End Role="UsersToUserGroups" Type="Self.UsersToUserGroups" Multiplicity="*" />
@@ -195,9 +234,11 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <EntitySet Name="Business" EntityType="Self.Business" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessOperations" EntityType="Self.BusinessOperations" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BusinessProfile" EntityType="Self.BusinessProfile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlatformPages" EntityType="Self.PlatformPages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QueueTransactions" EntityType="Self.QueueTransactions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SessionLog" EntityType="Self.SessionLog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserGroups" EntityType="Self.UserGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserGroupsToPages" EntityType="Self.UserGroupsToPages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLedger" EntityType="Self.UserLedger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UsersToUserGroups" EntityType="Self.UsersToUserGroups" Schema="dbo" store:Type="Tables" />
@@ -223,6 +264,14 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             <End Role="Users" EntitySet="Users" />
             <End Role="SessionLog" EntitySet="SessionLog" />
           </AssociationSet>
+          <AssociationSet Name="FK__UserGroup__PageI__6FE99F9F" Association="Self.FK__UserGroup__PageI__6FE99F9F">
+            <End Role="PlatformPages" EntitySet="PlatformPages" />
+            <End Role="UserGroupsToPages" EntitySet="UserGroupsToPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserGroup__UserG__6EF57B66" Association="Self.FK__UserGroup__UserG__6EF57B66">
+            <End Role="UserGroups" EntitySet="UserGroups" />
+            <End Role="UserGroupsToPages" EntitySet="UserGroupsToPages" />
+          </AssociationSet>
           <AssociationSet Name="FK__UsersToUs__UserG__619B8048" Association="Self.FK__UsersToUs__UserG__619B8048">
             <End Role="UserGroups" EntitySet="UserGroups" />
             <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
@@ -232,8 +281,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             <End Role="UsersToUserGroups" EntitySet="UsersToUserGroups" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QupModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -305,6 +353,7 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="UsersToUserGroups" Relationship="Self.FK__UsersToUs__UserG__619B8048" FromRole="UserGroups" ToRole="UsersToUserGroups" />
+          <NavigationProperty Name="UserGroupsToPages" Relationship="QupModel.FK__UserGroup__UserG__6EF57B66" FromRole="UserGroup" ToRole="UserGroupsToPage" />
         </EntityType>
         <EntityType Name="UserLedger">
           <Key>
@@ -460,8 +509,18 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
             <Parameter Name="businessId" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="spUsersByUserGroup" ReturnType="Collection(QupModel.spUsersByUserGroup_Result)">
-            <Parameter Name="userGroup" Mode="In" Type="String" />
+          <Parameter Name="userGroup" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="PlatformPages" EntityType="QupModel.PlatformPage" />
+          <EntitySet Name="UserGroupsToPages" EntityType="QupModel.UserGroupsToPage" />
+          <AssociationSet Name="FK__UserGroup__PageI__6FE99F9F" Association="QupModel.FK__UserGroup__PageI__6FE99F9F">
+            <End Role="PlatformPage" EntitySet="PlatformPages" />
+            <End Role="UserGroupsToPage" EntitySet="UserGroupsToPages" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserGroup__UserG__6EF57B66" Association="QupModel.FK__UserGroup__UserG__6EF57B66">
+            <End Role="UserGroup" EntitySet="UserGroups" />
+            <End Role="UserGroupsToPage" EntitySet="UserGroupsToPages" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="spGetCustomersInQueueByDate_Result">
           <Property Type="Int32" Name="QueueId" Nullable="false" />
@@ -487,6 +546,48 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
           <Property Type="String" Name="Email" Nullable="false" MaxLength="200" />
           <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="20" />
         </ComplexType>
+        <EntityType Name="PlatformPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Url" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserGroupsToPages" Relationship="QupModel.FK__UserGroup__PageI__6FE99F9F" FromRole="PlatformPage" ToRole="UserGroupsToPage" />
+        </EntityType>
+        <EntityType Name="UserGroupsToPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGroupId" Type="Int32" />
+          <Property Name="PageId" Type="Int32" />
+          <NavigationProperty Name="PlatformPage" Relationship="QupModel.FK__UserGroup__PageI__6FE99F9F" FromRole="UserGroupsToPage" ToRole="PlatformPage" />
+          <NavigationProperty Name="UserGroup" Relationship="QupModel.FK__UserGroup__UserG__6EF57B66" FromRole="UserGroupsToPage" ToRole="UserGroup" />
+        </EntityType>
+        <Association Name="FK__UserGroup__PageI__6FE99F9F">
+          <End Type="QupModel.PlatformPage" Role="PlatformPage" Multiplicity="0..1" />
+          <End Type="QupModel.UserGroupsToPage" Role="UserGroupsToPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlatformPage">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGroupsToPage">
+              <PropertyRef Name="PageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserGroup__UserG__6EF57B66">
+          <End Type="QupModel.UserGroup" Role="UserGroup" Multiplicity="0..1" />
+          <End Type="QupModel.UserGroupsToPage" Role="UserGroupsToPage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserGroup">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserGroupsToPage">
+              <PropertyRef Name="UserGroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -647,6 +748,23 @@ warning 6002: The table/view 'Qup.dbo.vwGetBusinessDetails' does not have a prim
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="PlatformPages">
+            <EntityTypeMapping TypeName="QupModel.PlatformPage">
+              <MappingFragment StoreEntitySet="PlatformPages">
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserGroupsToPages">
+            <EntityTypeMapping TypeName="QupModel.UserGroupsToPage">
+              <MappingFragment StoreEntitySet="UserGroupsToPages">
+                <ScalarProperty Name="PageId" ColumnName="PageId" />
+                <ScalarProperty Name="UserGroupId" ColumnName="UserGroupId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

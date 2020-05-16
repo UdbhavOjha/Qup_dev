@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using Qup.Business.Transactions;
 using Qup.Business.Transactions.Models;
 
@@ -9,9 +10,9 @@ namespace Qup.Manager
     {
         protected IEnumerable<CustomerInQueue> customerSearchResults;
 
-        protected DateTime fromDateConverted;
+        protected string fromDateSearched;
 
-        protected DateTime toDateConverted;
+        protected string toDateSearched;
 
         protected bool noResults = true;
         protected void Page_Load(object sender, EventArgs e)
@@ -21,28 +22,41 @@ namespace Qup.Manager
 
         protected void searchSubmit_Click(object sender, EventArgs e)
         {
-            var fromDateSelected = fromDate.Value;
-            var toDateSelected = toDate.Value;
+            var fromDateSelected = Request.Form["fromDate"];
+            var toDateSelected = Request.Form["toDate"];
             int businessId = 1;
 
-            var fromDateConvertTest = DateTime.TryParse(fromDateSelected.Trim(), out DateTime fromDateConverted);
-            var toDateConvertTest = DateTime.TryParse(toDateSelected.Trim(), out DateTime toDateConverted);
+            var fromDateParsed = ParseSelectedDate(fromDateSelected.Trim());
+            var toDateParsed = ParseSelectedDate(toDateSelected.Trim());
 
             // Put Validation
-            if (fromDateConvertTest && toDateConvertTest)
+            if (fromDateParsed != DateTime.MinValue && toDateParsed != DateTime.MinValue)
             {
                 var queueHandler = new QueueLedger();
-                customerSearchResults = queueHandler.GetCustomersInQueue(businessId, fromDateConverted, toDateConverted);
+                customerSearchResults = queueHandler.GetCustomersInQueue(businessId, fromDateParsed, toDateParsed);
 
                 foreach (var item in customerSearchResults)
                 {
                     noResults = false;
                     break;
                 }
-            }
-            
 
-            
+                fromDateSearched = fromDateSelected;
+                toDateSearched = toDateSelected;
+            }            
+        }
+
+        private DateTime ParseSelectedDate(string searchDate)
+        {
+            DateTime parsedDate;
+            DateTime.TryParseExact(
+                                   searchDate,
+                                   "dd/MM/yyyy",
+                                   CultureInfo.InvariantCulture,
+                                   DateTimeStyles.None,
+                                   out parsedDate
+                                  );
+            return parsedDate;
         }
     }
 }

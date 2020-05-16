@@ -12,21 +12,17 @@ namespace Qup.Database
     using System;
     using System.Collections.Generic;
     
-    public partial class UserGroup
+    public partial class PlatformPage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UserGroup()
+        public PlatformPage()
         {
-            this.UsersToUserGroups = new HashSet<UsersToUserGroup>();
             this.UserGroupsToPages = new HashSet<UserGroupsToPage>();
         }
     
         public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Url { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UsersToUserGroup> UsersToUserGroups { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserGroupsToPage> UserGroupsToPages { get; set; }
     }

@@ -20,6 +20,10 @@
         <AssociationConnector Association="QupModel.FK__SessionLo__UserI__6477ECF3" ManuallyRouted="false" />
         <AssociationConnector Association="QupModel.FK__UsersToUs__UserG__619B8048" ManuallyRouted="false" />
         <AssociationConnector Association="QupModel.FK__UsersToUs__UserI__60A75C0F" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="QupModel.PlatformPage" Width="1.5" PointX="3.75" PointY="12.25" />
+        <EntityTypeShape EntityType="QupModel.UserGroupsToPage" Width="1.5" PointX="6" PointY="12" />
+        <AssociationConnector Association="QupModel.FK__UserGroup__PageI__6FE99F9F" />
+        <AssociationConnector Association="QupModel.FK__UserGroup__UserG__6EF57B66" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

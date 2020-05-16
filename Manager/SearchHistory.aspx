@@ -29,7 +29,9 @@
                                    <i class="fas fa-calendar-alt"></i>
                                 </span>
                               </div>
-                              <input type="text" class="form-control datepicker" id="fromDate" name="fromDate" value="" placeholder="DD/MM/YYYY" data-date-format="dd/mm/yyyy" runat="server">
+                              <input type="text" class="form-control datepicker" id="fromDate" name="fromDate" value=<%if (fromDateSearched != string.Empty){ %>
+                                  "<%:fromDateSearched %>"
+                                 <% } %> placeholder="DD/MM/YYYY" data-date-format="dd/mm/yyyy" />
                             </div>
                         </div>
                     </div>
@@ -44,7 +46,9 @@
                                    <i class="fas fa-calendar-alt"></i>
                                 </span>
                               </div>
-                              <input type="text" class="form-control datepicker" id="toDate" name="toDate" value="" data-date-format="dd/mm/yyyy" placeholder="DD/MM/YYYY" runat="server">
+                              <input type="text" class="form-control datepicker" id="toDate" name="toDate" value=<%if (toDateSearched != string.Empty){ %>
+                                  "<%:toDateSearched %>"
+                                 <% } %> data-date-format="dd/mm/yyyy" placeholder="DD/MM/YYYY" />
                             </div>
                         </div>
                     </div>
@@ -125,7 +129,12 @@
     <!-- Script -->    
     <script type="text/javascript">
         $(document).ready(function () {
-            $('.datepicker').datepicker();
+            $('.datepicker').datepicker({
+                autoclose: true,
+                todayHighlight: true,
+                format: 'dd/mm/yyyy',
+                endDate: new Date(new Date().setDate(new Date().getDate() + 1))
+            });
 
             var table = $('#customerSearch').DataTable();
             table.draw();

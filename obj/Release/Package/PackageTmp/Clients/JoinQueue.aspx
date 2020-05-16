@@ -19,7 +19,7 @@
 
                             <%if (!disableJoinQueueButton) {%>
                             <div>
-                              <asp:Button type="submit" class="btn btn-lg btn-success" runat="server" Text="Join Queue" OnClick="joinQueue_Click" />
+                              <asp:Button type="submit" class="btn btn-lg btn-success" runat="server" Text="Check In" OnClick="joinQueue_Click" />
                             </div>
                             <%} if (enableLeaveQueueButton)
                                 {%>
